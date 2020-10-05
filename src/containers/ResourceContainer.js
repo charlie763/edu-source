@@ -1,10 +1,11 @@
 import React from 'react'
+import ResourceForm from '../components/ResourceForm'
 
 class ResourceContainer extends React.Component {
   render(){
     return(
       <div>
-        <p>New Resource</p>
+        <ResourceForm />
         <p>All Resources/Search</p>
       </div>
     )
