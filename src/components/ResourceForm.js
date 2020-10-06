@@ -8,7 +8,8 @@ class ResourceForm extends React.Component {
     subject: "",
     lowerGradeBound: "",
     upperGradeBound: "",
-    url: ""
+    url: "",
+    description: ""
   }
 
   state = {
@@ -44,6 +45,8 @@ class ResourceForm extends React.Component {
           <input type="text" name="upperGradeBound" value={this.state.upperGradeBound} onChange={this.handleInputChange}/><br />
           <label>Link: </label>
           <input type="text" name="url" value={this.state.url} onChange={this.handleInputChange}/><br />
+          <label>Description: </label>
+          <textarea type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/><br />
           <input type="submit"/>
         </form>
       </div>
