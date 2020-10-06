@@ -17,8 +17,24 @@ class ResourceForm extends React.Component {
   }
 
   handleInputChange = e => {
+    let value;
+    if (e.target.name === "lowerGradeBound"){
+      if (parseInt(this.state.upperGradeBound, 10) < parseInt(e.target.value, 10)){
+        value = this.state.lowerGradeBound
+      } else {
+        value = e.target.value
+      }
+    } else if (e.target.name === "upperGradeBound") {
+      if (parseInt(this.state.lowerGradeBound, 10) > parseInt(e.target.value, 10)){
+        value = this.state.upperGradeBound
+      } else {
+        value = e.target.value
+      }
+    } else {
+      value = e.target.value
+    }
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: value
     })
   }
 
