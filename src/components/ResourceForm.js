@@ -6,14 +6,14 @@ class ResourceForm extends React.Component {
   static cleanState = {
     title: "",
     subject: "",
-    lowerGradeBound: "",
-    upperGradeBound: "",
+    lowerGradeBound: "0",
+    upperGradeBound: "12",
     url: "",
     description: ""
   }
 
   state = {
-    ...this.cleanState
+    ...this.constructor.cleanState
   }
 
   handleInputChange = e => {
@@ -30,6 +30,10 @@ class ResourceForm extends React.Component {
     })
   }
 
+  displayGrade(grade){
+    return grade === "0" ? "k" : grade
+  }
+
   render(){
     return(
       <div>
@@ -40,9 +44,12 @@ class ResourceForm extends React.Component {
           <label>Subject: </label>
           <input type="text" name="subject" value={this.state.subject} onChange={this.handleInputChange}/><br /> {/*Change to datalist*/}
           <label>Grade Levels: </label>
-          <input type="text" name="lowerGradeBound" value={this.state.lowerGradeBound} onChange={this.handleInputChange}/>
-          <span> to </span>
-          <input type="text" name="upperGradeBound" value={this.state.upperGradeBound} onChange={this.handleInputChange}/><br />
+          <div className="slider-container">
+            <span className="left-label">{this.displayGrade(this.state.lowerGradeBound)}</span>
+            <input type="range" className="slider" name="lowerGradeBound" min="0" max="12" value={this.state.lowerGradeBound} onChange={this.handleInputChange}/>
+            <input type="range" className="slider" name="upperGradeBound" min="0" max="12" value={this.state.upperGradeBound} onChange={this.handleInputChange}/>
+            <span className="right-label">{this.displayGrade(this.state.upperGradeBound)}</span>
+          </div><br/><br/>
           <label>Link: </label>
           <input type="text" name="url" value={this.state.url} onChange={this.handleInputChange}/><br />
           <label>Description: </label>
