@@ -5,7 +5,8 @@ function resourcesReducer(state = [], action){
     case "ADD_RESOURCE":
       const newResource = {
         ...action.resource,
-        id: cuid()
+        id: cuid(),
+        rating: 0
       }
       return [...state, newResource]
     default:
