@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { addResource } from '../actions/resourceActions'
 
 class ResourceForm extends React.Component {
   state = {
@@ -15,11 +17,23 @@ class ResourceForm extends React.Component {
     })
   }
 
+  handleSubmit = e => {
+    e.preventDefault()
+    this.props.addResource(this.state)
+    this.setState({
+      title: "",
+      subject: "",
+      lowerGradeBound: "",
+      upperGradeBound: "",
+      url: ""
+    })
+  }
+
   render(){
     return(
       <div>
         <h2>Add a Resource</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>Title: </label>
           <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/><br />
           <label>Subject: </label>
@@ -37,7 +51,7 @@ class ResourceForm extends React.Component {
   }
 }
 
-export default ResourceForm
+export default connect(null, { addResource })(ResourceForm)
 
 // - Resource
 //   - id
