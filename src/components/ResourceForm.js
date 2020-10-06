@@ -3,12 +3,16 @@ import { connect } from 'react-redux'
 import { addResource } from '../actions/resourceActions'
 
 class ResourceForm extends React.Component {
-  state = {
+  static cleanState = {
     title: "",
     subject: "",
     lowerGradeBound: "",
     upperGradeBound: "",
     url: ""
+  }
+
+  state = {
+    ...this.cleanState
   }
 
   handleInputChange = e => {
@@ -21,11 +25,7 @@ class ResourceForm extends React.Component {
     e.preventDefault()
     this.props.addResource(this.state)
     this.setState({
-      title: "",
-      subject: "",
-      lowerGradeBound: "",
-      upperGradeBound: "",
-      url: ""
+      ...this.constructor.cleanState
     })
   }
 
