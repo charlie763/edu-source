@@ -9,6 +9,7 @@ class ResourceForm extends React.Component {
     lowerGradeBound: "0",
     upperGradeBound: "12",
     url: "",
+    videoUrl: "",
     description: ""
   }
 
@@ -68,6 +69,8 @@ class ResourceForm extends React.Component {
           </div><br/><br/>
           <label>Link: </label>
           <input type="text" name="url" value={this.state.url} onChange={this.handleInputChange}/><br />
+          <label>Embedded Video Link: </label>
+          <input type="text" name="videoUrl" value={this.state.videoUrl} onChange={this.handleInputChange}/><br />
           <label>Description: </label>
           <textarea type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/><br />
           <input type="submit"/>
