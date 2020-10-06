@@ -4,22 +4,32 @@ class ResourceForm extends React.Component {
   state = {
     title: "",
     subject: "",
-    grades: [],
+    lowerGradeBound: "",
+    upperGradeBound: "",
     url: ""
   }
+
+  handleInputChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   render(){
     return(
       <div>
         <h2>Add a Resource</h2>
         <form>
           <label>Title: </label>
-          <input type="text" name="title" value={this.state.title} /><br />
+          <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/><br />
           <label>Subject: </label>
-          <input type="text" name="subject" value={this.state.subject} /><br /> {/*Change to datalist*/}
+          <input type="text" name="subject" value={this.state.subject} onChange={this.handleInputChange}/><br /> {/*Change to datalist*/}
           <label>Grade Levels: </label>
-          <input type="text" name="grades" value={this.state.grades} /><br /> {/*Change to multiple select*/}
+          <input type="text" name="lowerGradeBound" value={this.state.lowerGradeBound} onChange={this.handleInputChange}/>
+          <span> to </span>
+          <input type="text" name="upperGradeBound" value={this.state.upperGradeBound} onChange={this.handleInputChange}/><br />
           <label>Link: </label>
-          <input type="text" name="url" value={this.state.url} /><br />
+          <input type="text" name="url" value={this.state.url} onChange={this.handleInputChange}/><br />
           <input type="submit"/>
         </form>
       </div>
