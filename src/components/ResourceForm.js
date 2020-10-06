@@ -1,6 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
-import { addResource } from '../actions/resourceActions'
 
 class ResourceForm extends React.Component {
   static cleanState = {
@@ -80,16 +78,4 @@ class ResourceForm extends React.Component {
   }
 }
 
-export default connect(null, { addResource })(ResourceForm)
-
-// - Resource
-//   - id
-//   - title
-//   - description
-//   - grade level
-//   - subject
-//   - img url
-//   - video embed url?
-//   - avg rating
-//   - source
-//   - user_id
+export default ResourceForm
