@@ -16,7 +16,6 @@ class ResourceContainer extends React.Component {
   }
 
   render(){
-    debugger;
     return(
       <div>
         <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
@@ -35,4 +34,9 @@ class ResourceContainer extends React.Component {
   }
 }
 
-export default connect(state => ({ resources: state.resources }), { addResource, fetchResources })(ResourceContainer)
+const mapStateToProps = state => ({
+  resources: state.resources.list,
+  loadStatus: state.resources.loadStatus
+})
+
+export default connect(mapStateToProps, { addResource, fetchResources })(ResourceContainer)
