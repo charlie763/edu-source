@@ -16,7 +16,6 @@ class ResourceContainer extends React.Component {
   }
 
   render(){
-    debugger;
     return(
       <div>
         <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
