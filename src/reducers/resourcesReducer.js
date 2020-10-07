@@ -10,7 +10,7 @@ function resourcesReducer(state = [], action){
       }
       return [...state, newResource]
     case "ADD_RESOURCES":
-      return [...state, action.resources]
+      return [...state, ...action.resources]
     default:
       return state
   }
