@@ -10,16 +10,20 @@ class ResourceContainer extends React.Component {
     this.props.fetchResources()
   }
 
+  displayGrade(grade){
+    return grade === "0" ? "k" : grade
+  }
+
   render(){
     return(
       <div>
         <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
 
         <Route path={`${this.props.match.path}`}>
-          <Resources resources={this.props.resources}/>
+          <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
         </Route> 
         <Route exact path={`${this.props.match.path}/new`}>
-          <ResourceForm addResource={this.props.addResource} />
+          <ResourceForm addResource={this.props.addResource} displayGrade={this.displayGrade} />
         </Route> 
       </div>
     )
