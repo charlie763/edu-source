@@ -1,9 +1,11 @@
 import React from 'react'
 
-const ResourceThumbnail = props => {
+const ResourceThumbnail = ({ resource }) => {
   return (
     <div>
-      Resource
+      <h3>{resource.title}</h3>
+      <span>{resource.subject} Grades: {resource.lowerGradeBound} to {resource.upperGradeBound}</span>
+      <p>{resource.description}</p>
     </div>
   )
 }
