@@ -9,7 +9,6 @@ class ResourceContainer extends React.Component {
   render(){
     return(
       <div>
-        <Link to={`${this.props.match.url}`}>all</Link><br />
         <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
 
         <Route path={`${this.props.match.path}`}>
