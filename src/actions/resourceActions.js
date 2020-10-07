@@ -1,3 +1,5 @@
+import { configure } from "@testing-library/react"
+
 const BASE_URL = 'http://localhost:3000/resources'
 
 function addResource(resource){
@@ -19,4 +21,16 @@ function addResource(resource){
   }
 }
 
-export { addResource }
+function fetchResources(subject="all"){
+  return (dispatch) => {
+    dispatch({type: 'LOAD_RESOURCES'})
+    fetch(BASE_URL + `/?q=${subject}`)
+      .then(resp => resp.json())
+      .then(resources => dispatch({
+        type: "ADD_RESOURCES",
+        resources
+      }))
+  }
+}
+
+export { addResource, fetchResources }
