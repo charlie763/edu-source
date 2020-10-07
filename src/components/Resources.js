@@ -1,9 +1,10 @@
 import React from 'react'
+import ResourceThumbnail from './ResourceThumbnail'
 
 const Resources = props => {
   return (
     <div>
-      Resources
+      {this.props.resources.map(resource => <ResourceThumbnail resource={resource}/>)}
     </div>
   )
 }
