@@ -8,7 +8,9 @@ import Resource from '../components/Resource'
 
 class ResourceContainer extends React.Component {
   componentDidMount(){
-    this.props.fetchResources()
+    if (!this.props.loadStatus){
+      this.props.fetchResources()
+    }
   }
 
   displayGrade(grade){
