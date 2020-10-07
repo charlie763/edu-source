@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import { addResource } from '../actions/resourceActions'
 import ResourceForm from '../components/ResourceForm'
 
@@ -23,5 +23,3 @@ class ResourceContainer extends React.Component {
 }
 
 export default connect(null, { addResource })(ResourceContainer)
-
-// () => 

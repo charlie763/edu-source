@@ -1,7 +1,9 @@
-const addResource = resource => {
-  return {
-    type: "ADD_RESOURCE",
-    resource
+function addResource(resource){
+  return (dispatch) => {
+    dispatch({
+      type: "ADD_RESOURCE",
+      resource
+    })
   }
 }
 
