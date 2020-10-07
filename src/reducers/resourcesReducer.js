@@ -9,6 +9,8 @@ function resourcesReducer(state = [], action){
         rating: 0
       }
       return [...state, newResource]
+    case "ADD_RESOURCES":
+      return [...state, action.resources]
     default:
       return state
   }

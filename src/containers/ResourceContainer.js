@@ -6,13 +6,17 @@ import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 
 class ResourceContainer extends React.Component {
+  componentDidMount(){
+    this.props.fetchResources()
+  }
+
   render(){
     return(
       <div>
         <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
 
         <Route path={`${this.props.match.path}`}>
-          <Resources />
+          <Resources resources={this.props.resources}/>
         </Route> 
         <Route exact path={`${this.props.match.path}/new`}>
           <ResourceForm addResource={this.props.addResource} />
@@ -22,4 +26,4 @@ class ResourceContainer extends React.Component {
   }
 }
 
-export default connect(null, { addResource, fetchResources })(ResourceContainer)
+export default connect(state => ({ resources: state.resources }), { addResource, fetchResources })(ResourceContainer)
