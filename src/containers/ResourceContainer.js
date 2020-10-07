@@ -17,6 +17,10 @@ class ResourceContainer extends React.Component {
     return grade === "0" ? "k" : grade
   }
 
+  findResource(id){
+    return this.props.resources.find(resource => resource.id == id)
+  }
+
   render(){
     return(
       <div>
@@ -25,9 +29,9 @@ class ResourceContainer extends React.Component {
         <Route exact path={`${this.props.match.path}`}>
           <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
         </Route> 
-        <Route exact path={`${this.props.match.path}/:id`}>
-          <Resource resource={this.props.match.params.id} displayGrade={this.displayGrade}/>
-        </Route> 
+        <Route exact path={`${this.props.match.path}/:id`} render={props => 
+          <Resource resource={this.findResource(props.match.params.id)} displayGrade={this.displayGrade}/>
+        } />
         <Route exact path={`${this.props.match.path}/new`}>
           <ResourceForm addResource={this.props.addResource} displayGrade={this.displayGrade} />
         </Route> 

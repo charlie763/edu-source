@@ -2,7 +2,7 @@ import React from 'react'
 
 const Resource = ({ resource }) => {
   return(
-    <div>Resource</div>
+    <div>{resource.title}</div>
   )
 }
 
