@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Link } from 'react-router-dom'
-import { addResource } from '../actions/resourceActions'
+import { addResource, fetchResources } from '../actions/resourceActions'
 import ResourceForm from '../components/ResourceForm'
+import Resources from '../components/Resources'
 
 class ResourceContainer extends React.Component {
   render(){
@@ -12,7 +13,7 @@ class ResourceContainer extends React.Component {
         <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
 
         <Route path={`${this.props.match.path}`}>
-          <h1>all resources</h1>
+          <Resources />
         </Route> 
         <Route exact path={`${this.props.match.path}/new`}>
           <ResourceForm addResource={this.props.addResource} />
@@ -22,4 +23,4 @@ class ResourceContainer extends React.Component {
   }
 }
 
-export default connect(null, { addResource })(ResourceContainer)
+export default connect(null, { addResource, fetchResources })(ResourceContainer)

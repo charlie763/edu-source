@@ -1,5 +1,3 @@
-import { configure } from "@testing-library/react"
-
 const BASE_URL = 'http://localhost:3000/resources'
 
 function addResource(resource){
