@@ -4,6 +4,7 @@ import { Route, Link } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
+import Resource from '../components/Resource'
 
 class ResourceContainer extends React.Component {
   componentDidMount(){
@@ -15,12 +16,16 @@ class ResourceContainer extends React.Component {
   }
 
   render(){
+    debugger;
     return(
       <div>
         <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
 
-        <Route path={`${this.props.match.path}`}>
+        <Route exact path={`${this.props.match.path}`}>
           <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
+        </Route> 
+        <Route exact path={`${this.props.match.path}/:id`}>
+          <Resource resource={this.props.match.params.id} displayGrade={this.displayGrade}/>
         </Route> 
         <Route exact path={`${this.props.match.path}/new`}>
           <ResourceForm addResource={this.props.addResource} displayGrade={this.displayGrade} />
