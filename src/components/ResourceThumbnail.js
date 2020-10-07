@@ -2,7 +2,6 @@ import React from 'react'
 import { Link, useRouteMatch } from 'react-router-dom'
 
 const ResourceThumbnail = ({ resource, displayGrade }) => {
-  debugger;
   let { path, url } = useRouteMatch();
   return (
     <div>

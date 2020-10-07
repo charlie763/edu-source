@@ -1,6 +1,6 @@
 import cuid from 'cuid'
 
-function resourcesReducer(state = [], action){
+function resourcesReducer(state = {list: [], loadStatus:null}, action){
   switch(action.type){
     case "ADD_RESOURCE":
       const newResource = {
@@ -8,9 +8,20 @@ function resourcesReducer(state = [], action){
         id: cuid(),
         rating: 0
       }
-      return [...state, newResource]
+      return {
+        list: [...state.list, newResource],
+        loadStatus: state.loadStatus
+      }
     case "ADD_RESOURCES":
-      return [...state, ...action.resources]
+      return {
+        list: [...state.list, ...action.resources],
+        loadStatus: "complete",
+      }
+    case "LOAD_RESOURCES":
+      return {
+        list: [...state.list],
+        loadStatus: "pending"
+      }
     default:
       return state
   }
