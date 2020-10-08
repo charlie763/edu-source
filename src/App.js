@@ -12,7 +12,7 @@ function App() {
         <Route path="/" component={NavBar} />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/users" render={props => <UserContainer {...props} />} />
+          <Route path="/login" render={props => <UserContainer {...props} />} />
           <Route path="/resources" render={props => <ResourceContainer {...props}/>} />
         </Switch>
     </Router>
