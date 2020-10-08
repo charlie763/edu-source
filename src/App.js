@@ -4,6 +4,7 @@ import './App.css';
 import ResourceContainer from './containers/ResourceContainer'
 import NavBar from './components/NavBar'
 import Home from './components/Home'
+import UserContainer from './containers/UserContainer';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" component={NavBar} />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/users" render={props => <UserContainer {...props} />} />
           <Route path="/resources" render={props => <ResourceContainer {...props}/>} />
         </Switch>
     </Router>
