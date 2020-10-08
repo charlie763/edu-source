@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Resource = ({ resource, loadStatus }) => {
+const Resource = ({ resource, loadStatus, displayGrade }) => {
   if (!loadStatus || loadStatus === "pending"){
     return(
       <div>Loading...</div>
@@ -11,7 +11,11 @@ const Resource = ({ resource, loadStatus }) => {
     )
   } else {
     return(
-      <div>{resource.title}</div>
+      <div>
+        <h3>{resource.title}</h3>
+        <span>{resource.subject} Grades: {displayGrade(resource.lowerGradeBound)} to {displayGrade(resource.upperGradeBound)}</span>
+        <p>{resource.description}</p>
+      </div>
     )
   }
 }
