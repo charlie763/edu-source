@@ -1,4 +1,5 @@
 import React from 'react'
+import EmbedVideo from './EmbedVideo'
 
 const Resource = ({ resource, loadStatus, displayGrade }) => {
   if (!loadStatus || loadStatus === "pending"){
@@ -15,6 +16,7 @@ const Resource = ({ resource, loadStatus, displayGrade }) => {
         <h3>{resource.title}</h3>
         <span>{resource.subject} Grades: {displayGrade(resource.lowerGradeBound)} to {displayGrade(resource.upperGradeBound)}</span>
         <p>{resource.description}</p>
+        <EmbedVideo videoUrl={resource.url} title={resource.title}/>
       </div>
     )
   }
