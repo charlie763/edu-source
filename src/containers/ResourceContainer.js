@@ -34,7 +34,6 @@ class ResourceContainer extends React.Component {
             <ResourceForm addResource={this.props.addResource} displayGrade={this.displayGrade} />
           </Route> 
           <Route exact path={`${this.props.match.path}/:id`} render={props => {
-            // debugger;
           return(<Resource 
             resource={this.findResource(props.match.params.id)} 
             loadStatus={this.props.loadStatus} 
