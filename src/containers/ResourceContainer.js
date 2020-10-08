@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, Switch } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
@@ -29,12 +29,19 @@ class ResourceContainer extends React.Component {
         <Route exact path={`${this.props.match.path}`}>
           <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
         </Route> 
-        <Route exact path={`${this.props.match.path}/:id`} render={props => 
-          <Resource resource={this.findResource(props.match.params.id)} displayGrade={this.displayGrade}/>
+        <Switch>
+          <Route exact path={`${this.props.match.path}/new`}>
+            <ResourceForm addResource={this.props.addResource} displayGrade={this.displayGrade} />
+          </Route> 
+          <Route exact path={`${this.props.match.path}/:id`} render={props => 
+          <Resource 
+            resource={this.findResource(props.match.params.id)} 
+            loadStatus={this.props.loadStatus} 
+            displayGrade={this.displayGrade}
+          />
         } />
-        <Route exact path={`${this.props.match.path}/new`}>
-          <ResourceForm addResource={this.props.addResource} displayGrade={this.displayGrade} />
-        </Route> 
+        </Switch>
+        
       </div>
     )
   }
