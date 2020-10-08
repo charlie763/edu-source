@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import UserLogin from '../components/UserLogin'
 import UserSignup from '../components/UserSignup'
+import { signupUser } from '../actions/userActions'
 
 class UserContainer extends React.Component {
   render(){
@@ -12,11 +13,11 @@ class UserContainer extends React.Component {
           <UserLogin />
         </Route>
         <Route exact path="/signup">
-          <UserSignup />
+          <UserSignup signupUser={this.props.signupUser}/>
         </Route>
       </Switch>
     )
   }
 }
 
-export default UserContainer
+export default connect(null, { signupUser })(UserContainer)
