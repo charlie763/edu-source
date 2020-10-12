@@ -2,7 +2,7 @@ import cuid from 'cuid'
 
 function usersReducer(state = [], action){
   switch(action.type){
-    case "CREATE_USER":
+    case "ADD_USER":
 
     default:
       return state

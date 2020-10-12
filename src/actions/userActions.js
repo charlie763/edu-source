@@ -1,4 +1,3 @@
-import { sessionService } from 'redux-react-session'
 import * as Cookies from "js-cookie"
 const BASE_URL = 'http://localhost:3000/users'
 
@@ -16,9 +15,13 @@ function createUser(user){
     fetch(BASE_URL, configObj)
       .then(resp=>resp.json())
       .then(userData => {
-        Cookies.remove("session")
-        Cookies.set("session", userData.token, { expires: 14 })
-        sessionService.saveUser(userData.user)
+        if (userData.valid === "true"){
+          Cookies.remove("session")
+          Cookies.set("session", userData.token, { expires: 14 })
+          return dispatch({type: "ADD_USER", user: userData.user, valid: "true"})
+        } else {
+          return dispatch({type: "INVALID_USER", errors: userData.errorMessages})
+        }
       })
   }
 }
