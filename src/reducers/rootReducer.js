@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import { sessionReducer } from 'redux-react-session'
 import resourcesReducer from './resourcesReducer'
+import usersReducer from './usersReducer'
 
 const rootReducer = combineReducers({
   resources: resourcesReducer,
-  session: sessionReducer
+  user: usersReducer
 })
 
 export default rootReducer

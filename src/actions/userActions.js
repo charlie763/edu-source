@@ -18,7 +18,7 @@ function createUser(user){
         if (userData.valid === "true"){
           Cookies.remove("session")
           Cookies.set("session", userData.token, { expires: 14 })
-          return dispatch({type: "ADD_USER", user: userData.user, valid: "true"})
+          return dispatch({type: "LOGIN_USER", user: userData.user, valid: "true"})
         } else {
           return dispatch({type: "INVALID_USER", errors: userData.errorMessages})
         }
