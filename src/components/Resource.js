@@ -20,7 +20,7 @@ const Resource = props => {
         <p>{props.resource.description}</p>
         <EmbedVideo videoUrl={props.resource.url} title={props.resource.title}/><br/>
         <Link to={`${props.match.url}/comments/new`}>Comment</Link>
-        <CommentContainer relativePath={props.match.path}/>
+        <CommentContainer relativePath={props.match.path} resourceId={props.resource.id}/>
       </div>
     )
   }
