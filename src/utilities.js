@@ -12,4 +12,8 @@ function handleSubmit(submitObj){
   })
 }
 
+function isLoggedIn(){
+  
+}
+
 export { handleInputChange, handleSubmit }

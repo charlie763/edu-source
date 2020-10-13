@@ -1,4 +1,3 @@
-import { configure } from "@testing-library/react"
 import * as Cookies from "js-cookie"
 const BASE_URL = 'http://localhost:3000'
 
@@ -17,7 +16,7 @@ function validateUser(dispatch, userData){
   if (userData.valid === "true"){
     Cookies.remove("eduResourceSession")
     Cookies.set("eduResourceSession", userData.token, { expires: 14 })
-    return dispatch({type: "LOGIN_USER", user: userData.user, valid: "true"})
+    return dispatch({type: "LOGIN_USER", user: userData.user})
   } else {
     return dispatch({type: "INVALID_USER", errors: userData.errorMessages})
   }
@@ -43,7 +42,7 @@ function loginUser(user){
   }
 }
 
-function authorizeUser(token){
+function authorizeUser(){
   let token = Cookies.get("eduResourceSession");
   return dispatch => {
     if (token){
@@ -59,13 +58,13 @@ function authorizeUser(token){
         .then(resp => resp.json())
         .then(authResp => {
           if (authResp.valid === "true"){
-            dispatch({type: "LOGIN_USER", user: authResp.user, valid: "true"})
+            return dispatch({type: "LOGIN_USER", user: authResp.user})
           } else {
-            dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
+            return dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
           }
         })
     } else {
-      dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
+      return dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
     }
     
   }
