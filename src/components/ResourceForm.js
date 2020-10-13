@@ -1,4 +1,5 @@
 import React from 'react'
+import { handleSubmit } from '../utilities'
 
 class ResourceForm extends React.Component {
   static cleanState = {
@@ -37,19 +38,16 @@ class ResourceForm extends React.Component {
     })
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    this.props.addResource(this.state)
-    this.setState({
-      ...this.constructor.cleanState
-    })
-  }
-
   render(){
     return(
       <div>
         <h2>Add a Resource</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={e => handleSubmit.call(this, {
+          e, 
+          callback: this.props.addResource,
+          currentState: this.state,
+          clearState: {...this.constructor.cleanState}
+        })}>
           <label>Title: </label>
           <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/><br />
           <label>Subject: </label>

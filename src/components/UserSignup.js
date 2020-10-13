@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { handleInputChange } from '../utilities'
+import { handleInputChange, handleSubmit } from '../utilities'
 import UserFormFields from './UserFormFields'
 
 class UserSignup extends React.Component {
@@ -8,19 +8,15 @@ class UserSignup extends React.Component {
     username: "",
     password: ""
   }
-  
-  handleSubmit = e => {
-    e.preventDefault()
-    this.props.createUser(this.state)
-    this.setState({
-      username: "",
-      password: ""
-    })
-  }
 
   render(){
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={e => handleSubmit.call(this, {
+        e, 
+        callback: this.props.createUser,
+        currentState: this.state,
+        clearState: {username: "", password: ""}
+      })}>
         <UserFormFields inheritedState={this.state} handleInputChange={e => handleInputChange.call(this, e)}/>
         <input type="submit" value="Signup"/><br/>
         <span>Already a user? <Link to="/login">Login</Link></span>

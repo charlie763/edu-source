@@ -4,12 +4,12 @@ function handleInputChange(e){
   })
 }
 
-// function handleSubmit(e, callback, currentState, clearState){
-//   e.preventDefault()
-//   callback(currentState)
-//   this.setState({
-//     ...clearState
-//   })
-// }
+function handleSubmit(submitObj){
+  submitObj.e.preventDefault()
+  submitObj.callback(submitObj.currentState)
+  this.setState({
+    ...submitObj.clearState
+  })
+}
 
-export { handleInputChange }
+export { handleInputChange, handleSubmit }
