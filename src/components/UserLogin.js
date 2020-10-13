@@ -16,6 +16,7 @@ class UserLogin extends React.Component {
   
   handleSubmit = e => {
     e.preventDefault()
+    this.props.loginUser(this.state)
     this.setState({
       username: "",
       password: ""
