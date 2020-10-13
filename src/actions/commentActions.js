@@ -15,3 +15,5 @@ function addComment(comment){
     fetch(BASE_URL, configObj)
   }
 }
+
+export { addComment }
