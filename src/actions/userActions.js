@@ -45,6 +45,7 @@ function loginUser(user){
 function authorizeUser(){
   let token = Cookies.get("eduResourceSession");
   return dispatch => {
+    dispatch({type: "START_AUTH"})
     if (token){
       const configObj = {
         method: 'GET',
@@ -58,13 +59,15 @@ function authorizeUser(){
         .then(resp => resp.json())
         .then(authResp => {
           if (authResp.valid === "true"){
-            return dispatch({type: "LOGIN_USER", user: authResp.user})
+            dispatch({type: "LOGIN_USER", user: authResp.user})
           } else {
-            return dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
+            dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
           }
+          dispatch({type: "COMPLETE_AUTH"})
         })
     } else {
-      return dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
+      dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
+      dispatch({type: "COMPLETE_AUTH"})
     }
     
   }

@@ -12,9 +12,7 @@ class CommentContainer extends React.Component{
   }
 
   componentDidMount(){
-    this.setState({
-      loggedIn: isLoggedIn.call(this)
-    })
+    isLoggedIn.call(this)
   }
 
   render(){
