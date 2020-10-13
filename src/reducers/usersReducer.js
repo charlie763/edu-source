@@ -10,7 +10,7 @@ function usersReducer(state = { current: {}, valid: false, errors: {} }, action)
       }
     case "INVALID_USER":
       return {
-        current: {...state.current},
+        current: {},
         valid: false,
         errors: {...action.errors}
       }

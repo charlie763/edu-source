@@ -13,7 +13,8 @@ function handleSubmit(submitObj){
 }
 
 function isLoggedIn(){
-  
+  this.props.authorizeUser()
+  return this.props.user.valid
 }
 
-export { handleInputChange, handleSubmit }
+export { handleInputChange, handleSubmit, isLoggedIn }

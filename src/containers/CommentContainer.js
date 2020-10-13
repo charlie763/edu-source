@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
+import { isLoggedIn } from '../utilities'
 import { authorizeUser } from '../actions/userActions'
 import CommentForm from '../components/CommentForm'
 
@@ -11,13 +12,8 @@ class CommentContainer extends React.Component{
 
   componentDidMount(){
     this.setState({
-      loggedIn: this.isLoggedIn()
+      loggedIn: isLoggedIn.call(this)
     })
-  }
-
-  isLoggedIn = () => {
-    this.props.authorizeUser()
-    return this.props.user.valid
   }
 
   render(){
