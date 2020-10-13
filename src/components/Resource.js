@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import EmbedVideo from './EmbedVideo'
-import CommentContainer from './CommentContainer'
+import CommentContainer from '../containers/CommentContainer'
 
 const Resource = props => {
   if (!props.loadStatus || props.loadStatus === "pending"){

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import CommentForm from './CommentForm'
+import CommentForm from '../components/CommentForm'
 
 class CommentContainer extends React.Component{
   render(){
