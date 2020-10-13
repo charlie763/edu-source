@@ -8,7 +8,7 @@ import CommentForm from '../components/CommentForm'
 
 class CommentContainer extends React.Component{
   state = {
-    loggedIn: false,
+    loggedIn: true,
     user: {}
   }
 
