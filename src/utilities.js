@@ -17,7 +17,8 @@ function isLoggedIn(){
   const interval = window.setInterval(() => {
     if (this.props.user.authCompleted) {
       this.setState({
-        loggedIn: this.props.user.valid
+        loggedIn: this.props.user.valid,
+        user: this.props.user.current
       })
       window.clearInterval(interval)
     }

@@ -8,7 +8,8 @@ import CommentForm from '../components/CommentForm'
 
 class CommentContainer extends React.Component{
   state = {
-    loggedIn: false
+    loggedIn: false,
+    user: {}
   }
 
   componentDidMount(){
@@ -22,7 +23,7 @@ class CommentContainer extends React.Component{
           {this.state.loggedIn ? 
             <CommentForm 
               resourceId={this.props.resourceId} 
-              userId={this.props.user.id}
+              userId={this.state.user.id}
               addComment={this.props.addComment}
             /> : 
             <Redirect to="/login" />}
