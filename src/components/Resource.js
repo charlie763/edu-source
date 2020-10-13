@@ -1,22 +1,24 @@
 import React from 'react'
 import EmbedVideo from './EmbedVideo'
+import { Link } from 'react-router-dom'
 
-const Resource = ({ resource, loadStatus, displayGrade }) => {
-  if (!loadStatus || loadStatus === "pending"){
+const Resource = props => {
+  if (!props.loadStatus || props.loadStatus === "pending"){
     return(
       <div>Loading...</div>
     )
-  } else if (!resource){
+  } else if (!props.resource){
     return(
       <div>Resource Not Found</div>
     )
   } else {
     return(
       <div>
-        <h3>{resource.title}</h3>
-        <span>{resource.subject} Grades: {displayGrade(resource.lowerGradeBound)} to {displayGrade(resource.upperGradeBound)}</span>
-        <p>{resource.description}</p>
-        <EmbedVideo videoUrl={resource.url} title={resource.title}/>
+        <h3>{props.resource.title}</h3>
+        <span>{props.resource.subject} Grades: {props.displayGrade(props.resource.lowerGradeBound)} to {props.displayGrade(props.resource.upperGradeBound)}</span>
+        <p>{props.resource.description}</p>
+        <EmbedVideo videoUrl={props.resource.url} title={props.resource.title}/><br/>
+        <Link to="/comments/new">Comment</Link>
       </div>
     )
   }
