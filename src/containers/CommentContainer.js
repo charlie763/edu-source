@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import CommentForm from '../components/CommentForm'
 
 class CommentContainer extends React.Component{
@@ -7,7 +7,7 @@ class CommentContainer extends React.Component{
     return(
       <div>
         <Route path={`${this.props.relativePath}/comments/new`}>
-          <CommentForm />
+          {false ? <CommentForm /> : <Redirect to="/login" />}
         </Route>
       </div>
     )

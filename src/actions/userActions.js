@@ -1,3 +1,4 @@
+import { configure } from "@testing-library/react"
 import * as Cookies from "js-cookie"
 const BASE_URL = 'http://localhost:3000'
 
@@ -14,8 +15,8 @@ function buildPostObj(user){
 
 function validateUser(dispatch, userData){
   if (userData.valid === "true"){
-    Cookies.remove("session")
-    Cookies.set("session", userData.token, { expires: 14 })
+    Cookies.remove("eduResourceSession")
+    Cookies.set("eduResourceSession", userData.token, { expires: 14 })
     return dispatch({type: "LOGIN_USER", user: userData.user, valid: "true"})
   } else {
     return dispatch({type: "INVALID_USER", errors: userData.errorMessages})
@@ -42,4 +43,32 @@ function loginUser(user){
   }
 }
 
-export { createUser, loginUser }
+function authorizeUser(token){
+  let token = Cookies.get("eduResourceSession");
+  return dispatch => {
+    if (token){
+      const configObj = {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: token
+        }
+      }
+      fetch(BASE_URL.concat('/authorize'), configObj)
+        .then(resp => resp.json())
+        .then(authResp => {
+          if (authResp.valid === "true"){
+            dispatch({type: "LOGIN_USER", user: authResp.user, valid: "true"})
+          } else {
+            dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
+          }
+        })
+    } else {
+      dispatch({type: "INVALID_USER", errors: {session: "Please login to continue"}})
+    }
+    
+  }
+}
+
+export { createUser, loginUser, authorizeUser }

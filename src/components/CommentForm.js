@@ -1,10 +1,17 @@
 import React from 'react'
-import { handleInputChange } from '../utilities'
+import { handleInputChange, handleSubmit } from '../utilities'
 
 class CommentForm extends React.Component{
   state = {
     text: ""
   }
+
+  // onSubmit={e => handleSubmit.call(this, {
+  //   e,
+  //   callback: this.props.addComment({...state, userId: this.props.user.id}),
+  //   currentState: this.state,
+  //   cleanState: {text: ""}
+  // })}
 
   render(){
     return(
