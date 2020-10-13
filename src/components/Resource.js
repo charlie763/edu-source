@@ -18,7 +18,7 @@ const Resource = props => {
         <span>{props.resource.subject} Grades: {props.displayGrade(props.resource.lowerGradeBound)} to {props.displayGrade(props.resource.upperGradeBound)}</span>
         <p>{props.resource.description}</p>
         <EmbedVideo videoUrl={props.resource.url} title={props.resource.title}/><br/>
-        <Link to="/comments/new">Comment</Link>
+        <Link to={`${props.match.url}/comments/new`}>Comment</Link>
       </div>
     )
   }
