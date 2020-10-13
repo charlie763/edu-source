@@ -5,7 +5,9 @@ class CommentContainer extends React.Component{
   render(){
     return(
       <div>
-        CommentContainer
+        <Route path={`${this.props.relativePath}/comments/new`}>
+          <span>Comment Form</span>
+        </Route>
       </div>
     )
   }
