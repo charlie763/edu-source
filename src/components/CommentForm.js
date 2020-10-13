@@ -1,9 +1,10 @@
 import React from 'react'
 
 class CommentForm extends React.Component{
-  // state = {
-  //   text: ""
-  // }
+  state = {
+    text: ""
+  }
+  
   render(){
     return(
       <form>
