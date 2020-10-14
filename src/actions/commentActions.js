@@ -19,7 +19,7 @@ function addComment(comment){
 function fetchComments(resourceId){
   return dispatch => {
     dispatch({ type: "LOAD_COMMENTS", resourceId })
-    fetch(`${BASE_URL}/${resourceId}/comments`)
+    fetch(BASE_URL + `/${resourceId}/comments`)
       .then(resp => resp.json())
       .then(comments => dispatch({ type: "ADD_COMMENTS", comments }))
   }

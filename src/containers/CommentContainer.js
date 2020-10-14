@@ -8,6 +8,9 @@ import Comments from '../components/Comments'
 
 class CommentContainer extends React.Component{
   componentDidMount(){
+    if (!this.props.loadStatus && this.props.resourceLoaded !== this.props.resourceId){
+      this.props.fetchComments(this.props.resourceId)
+    }
     this.props.authorizeUser()
   }
 
@@ -29,4 +32,11 @@ class CommentContainer extends React.Component{
   }
 }
 
-export default connect(state => ({user: state.user}), { authorizeUser, addComment, fetchComments })(CommentContainer)
+const mapStateToProps = state => ({
+  user: state.user,
+  comments: state.comments.list,
+  loadStatus: state.comments.loadStatus,
+  resourceLoaded: state.comments.resourceLoaded
+})
+
+export default connect(mapStateToProps, { authorizeUser, addComment, fetchComments })(CommentContainer)
