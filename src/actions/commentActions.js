@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/comments'
+const BASE_URL = 'http://localhost:3000/resources'
 
 function addComment(comment){
   const configObj = {
@@ -12,8 +12,14 @@ function addComment(comment){
 
   return dispatch => {
     dispatch({type: "ADD_COMMENT", comment})
-    fetch(BASE_URL, configObj)
+    fetch(`${BASE_URL}/${comment.resourceId}/comments`, configObj)
   }
 }
 
-export { addComment }
+function fetchComments(resourceId){
+  return dispatch => {
+    dispatch({ type: "LOAD_COMMENTS", resourceId })
+  }
+}
+
+export { addComment, fetchComments }
