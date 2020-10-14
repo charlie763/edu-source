@@ -6,6 +6,11 @@ class PlaylistForm extends React.Component{
   state ={
     name: ""
   }
+
+  componentDidMount(){
+    // this.props.fetchPlaylists()
+  }
+
   render(){
     return (
       <div>
