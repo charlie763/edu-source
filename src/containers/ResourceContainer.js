@@ -42,9 +42,13 @@ class ResourceContainer extends React.Component {
               displayGrade={this.displayGrade}
             />
           } />
-          <Route exact path={`${this.props.match.path}/playlists/new`}>
-            <PlaylistForm />
-          </Route>
+          <Route exact path={`${this.props.match.path}/playlists/new`} render={props => 
+            <PlaylistForm 
+              {...props} 
+              displayGrade={this.displayGrade}
+              resources={this.props.resources} 
+            />
+          }/>
           <Route path={`${this.props.match.path}`}>
             <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
           </Route> 
