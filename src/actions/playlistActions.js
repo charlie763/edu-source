@@ -58,11 +58,12 @@ function addPlaylist(playlist){
   }
 
   return (dispatch) => {
-    dispatch({
-      type: "ADD_PLAYLIST",
-      playlist
-    })
     fetch(BASE_URL, configObj)
+      .then(resp => resp.json())
+      .then(respPlaylist => dispatch({
+        type: "ADD_PLAYLIST",
+        respPlaylist
+      }))
   }
 }
 
