@@ -26,7 +26,7 @@ class CommentContainer extends React.Component{
             /> : 
             <Redirect to="/login" />}
         </Route>
-        <Comments resourceId={this.props.resourceId}/>
+        <Comments comments={this.props.comments} />
       </div>
     )
   }

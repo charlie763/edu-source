@@ -1,11 +1,14 @@
 import React from 'react'
 
-class Comments extends React.Component{
-  render(){
-    return(
-      <div>Comments</div>
-    )
-  }
-}
+const Comments = props => (
+  <div>
+    {props.comments.map(comment => (
+      <div>
+        <span>{comment.user.username}</span>
+        <p>{comment.text}</p>
+      </div>
+    ))}
+  </div>
+)
 
 export default Comments
