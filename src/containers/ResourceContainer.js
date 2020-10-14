@@ -34,14 +34,6 @@ class ResourceContainer extends React.Component {
               resources={this.props.resources} 
             />
           </Route> 
-          <Route exact path={`${this.props.match.path}/:id`} render={props => 
-            <Resource
-              {...props} 
-              resource={this.findResource(props.match.params.id)} 
-              loadStatus={this.props.loadStatus} 
-              displayGrade={this.displayGrade}
-            />
-          } />
           <Route exact path={`${this.props.match.path}/playlists/new`} render={props => 
             <PlaylistForm 
               {...props} 
@@ -49,6 +41,14 @@ class ResourceContainer extends React.Component {
               resources={this.props.resources} 
             />
           }/>
+          <Route path={`${this.props.match.path}/:id`} render={props => 
+            <Resource
+              {...props} 
+              resource={this.findResource(props.match.params.id)} 
+              loadStatus={this.props.loadStatus} 
+              displayGrade={this.displayGrade}
+            />
+          } />
           <Route path={`${this.props.match.path}`}>
             <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
           </Route> 
