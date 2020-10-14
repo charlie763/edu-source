@@ -6,6 +6,12 @@ const ResourceThumbnail = ({ resource, displayGrade }) => {
   return (
     <div>
       <h3>{resource.title}</h3>
+      <Link to={{
+        pathname: `${path}/playlists/new`, 
+        state: {resourceId: resource.id
+      }}}>
+        Add To Playlist
+      </Link><br/>
       <span>{resource.subject} Grades: {displayGrade(resource.lowerGradeBound)} to {displayGrade(resource.upperGradeBound)}</span>
       <p>{resource.description}</p>
       <Link to={`${url}/${resource.id}`}>See More</Link>

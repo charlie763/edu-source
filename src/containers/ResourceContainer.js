@@ -25,13 +25,13 @@ class ResourceContainer extends React.Component {
     return(
       <div>
         <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
-
-        <Route exact path={`${this.props.match.path}`}>
-          <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
-        </Route> 
         <Switch>
           <Route exact path={`${this.props.match.path}/new`}>
-            <ResourceForm addResource={this.props.addResource} displayGrade={this.displayGrade} />
+            <ResourceForm 
+              addResource={this.props.addResource} 
+              displayGrade={this.displayGrade}
+              resources={this.props.resources} 
+            />
           </Route> 
           <Route path={`${this.props.match.path}/:id`} render={props => 
             <Resource
@@ -41,6 +41,9 @@ class ResourceContainer extends React.Component {
               displayGrade={this.displayGrade}
             />
           } />
+          <Route path={`${this.props.match.path}`}>
+            <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
+          </Route> 
         </Switch>
         
       </div>

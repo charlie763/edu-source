@@ -1,5 +1,6 @@
 import React from 'react'
 import { handleSubmit } from '../utilities'
+import Resources from './Resources'
 
 class ResourceForm extends React.Component {
   static cleanState = {
@@ -67,6 +68,7 @@ class ResourceForm extends React.Component {
           <textarea type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/><br />
           <input type="submit"/>
         </form>
+        <Resources resources={this.props.resources} displayGrade={this.props.displayGrade}/>
       </div>
     )
   }
