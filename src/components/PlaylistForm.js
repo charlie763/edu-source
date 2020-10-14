@@ -12,6 +12,16 @@ class PlaylistForm extends React.Component{
     this.props.fetchPlaylists()
   }
 
+  componentDidUpdate(prevProps){
+    if (!prevProps.playlistAdded && this.props.playlistAdded){
+      this.props.addResourceToPlaylist(this.props.location.state.resourceId, this.props.playlistAdded.id)
+      this.setState({
+        name: "",
+        selectId: null
+      })
+    }
+  }
+
   handleSelectChange = e => {
     this.setState({
       ...this.state,
@@ -21,12 +31,7 @@ class PlaylistForm extends React.Component{
 
   handleAddSubmit = e => {
     e.preventDefault()
-    this.props.addPlaylist(this.state.name)
-    this.props.addResourceToPlaylist()
-    this.setState({
-      name: "",
-      selectId: null
-    })
+    this.props.addPlaylist({name: this.state.name})
   }
 
   handleSelectSubmit = e=> {

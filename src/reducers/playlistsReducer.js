@@ -1,10 +1,10 @@
-function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: false}, action){
+function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: null}, action){
   switch(action.type){
     case "START_ADD":
       return {
         list: [...state.list],
         loadStatus: state.loadStatus,
-        playlistAdded: false
+        playlistAdded: null
       }
     case "ADD_PLAYLIST":
       const newPlaylist = {
@@ -13,7 +13,7 @@ function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: fa
       return {
         list: [...state.list, newPlaylist],
         loadStatus: state.loadStatus,
-        playlistAdded: true
+        playlistAdded: action.respPlaylist
       }
     case "LOAD_PLAYLISTS":
       return {

@@ -47,7 +47,8 @@ class ResourceContainer extends React.Component {
                   fetchPlaylists={this.props.fetchPlaylists}
                   addResourceToPlaylist={this.props.addResourceToPlaylist}
                   addPlaylist={this.props.addPlaylist}
-                  playlists={this.props.playlists} 
+                  playlists={this.props.playlists}
+                  playlistAdded={this.props.playlistAdded} 
                 />
               )
             } else {
@@ -76,7 +77,8 @@ const mapStateToProps = state => ({
   user: state.user,
   resources: state.resources.list,
   loadStatus: state.resources.loadStatus,
-  playlists: state.playlists.list
+  playlists: state.playlists.list,
+  playlistAdded: state.playlists.playlistAdded
 })
 
 const mapDispatchToProps = {
