@@ -5,6 +5,7 @@ import { addResource, fetchResources } from '../actions/resourceActions'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 import Resource from '../components/Resource'
+import PlaylistForm from '../components/PlaylistForm'
 
 class ResourceContainer extends React.Component {
   componentDidMount(){
@@ -33,7 +34,7 @@ class ResourceContainer extends React.Component {
               resources={this.props.resources} 
             />
           </Route> 
-          <Route path={`${this.props.match.path}/:id`} render={props => 
+          <Route exact path={`${this.props.match.path}/:id`} render={props => 
             <Resource
               {...props} 
               resource={this.findResource(props.match.params.id)} 
@@ -41,6 +42,9 @@ class ResourceContainer extends React.Component {
               displayGrade={this.displayGrade}
             />
           } />
+          <Route exact path={`${this.props.match.path}/playlists/new`}>
+            <PlaylistForm />
+          </Route>
           <Route path={`${this.props.match.path}`}>
             <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
           </Route> 
