@@ -58,6 +58,7 @@ function addPlaylist(playlist){
   }
 
   return (dispatch) => {
+    dispatch({type: "START_ADD"})
     fetch(BASE_URL, configObj)
       .then(resp => resp.json())
       .then(respPlaylist => dispatch({
