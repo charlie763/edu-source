@@ -1,11 +1,8 @@
-import cuid from 'cuid'
-
 function playlistsReducer(state = {list: [], loadStatus: null}, action){
   switch(action.type){
     case "ADD_PLAYLIST":
       const newPlaylist = {
         ...action.playlist,
-        id: cuid()
       }
       return {
         list: [...state.list, newPlaylist],

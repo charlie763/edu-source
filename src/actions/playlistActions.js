@@ -47,4 +47,23 @@ function addResourceToPlaylist(resourceID, playlistId){
   }
 }
 
-export { fetchPlaylists, addResourceToPlaylist }
+function addPlaylist(playlist){
+  const configObj = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json'
+    },
+    body: JSON.stringify(playlist)
+  }
+
+  return (dispatch) => {
+    dispatch({
+      type: "ADD_PLAYLIST",
+      playlist
+    })
+    fetch(BASE_URL, configObj)
+  }
+}
+
+export { fetchPlaylists, addResourceToPlaylist, addPlaylist }
