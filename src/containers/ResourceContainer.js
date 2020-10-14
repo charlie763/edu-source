@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Link, Switch } from 'react-router-dom'
+import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
 import { fetchPlaylists } from '../actions/playlistActions'
+import { authorizeUser } from '../actions/userActions'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 import Resource from '../components/Resource'
@@ -13,6 +14,7 @@ class ResourceContainer extends React.Component {
     if (!this.props.loadStatus){
       this.props.fetchResources()
     }
+    this.props.authorizeUser()
   }
 
   displayGrade(grade){
@@ -35,15 +37,21 @@ class ResourceContainer extends React.Component {
               resources={this.props.resources} 
             />
           </Route> 
-          <Route exact path={`${this.props.match.path}/playlists/new`} render={props => 
-            <PlaylistForm 
-              {...props} 
-              displayGrade={this.displayGrade}
-              resources={this.props.resources}
-              fetchPlaylists={this.props.fetchPlaylists}
-              playlists={this.props.playlists} 
-            />
-          }/>
+          <Route exact path={`${this.props.match.path}/playlists/new`} render={props => { 
+            if (this.props.user.valid){
+              return (
+                <PlaylistForm 
+                  {...props} 
+                  displayGrade={this.displayGrade}
+                  resources={this.props.resources}
+                  fetchPlaylists={this.props.fetchPlaylists}
+                  playlists={this.props.playlists} 
+                />
+              )
+            } else {
+              return <Redirect to="/login" />
+            }
+          }}/>
           <Route path={`${this.props.match.path}/:id`} render={props => 
             <Resource
               {...props} 
@@ -63,9 +71,10 @@ class ResourceContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user,
   resources: state.resources.list,
   loadStatus: state.resources.loadStatus,
   playlists: state.playlists.list
 })
 
-export default connect(mapStateToProps, { addResource, fetchResources, fetchPlaylists })(ResourceContainer)
+export default connect(mapStateToProps, { addResource, fetchResources, fetchPlaylists, authorizeUser })(ResourceContainer)
