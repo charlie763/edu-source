@@ -7,23 +7,18 @@ import { addComment } from '../actions/commentActions'
 import CommentForm from '../components/CommentForm'
 
 class CommentContainer extends React.Component{
-  state = {
-    loggedIn: true,
-    user: {}
-  }
-
   componentDidMount(){
-    isLoggedIn.call(this)
+    this.props.authorizeUser()
   }
 
   render(){
     return(
       <div>
         <Route exact path={`${this.props.relativePath}/comments/new`}>
-          {this.state.loggedIn ? 
+          {this.props.user.valid ? 
             <CommentForm 
               resourceId={this.props.resourceId} 
-              userId={this.state.user.id}
+              userId={this.props.user.id}
               addComment={this.props.addComment}
             /> : 
             <Redirect to="/login" />}

@@ -12,17 +12,4 @@ function handleSubmit(submitObj){
   })
 }
 
-function isLoggedIn(){
-  this.props.authorizeUser()
-  const interval = window.setInterval(() => {
-    if (this.props.user.authCompleted) {
-      this.setState({
-        loggedIn: this.props.user.valid,
-        user: this.props.user.current
-      })
-      window.clearInterval(interval)
-    }
-  }, 1000)
-}
-
-export { handleInputChange, handleSubmit, isLoggedIn }
+export { handleInputChange, handleSubmit }

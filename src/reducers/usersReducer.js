@@ -1,6 +1,6 @@
 import cuid from 'cuid'
 
-function usersReducer(state = { current: {}, valid: false, authCompleted: false, errors: {} }, action){
+function usersReducer(state = { current: {}, valid: true, authCompleted: false, errors: {} }, action){
   switch(action.type){
     case "LOGIN_USER":
       return {
@@ -19,14 +19,14 @@ function usersReducer(state = { current: {}, valid: false, authCompleted: false,
         current: {...state.current},
         valid: state.valid,
         authCompleted: false,
-        erros: {...state.errors}
+        errors: {...state.errors}
       }
     case "COMPLETE_AUTH":
       return {
         current: {...state.current},
         valid: state.valid,
         authCompleted: true,
-        erros: {...state.errors}
+        errors: {...state.errors}
       }
     default:
       return state
