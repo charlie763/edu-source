@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
-import { isLoggedIn } from '../utilities'
 import { authorizeUser } from '../actions/userActions'
 import { addComment } from '../actions/commentActions'
 import CommentForm from '../components/CommentForm'
+import Comments from '../components/Comments'
 
 class CommentContainer extends React.Component{
   componentDidMount(){
@@ -23,6 +23,7 @@ class CommentContainer extends React.Component{
             /> : 
             <Redirect to="/login" />}
         </Route>
+        <Comments />
       </div>
     )
   }
