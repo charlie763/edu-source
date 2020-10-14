@@ -40,7 +40,8 @@ class ResourceContainer extends React.Component {
               {...props} 
               displayGrade={this.displayGrade}
               resources={this.props.resources}
-              fetchPlaylists={this.props.fetchPlaylists} 
+              fetchPlaylists={this.props.fetchPlaylists}
+              playlists={this.props.playlists} 
             />
           }/>
           <Route path={`${this.props.match.path}/:id`} render={props => 
@@ -63,7 +64,8 @@ class ResourceContainer extends React.Component {
 
 const mapStateToProps = state => ({
   resources: state.resources.list,
-  loadStatus: state.resources.loadStatus
+  loadStatus: state.resources.loadStatus,
+  playlists: state.playlists.list
 })
 
 export default connect(mapStateToProps, { addResource, fetchResources, fetchPlaylists })(ResourceContainer)
