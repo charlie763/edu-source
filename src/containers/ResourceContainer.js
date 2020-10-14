@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
-import { fetchPlaylists } from '../actions/playlistActions'
+import { fetchPlaylists, addResourceToPlaylist } from '../actions/playlistActions'
 import { authorizeUser } from '../actions/userActions'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
@@ -45,6 +45,7 @@ class ResourceContainer extends React.Component {
                   displayGrade={this.displayGrade}
                   resources={this.props.resources}
                   fetchPlaylists={this.props.fetchPlaylists}
+                  addResourceToPlaylist={this.props.addResourceToPlaylist}
                   playlists={this.props.playlists} 
                 />
               )
@@ -80,7 +81,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   addResource, 
   fetchResources, 
-  fetchPlaylists, 
+  fetchPlaylists,
+  addResourceToPlaylist, 
   authorizeUser
 }
 

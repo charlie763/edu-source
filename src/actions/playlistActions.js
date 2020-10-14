@@ -31,11 +31,11 @@ function addResourceToPlaylist(resourceID, playlistId){
       Accept: 'application/json',
       Authorization: token
     },
-    body: {
-      action: "add",
+    body: JSON.stringify({
+      update: "add resource",
       resource_id: resourceID,
       id: playlistId
-    }
+    })
   }
   return dispatch => {
     fetch(BASE_URL + `/${playlistId}`, configObj)
