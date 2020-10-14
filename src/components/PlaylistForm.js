@@ -1,5 +1,5 @@
 import React from 'react'
-import { handleInputChange } from '../utilities'
+import { handleInputChange, handleSubmit } from '../utilities'
 import PlaylistContext from './PlaylistContext'
 
 class PlaylistForm extends React.Component{
@@ -14,15 +14,24 @@ class PlaylistForm extends React.Component{
   render(){
     return (
       <div>
-        <form>
+        <form onSubmit={e => handleSubmit.call(this, {
+          e,
+          callback: this.props.addPlaylist,
+          currentState: this.state,
+          cleanState: {name: ""}
+        })}>
           <label>Add New Playlist: </label>
           <input type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
+          <input type="submit" value="add"/>
+        </form>
+        <form>
           <label>Select Playlist: </label>
           <select>
             {this.props.playlists.map(playlist => (
               <option key={playlist.id}>{playlist.name}</option>
             ))}
-          </select>
+          </select><br/>
+          <input type="submit" value="Select"/>
         </form>
         <PlaylistContext 
           context={this.props.location.context}

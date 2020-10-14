@@ -77,4 +77,11 @@ const mapStateToProps = state => ({
   playlists: state.playlists.list
 })
 
-export default connect(mapStateToProps, { addResource, fetchResources, fetchPlaylists, authorizeUser })(ResourceContainer)
+const mapDispatchToProps = {
+  addResource, 
+  fetchResources, 
+  fetchPlaylists, 
+  authorizeUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResourceContainer)
