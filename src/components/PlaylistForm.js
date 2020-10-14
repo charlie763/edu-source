@@ -8,7 +8,7 @@ class PlaylistForm extends React.Component{
   }
 
   componentDidMount(){
-    // this.props.fetchPlaylists()
+    this.props.fetchPlaylists()
   }
 
   render(){

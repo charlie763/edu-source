@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Link, Switch } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
+import { fetchPlaylists } from '../actions/playlistActions'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 import Resource from '../components/Resource'
@@ -38,7 +39,8 @@ class ResourceContainer extends React.Component {
             <PlaylistForm 
               {...props} 
               displayGrade={this.displayGrade}
-              resources={this.props.resources} 
+              resources={this.props.resources}
+              fetchPlaylists={this.props.fetchPlaylists} 
             />
           }/>
           <Route path={`${this.props.match.path}/:id`} render={props => 
@@ -64,4 +66,4 @@ const mapStateToProps = state => ({
   loadStatus: state.resources.loadStatus
 })
 
-export default connect(mapStateToProps, { addResource, fetchResources })(ResourceContainer)
+export default connect(mapStateToProps, { addResource, fetchResources, fetchPlaylists })(ResourceContainer)
