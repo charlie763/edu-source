@@ -9,7 +9,7 @@ const Playlists = props => (
     }}>Add New Playlist</Link>
     {props.playlists.map(playlist => 
       <div>
-        <Link to={`${props.match.path}/${playlist.id}`}>{playlist.name}</Link>  
+        <Link to={`/bookshelves/${playlist.id}`}>{playlist.name}</Link>  
       </div>
     )}
   </div>

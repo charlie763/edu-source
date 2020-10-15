@@ -20,6 +20,8 @@ const Playlist = props => {
             key={resource.id} 
             resource={resource}
             displayGrade={displayGrade}
+            playlist={props.playlist}
+            removeResourceFromPlaylist={props.removeResourceFromPlaylist}
           />
         )}
       </div>

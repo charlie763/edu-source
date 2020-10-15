@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
-import { fetchPlaylists, addPlaylist } from '../actions/playlistActions'
+import { fetchPlaylists, addPlaylist, removeResourceFromPlaylist } from '../actions/playlistActions'
 import Playlists from '../components/Playlists'
 import Playlist from '../components/Playlist'
 import PlaylistAddForm from '../components/PlaylistAddForm'
@@ -32,6 +32,7 @@ class PlaylistContainer extends React.Component{
               {...props}
               playlist={this.findPlaylist(props.match.params.id)}
               loadStatus={this.props.loadStatus}
+              removeResourceFromPlaylist={this.props.removeResourceFromPlaylist}
             />          
           }/>
           <Route path={`${this.props.match.path}`} render={props => 
@@ -48,4 +49,10 @@ const mapStateToProps = state => ({
   loadStatus: state.playlists.loadStatus
 })
 
-export default connect(mapStateToProps, { fetchPlaylists, addPlaylist })(PlaylistContainer)
+const mapDispatchToProps = { 
+  fetchPlaylists,
+  addPlaylist, 
+  removeResourceFromPlaylist
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlaylistContainer)
