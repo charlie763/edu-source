@@ -8,7 +8,8 @@ function handleSubmit(submitObj){
   submitObj.e.preventDefault()
   submitObj.callback(submitObj.currentState)
   this.setState({
-    ...submitObj.clearState
+    ...submitObj.clearState,
+    submitted: true
   })
 }
 
