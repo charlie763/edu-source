@@ -47,6 +47,30 @@ function addResourceToPlaylist(resourceID, playlistId){
   }
 }
 
+function removeResourceFromPlaylist(resourceId, playlistId){
+  const configObj = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: token
+    },
+    body: JSON.stringify({
+      update: "remove resource",
+      resource_id: resourceId,
+      id: playlistId
+    })
+  }
+  return dispatch => {
+    dispatch({
+      type: "REMOVE_RESOURCE_FROM_PLAYLIST",
+      resourceId,
+      playlistId
+    })
+    fetch(BASE_URL + `/${playlistId}`, configObj)
+  }
+}
+
 function addPlaylist(playlist){
   const configObj = {
     method: 'POST',
@@ -69,4 +93,4 @@ function addPlaylist(playlist){
   }
 }
 
-export { fetchPlaylists, addResourceToPlaylist, addPlaylist }
+export { fetchPlaylists, addResourceToPlaylist, addPlaylist, removeResourceFromPlaylist }
