@@ -4,6 +4,7 @@ import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
 import { fetchPlaylists, addResourceToPlaylist, addPlaylist } from '../actions/playlistActions'
 import { authorizeUser } from '../actions/userActions'
+import { displayGrade } from '../utilities'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 import Resource from '../components/Resource'
@@ -15,10 +16,6 @@ class ResourceContainer extends React.Component {
       this.props.fetchResources()
     }
     this.props.authorizeUser()
-  }
-
-  displayGrade(grade){
-    return grade === "0" ? "k" : grade
   }
 
   findResource(id){
@@ -33,7 +30,7 @@ class ResourceContainer extends React.Component {
           <Route exact path={`${this.props.match.path}/new`}>
             <ResourceForm 
               addResource={this.props.addResource} 
-              displayGrade={this.displayGrade}
+              displayGrade={displayGrade}
               resources={this.props.resources} 
             />
           </Route> 
@@ -42,7 +39,7 @@ class ResourceContainer extends React.Component {
               return (
                 <PlaylistForm 
                   {...props} 
-                  displayGrade={this.displayGrade}
+                  displayGrade={displayGrade}
                   resources={this.props.resources}
                   fetchPlaylists={this.props.fetchPlaylists}
                   addResourceToPlaylist={this.props.addResourceToPlaylist}
@@ -60,11 +57,11 @@ class ResourceContainer extends React.Component {
               {...props} 
               resource={this.findResource(props.match.params.id)} 
               loadStatus={this.props.loadStatus} 
-              displayGrade={this.displayGrade}
+              displayGrade={displayGrade}
             />
           } />
           <Route path={`${this.props.match.path}`}>
-            <Resources resources={this.props.resources} displayGrade={this.displayGrade}/>
+            <Resources resources={this.props.resources} displayGrade={displayGrade}/>
           </Route> 
         </Switch>
         

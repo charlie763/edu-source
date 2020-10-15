@@ -12,4 +12,8 @@ function handleSubmit(submitObj){
   })
 }
 
-export { handleInputChange, handleSubmit }
+function displayGrade(grade){
+  return grade === "0" ? "k" : grade
+}
+
+export { handleInputChange, handleSubmit, displayGrade }
