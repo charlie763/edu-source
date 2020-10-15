@@ -16,16 +16,18 @@ function validateUser(dispatch, userData){
   if (userData.valid === "true"){
     Cookies.remove("eduResourceSession")
     Cookies.set("eduResourceSession", userData.token, { expires: 14 })
-    return dispatch({type: "LOGIN_USER", user: userData.user})
+    dispatch({type: "LOGIN_USER", user: userData.user})
   } else {
-    return dispatch({type: "INVALID_USER", errors: userData.errorMessages})
+    dispatch({type: "INVALID_USER", errors: userData.errorMessages})
   }
+  dispatch({type: "COMPLETE_AUTH"})
 }
 
 function createUser(user){
   const configObj = buildPostObj(user)
 
   return dispatch => {
+    dispatch({type: "START_AUTH"})
     fetch(BASE_URL.concat('/users'), configObj)
       .then(resp=>resp.json())
       .then(userData => validateUser(dispatch, userData))
@@ -36,6 +38,7 @@ function loginUser(user){
   const configObj = buildPostObj(user)
 
   return dispatch => {
+    dispatch({type: "START_AUTH"})
     fetch(BASE_URL.concat('/login'), configObj)
       .then(resp=>resp.json())
       .then(userData => validateUser(dispatch, userData))

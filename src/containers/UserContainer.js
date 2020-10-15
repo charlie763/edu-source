@@ -14,6 +14,7 @@ class UserContainer extends React.Component {
             loginUser={this.props.loginUser}
             context={this.props.location.context}
             state={this.props.location.state}
+            user={this.props.user}
           />
         </Route>
         <Route exact path="/signup">
@@ -21,6 +22,7 @@ class UserContainer extends React.Component {
             createUser={this.props.createUser}
             context={this.props.location.context}
             state={this.props.location.state}
+            user={this.props.user}
           />
         </Route>
       </Switch>
@@ -28,4 +30,4 @@ class UserContainer extends React.Component {
   }
 }
 
-export default connect(null, { createUser, loginUser })(UserContainer)
+export default connect(state => ({user: state.user}), { createUser, loginUser })(UserContainer)

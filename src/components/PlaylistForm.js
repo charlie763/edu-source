@@ -54,7 +54,7 @@ class PlaylistForm extends React.Component{
             addPlaylist={this.props.addPlaylist}
             clearState={{name: "", selectId: null}}
             context={this.props.location.context}
-            resourceId={this.props.location.state.resourceId}
+            resourceId={this.props.location.state ? this.props.location.state.resourceId : null}
           />
           <form onSubmit={this.handleSelectSubmit}>
             <label>Select Playlist: </label>
@@ -67,7 +67,7 @@ class PlaylistForm extends React.Component{
           </form>
           <PlaylistContext 
             context={this.props.location.context}
-            resourceId={this.props.location.state.resourceId}
+            resourceId={this.props.location.state ? this.props.location.state.resourceId : null}
           />
         </div>
       )
