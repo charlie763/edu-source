@@ -25,7 +25,7 @@ class CommentContainer extends React.Component{
           {this.props.user.valid ? 
             <CommentForm 
               resourceId={this.props.resourceId} 
-              userId={this.props.user.current.id}
+              user={this.props.user}
               addComment={this.props.addComment}
             /> : 
             <Redirect to={{
