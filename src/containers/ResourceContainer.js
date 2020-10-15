@@ -51,7 +51,10 @@ class ResourceContainer extends React.Component {
                 />
               )
             } else {
-              return <Redirect to="/login" />
+              return <Redirect to={{
+                      pathname: "/login",
+                      context: "resources"
+                    }}/>
             }
           }}/>
           <Route path={`${this.props.match.path}/:id`} render={props => 
