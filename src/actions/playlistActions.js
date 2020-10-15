@@ -67,7 +67,7 @@ function removeResourceFromPlaylist(resourceId, playlistId){
       resourceId,
       playlistId
     })
-    // fetch(BASE_URL + `/${playlistId}`, configObj)
+    fetch(BASE_URL + `/${playlistId}`, configObj)
   }
 }
 

@@ -1,7 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import { fetchPlaylists, addPlaylist, removeResourceFromPlaylist } from '../actions/playlistActions'
+import { authorizeUser } from '../actions/userActions'
 import Playlists from '../components/Playlists'
 import Playlist from '../components/Playlist'
 import PlaylistAddForm from '../components/PlaylistAddForm'
@@ -9,6 +10,7 @@ import PlaylistAddForm from '../components/PlaylistAddForm'
 class PlaylistContainer extends React.Component{
   componentDidMount(){
     this.props.fetchPlaylists()
+    this.props.authorizeUser()
   }
 
   findPlaylist = id => {
@@ -19,14 +21,20 @@ class PlaylistContainer extends React.Component{
     return(
       <div>
         <Switch>
-          <Route path={`${this.props.match.path}/new`} render={props => 
-            <PlaylistAddForm
-              {...props}
-              addPlaylist={this.props.addPlaylist}
-              clearState={{name: ""}}
-              playlists={this.props.playlists}
-            />
-          }/>
+          <Route path={`${this.props.match.path}/new`} render={props => {
+            if (this.props.user.valid){ 
+              return(
+                <PlaylistAddForm
+                  {...props}
+                  addPlaylist={this.props.addPlaylist}
+                  clearState={{name: ""}}
+                  playlists={this.props.playlists}
+                />
+              ) 
+            } else {
+              return <Redirect to="/login" />
+            }
+          }}/>
           <Route path={`${this.props.match.path}/:id`} render={props => 
             <Playlist 
               {...props}
@@ -45,6 +53,7 @@ class PlaylistContainer extends React.Component{
 }
 
 const mapStateToProps = state => ({
+  user: state.user,
   playlists: state.playlists.list,
   loadStatus: state.playlists.loadStatus
 })
@@ -52,7 +61,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = { 
   fetchPlaylists,
   addPlaylist, 
-  removeResourceFromPlaylist
+  removeResourceFromPlaylist,
+  authorizeUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaylistContainer)
