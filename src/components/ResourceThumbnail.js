@@ -10,7 +10,7 @@ const ResourceThumbnail = ({ resource, displayGrade }) => {
         context: "resources", 
         state: {resourceId: resource.id}
       }}>
-        Add To Playlist
+        Add To Bookshelf
       </Link><br/>
       <span>{resource.subject} Grades: {displayGrade(resource.lowerGradeBound)} to {displayGrade(resource.upperGradeBound)}</span>
       <p>{resource.description}</p>

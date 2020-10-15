@@ -18,7 +18,7 @@ class ResourceContainer extends React.Component {
     this.props.authorizeUser()
   }
 
-  findResource(id){
+  findResource = id => {
     return this.props.resources.find(resource => resource.id == id)
   }
 
@@ -34,7 +34,7 @@ class ResourceContainer extends React.Component {
               resources={this.props.resources} 
             />
           </Route> 
-          <Route exact path={`${this.props.match.path}/playlists/new`} render={props => { 
+          <Route path={[`${this.props.match.path}/playlists/new`, `${this.props.match.path}/:id/playlists/new`]} render={props => { 
             if (this.props.user.valid){
               return (
                 <PlaylistForm 
@@ -45,7 +45,9 @@ class ResourceContainer extends React.Component {
                   addResourceToPlaylist={this.props.addResourceToPlaylist}
                   addPlaylist={this.props.addPlaylist}
                   playlists={this.props.playlists}
-                  playlistAdded={this.props.playlistAdded} 
+                  playlistAdded={this.props.playlistAdded}
+                  findResource={this.findResource} 
+                  loadStatus={this.props.loadStatus}  
                 />
               )
             } else {

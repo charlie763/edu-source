@@ -63,8 +63,10 @@ class PlaylistForm extends React.Component{
         </form>
         <PlaylistContext 
           context={this.props.location.context}
-          displayGrade={this.props.displayGrade}
-          resources={this.props.resources}   
+          resourceId={this.props.location.state.resourceId}
+          resources={this.props.resources}
+          findResource={this.props.findResource} 
+          loadStatus={this.props.loadStatus}   
         />
       </div>
     )
