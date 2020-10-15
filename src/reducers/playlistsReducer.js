@@ -8,7 +8,7 @@ function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: nu
       }
     case "ADD_PLAYLIST":
       const newPlaylist = {
-        ...action.playlist,
+        ...action.respPlaylist,
       }
       return {
         list: [...state.list, newPlaylist],
