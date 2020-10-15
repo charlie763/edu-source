@@ -26,4 +26,4 @@ class PlaylistContainer extends React.Component{
   }
 }
 
-export default connect(state => ({ playlists: state.playlists }), { fetchPlaylists })(PlaylistContainer)
+export default connect(state => ({ playlists: state.playlists.list }), { fetchPlaylists })(PlaylistContainer)
