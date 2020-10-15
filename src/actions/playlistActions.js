@@ -1,7 +1,7 @@
 import * as Cookies from "js-cookie"
 const BASE_URL = 'http://localhost:3000/playlists'
 
-const token = Cookies.get("eduResourceSession");
+const token = () => Cookies.get("eduResourceSession")
 
 function fetchPlaylists(){
   const configObj = {
@@ -9,7 +9,7 @@ function fetchPlaylists(){
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: token
+      Authorization: token()
     }
   }
   return dispatch => {
@@ -29,7 +29,7 @@ function addResourceToPlaylist(resourceID, playlistId){
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: token
+      Authorization: token()
     },
     body: JSON.stringify({
       update: "add resource",
@@ -53,7 +53,7 @@ function removeResourceFromPlaylist(resourceId, playlistId){
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: token
+      Authorization: token()
     },
     body: JSON.stringify({
       update: "remove resource",
@@ -77,7 +77,7 @@ function addPlaylist(playlist){
     headers: {
       'Content-Type': 'application/json',
       Accept: 'application/json',
-      Authorization: token
+      Authorization: token()
     },
     body: JSON.stringify(playlist)
   }
