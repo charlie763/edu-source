@@ -7,7 +7,6 @@ const Resources = props => {
       {props.resources.map(resource => <ResourceThumbnail 
         key={resource.id} 
         resource={resource}
-        displayGrade={props.displayGrade}
         />
       )}
     </div>

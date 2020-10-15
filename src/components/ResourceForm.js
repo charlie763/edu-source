@@ -68,7 +68,7 @@ class ResourceForm extends React.Component {
           <textarea type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/><br />
           <input type="submit"/>
         </form>
-        <Resources resources={this.props.resources} displayGrade={this.props.displayGrade}/>
+        <Resources resources={this.props.resources}/>
       </div>
     )
   }

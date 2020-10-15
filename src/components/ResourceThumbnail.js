@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { displayGrade } from '../utilities'
 
 const ResourceThumbnail = props => {
   return (
@@ -19,7 +20,7 @@ const ResourceThumbnail = props => {
         </Link>
       }
      <br/>
-      <span>{props.resource.subject} Grades: {props.displayGrade(props.resource.lowerGradeBound)} to {props.displayGrade(props.resource.upperGradeBound)}</span>
+      <span>{props.resource.subject} Grades: {displayGrade(props.resource.lowerGradeBound)} to {displayGrade(props.resource.upperGradeBound)}</span>
       <p>{props.resource.description}</p>
       <Link to={`/resources/${props.resource.id}`}>See More</Link>
     </div>
