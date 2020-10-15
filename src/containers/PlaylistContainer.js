@@ -18,7 +18,7 @@ class PlaylistContainer extends React.Component{
             <Playlist />
           </Route>
           <Route path={`${this.props.match.path}`} render={props => 
-            <Playlists {...props}/>          
+            <Playlists {...props} playlists={this.props.playlists}/>          
           }/>
         </Switch>
       </div>
@@ -26,4 +26,4 @@ class PlaylistContainer extends React.Component{
   }
 }
 
-export default connect(null, { fetchPlaylists })(PlaylistContainer)
+export default connect(state => ({ playlists: state.playlists }), { fetchPlaylists })(PlaylistContainer)
