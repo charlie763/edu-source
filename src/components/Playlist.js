@@ -3,18 +3,28 @@ import { displayGrade } from '../utilities'
 import ResourceThumbnail from './ResourceThumbnail'
 
 const Playlist = props => {
-  const playlist = props.playlists.find(playlist => playlist.id === parseInt(props.match.params.id,10))
-  return(
-  <div>
-    <h2>{playlist.name}</h2>
-    {playlist.resources.map(resource => 
-      <ResourceThumbnail 
-        key={resource.id} 
-        resource={resource}
-        displayGrade={displayGrade}
-      />
-    )}
-  </div>
-)}
+  if (!props.loadStatus || props.loadStatus === "pending"){
+    return(
+      <div>Loading...</div>
+    )
+  } else if (!props.playlist){
+    return(
+      <div>Resource Not Found</div>
+    )
+  } else {
+    return(
+      <div>
+        <h2>{props.playlist.name}</h2>
+        {props.playlist.resources.map(resource => 
+          <ResourceThumbnail 
+            key={resource.id} 
+            resource={resource}
+            displayGrade={displayGrade}
+          />
+        )}
+      </div>
+    )
+  }
+}
 
 export default Playlist

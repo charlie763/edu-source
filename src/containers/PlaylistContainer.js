@@ -2,16 +2,16 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import { fetchPlaylists } from '../actions/playlistActions'
-import { fetchResources } from '../actions/resourceActions'
 import Playlists from '../components/Playlists'
 import Playlist from '../components/Playlist'
 
 class PlaylistContainer extends React.Component{
   componentDidMount(){
     this.props.fetchPlaylists()
-    if (!this.props.resourcesLoadStatus){
-      this.props.fetchResources()
-    }
+  }
+
+  findPlaylist = id => {
+    return this.props.playlists.find(playlist => playlist.id === parseInt(id,10))
   }
 
   render(){
@@ -21,7 +21,8 @@ class PlaylistContainer extends React.Component{
           <Route path={`${this.props.match.path}/:id`} render={props => 
             <Playlist 
               {...props}
-              playlists={this.props.playlists}
+              playlist={this.findPlaylist(props.match.params.id)}
+              loadStatus={this.props.loadStatus}
             />          
           }/>
           <Route path={`${this.props.match.path}`} render={props => 
@@ -35,8 +36,7 @@ class PlaylistContainer extends React.Component{
 
 const mapStateToProps = state => ({
   playlists: state.playlists.list,
-  resourcesLoadStatus: state.resources.loadStatus,
-  resources: state.resources.list
+  loadStatus: state.playlists.loadStatus
 })
 
-export default connect(mapStateToProps, { fetchPlaylists, fetchResources })(PlaylistContainer)
+export default connect(mapStateToProps, { fetchPlaylists })(PlaylistContainer)
