@@ -22,7 +22,6 @@ class PlaylistAddForm extends React.Component{
         </form>
         <PlaylistContext 
           context={this.props.location ? this.props.location.context : null}
-          playlists={this.props.playlists}
         />
       </>
     )
