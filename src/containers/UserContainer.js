@@ -17,7 +17,11 @@ class UserContainer extends React.Component {
           />
         </Route>
         <Route exact path="/signup">
-          <UserSignup createUser={this.props.createUser}/>
+          <UserSignup 
+            createUser={this.props.createUser}
+            context={this.props.location.context}
+            state={this.props.location.state}
+          />
         </Route>
       </Switch>
     )
