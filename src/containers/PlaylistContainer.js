@@ -1,9 +1,15 @@
 import React from 'react'
-import { Route, Switch} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { Route, Switch } from 'react-router-dom'
+import { fetchPlaylists } from '../actions/playlistActions'
 import Playlists from '../components/Playlists'
 import Playlist from '../components/Playlist'
 
 class PlaylistContainer extends React.Component{
+  componentDidMount(){
+    this.props.fetchPlaylists()
+  }
+
   render(){
     return(
       <div>
@@ -20,4 +26,4 @@ class PlaylistContainer extends React.Component{
   }
 }
 
-export default PlaylistContainer
+export default connect(null, { fetchPlaylists })(PlaylistContainer)
