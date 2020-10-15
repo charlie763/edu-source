@@ -20,9 +20,11 @@ class PlaylistContainer extends React.Component{
       <div>
         <Switch>
           <Route path={`${this.props.match.path}/new`} render={props => 
-            <PlaylistAddForm 
+            <PlaylistAddForm
+              {...props}
               addPlaylist={this.props.addPlaylist}
               clearState={{name: ""}}
+              playlists={this.props.playlists}
             />
           }/>
           <Route path={`${this.props.match.path}/:id`} render={props => 

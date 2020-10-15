@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 
 const Playlists = props => (
   <div>
-    <Link to={`${props.match.path}/new`}>Add New Playlist</Link>
+    <Link to={{
+      pathname: `${props.match.path}/new`,
+      context: "bookshelves"
+    }}>Add New Playlist</Link>
     {props.playlists.map(playlist => 
       <div>
         <Link to={`${props.match.path}/${playlist.id}`}>{playlist.name}</Link>  
