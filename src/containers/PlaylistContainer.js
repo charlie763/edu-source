@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { fetchPlaylists } from '../actions/playlistActions'
 import Playlists from '../components/Playlists'
 import Playlist from '../components/Playlist'
+import PlaylistAddForm from '../components/PlaylistAddForm'
 
 class PlaylistContainer extends React.Component{
   componentDidMount(){
@@ -18,6 +19,9 @@ class PlaylistContainer extends React.Component{
     return(
       <div>
         <Switch>
+          <Route path={`${this.props.match.path}/new`} render={props => 
+            <PlaylistAddForm />
+          }/>
           <Route path={`${this.props.match.path}/:id`} render={props => 
             <Playlist 
               {...props}
