@@ -1,5 +1,5 @@
 import React from 'react'
-import { handleInputChange, handleSubmit } from '../utilities'
+import PlaylistAddForm from './PlaylistAddForm'
 import PlaylistContext from './PlaylistContext'
 
 class PlaylistForm extends React.Component{
@@ -29,11 +29,6 @@ class PlaylistForm extends React.Component{
     })
   }
 
-  handleAddSubmit = e => {
-    e.preventDefault()
-    this.props.addPlaylist({name: this.state.name})
-  }
-
   handleSelectSubmit = e=> {
     e.preventDefault()
     const id = this.state.selectId ? this.state.selectId : this.props.playlists[0].id
@@ -47,11 +42,10 @@ class PlaylistForm extends React.Component{
   render(){
     return (
       <div>
-        <form onSubmit={this.handleAddSubmit}>
-          <label>Add New Playlist: </label>
-          <input type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
-          <input type="submit" value="add"/>
-        </form>
+        <PlaylistAddForm 
+          addPlaylist={this.props.addPlaylist}
+          clearState={{name: "", selectId: null}}
+        />
         <form onSubmit={this.handleSelectSubmit}>
           <label>Select Playlist: </label>
           <select onChange={this.handleSelectChange}>
