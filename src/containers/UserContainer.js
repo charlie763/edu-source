@@ -10,7 +10,11 @@ class UserContainer extends React.Component {
     return(
       <Switch>
         <Route exact path="/login">
-          <UserLogin loginUser={this.props.loginUser}/>
+          <UserLogin 
+            loginUser={this.props.loginUser}
+            context={this.props.location.context}
+            state={this.props.location.state}
+          />
         </Route>
         <Route exact path="/signup">
           <UserSignup createUser={this.props.createUser}/>
