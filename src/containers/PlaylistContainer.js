@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch } from 'react-router-dom'
 import { fetchPlaylists } from '../actions/playlistActions'
+import { fetchResources } from '../actions/resourceActions'
 import Playlists from '../components/Playlists'
 import Playlist from '../components/Playlist'
 
@@ -17,12 +18,12 @@ class PlaylistContainer extends React.Component{
     return(
       <div>
         <Switch>
-          <Route path={`${this.props.match.path}/:id`} render={props => { 
-            debugger;
+          <Route path={`${this.props.match.path}/:id`} render={props => 
             <Playlist 
-
+              {...props}
+              playlists={this.props.playlists}
             />          
-          }}/>
+          }/>
           <Route path={`${this.props.match.path}`} render={props => 
             <Playlists {...props} playlists={this.props.playlists}/>          
           }/>
@@ -38,4 +39,4 @@ const mapStateToProps = state => ({
   resources: state.resources.list
 })
 
-export default connect(mapStateToProps, { fetchPlaylists })(PlaylistContainer)
+export default connect(mapStateToProps, { fetchPlaylists, fetchResources })(PlaylistContainer)
