@@ -35,8 +35,7 @@ class PlaylistContainer extends React.Component{
               return (
                 <Redirect to={{
                   pathname: "/login",
-                  context: "bookshelves",
-                  state: {playlists: this.props.playlists} 
+                  context: "bookshelves"
                 }}/>
               )
             }

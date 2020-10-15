@@ -25,7 +25,7 @@ class UserSignup extends React.Component {
         </form>
         <PlaylistContext 
           context={this.props.context}
-          playlists={this.props.state ? this.props.state.playlists : null}
+          {...this.props.state}
         />
     </>
     )

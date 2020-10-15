@@ -14,6 +14,10 @@ class CommentContainer extends React.Component{
     this.props.authorizeUser()
   }
 
+  findResource = id => {
+    return this.props.resources.find(resource => resource.id == id)
+  }
+
   render(){
     return(
       <div>
@@ -24,7 +28,12 @@ class CommentContainer extends React.Component{
               userId={this.props.user.current.id}
               addComment={this.props.addComment}
             /> : 
-            <Redirect to="/login" />}
+            <Redirect to={{
+              pathname: "/login",
+              context: "resource",
+              state: { resourceId: this.props.resourceId } 
+            }}/>
+          }
         </Route>
         <Comments comments={this.props.comments} />
       </div>
@@ -36,7 +45,9 @@ const mapStateToProps = state => ({
   user: state.user,
   comments: state.comments.list,
   loadStatus: state.comments.loadStatus,
-  resourceLoaded: state.comments.resourceLoaded
+  resourceLoaded: state.comments.resourceLoaded,
+  resourceLoadStatus: state.resources.loadStatus,
+  resources: state.resources.list
 })
 
 export default connect(mapStateToProps, { authorizeUser, addComment, fetchComments })(CommentContainer)
