@@ -27,6 +27,17 @@ function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: nu
         loadStatus: "complete",
         playlistAdded: state.playlistAdded
       }
+    case "REMOVE_RESOURCE_FROM_PLAYLIST":
+        const currentPlaylist = state.list.find(playlist => playlist.id === action.playlistId)
+        const updatedPlaylist = {
+          ...currentPlaylist, 
+          resources: currentPlaylist.resources.filter(resource => resource.id !== action.resourceId)
+        }
+      return {
+        list: [...state.list.filter(playlist => playlist.id !== action.playlistId), updatedPlaylist],
+        loadStatus: state.loadStatus,
+        playlistAdded: state.playlistAdded
+      }
     default: 
       return state 
   }
