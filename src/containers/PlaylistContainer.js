@@ -11,9 +11,9 @@ class PlaylistContainer extends React.Component{
           <Route path={`${this.props.match.path}/:id`}>
             <Playlist />
           </Route>
-          <Route path={`${this.props.match.path}`}>
-            <Playlists />
-          </Route>
+          <Route path={`${this.props.match.path}`} render={props => 
+            <Playlists {...props}/>          
+          }/>
         </Switch>
       </div>
     )
