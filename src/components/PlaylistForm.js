@@ -45,6 +45,8 @@ class PlaylistForm extends React.Component{
         <PlaylistAddForm 
           addPlaylist={this.props.addPlaylist}
           clearState={{name: "", selectId: null}}
+          context={this.props.location.context}
+          resourceId={this.props.location.state.resourceId}
         />
         <form onSubmit={this.handleSelectSubmit}>
           <label>Select Playlist: </label>
