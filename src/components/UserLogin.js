@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
 import { handleInputChange, handleSubmit } from '../utilities'
 import UserFormFields from './UserFormFields'
 
@@ -26,8 +25,9 @@ class UserLogin extends React.Component {
         <>
           <form onSubmit={this.handleLoginSubmit}>
             <UserFormFields inheritedState={this.state} handleInputChange={e => handleInputChange.call(this, e)}/>
-            <input type="submit" value="Login" data-dismiss="modal" aria-label="Close"/><br/>
-            <span>Not a user? <button onClick={this.props.switchMode}>Signup</button></span>
+            <input className="btn btn-primary tertiary-background" type="submit" value="Login" data-dismiss="modal" aria-label="Close"/><br/>
+            <br/>
+            <span>Not a user? <a className="link" onClick={this.props.switchMode}>Signup</a></span>
           </form>
         </>
       )
@@ -40,8 +40,9 @@ class UserLogin extends React.Component {
           clearState: {username: "", password: ""}
         })}>
           <UserFormFields inheritedState={this.state} handleInputChange={e => handleInputChange.call(this, e)}/>
-          <input type="submit" value="Signup"/><br/>
-          <span>Already a user? <button onClick={this.props.switchMode}>Login</button></span>
+          <input className="btn btn-primary tertiary-background" type="submit" value="Signup"/><br/>
+          <br/>
+          <span>Already a user? <a className="link" onClick={this.props.switchMode}>Login</a></span>
         </form>
       )
     }
