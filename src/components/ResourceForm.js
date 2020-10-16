@@ -2,6 +2,7 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { handleSubmit } from '../utilities'
 import Resources from './Resources'
+import '../stylesheets/resources.css'
 
 class ResourceForm extends React.Component {
   static cleanState = {
