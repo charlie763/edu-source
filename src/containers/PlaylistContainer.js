@@ -25,12 +25,14 @@ class PlaylistContainer extends React.Component{
           <Route path={`${this.props.match.path}/new`} render={props => {
             if (this.props.user.valid){ 
               return(
-                <PlaylistAddForm
-                  {...props}
-                  addPlaylist={this.props.addPlaylist}
-                  clearState={{name: ""}}
-                  playlists={this.props.playlists}
-                />
+                
+                        <PlaylistAddForm
+                          {...props}
+                          addPlaylist={this.props.addPlaylist}
+                          clearState={{name: ""}}
+                          playlists={this.props.playlists}
+                        />
+                    
               ) 
             } else {
               return (
