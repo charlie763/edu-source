@@ -11,7 +11,7 @@ import Resource from '../components/Resource'
 import PlaylistForm from '../components/PlaylistForm'
 import PlaylistContext from '../components/PlaylistContext'
 import ModalWrapper from '../components/ModalWrapper'
-import UserLogin from '../components/UserLogin'
+import UserContainer from './UserContainer'
 
 class ResourceContainer extends React.Component {
   componentDidMount(){
@@ -66,12 +66,7 @@ class ResourceContainer extends React.Component {
               return (
                 <>
                   <ModalWrapper title="Add Resource To Playlist" id="playlist-select-form" previousUrl={this.props.match.url}>
-                    <UserLogin 
-                      loginUser={this.props.loginUser}
-                      context={this.props.location.context}
-                      state={this.props.location.state}
-                      user={this.props.user}
-                    />
+                    <UserContainer />
                   </ModalWrapper>
                   <PlaylistContext 
                     context={this.props.location.context}

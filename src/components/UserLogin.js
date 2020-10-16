@@ -10,7 +10,7 @@ class UserLogin extends React.Component {
     submitted: false
   }
 
-  handleSubmit = e => {
+  handleLoginSubmit = e => {
     e.preventDefault()
     this.props.loginUser(this.state)
     this.setState({
@@ -21,23 +21,32 @@ class UserLogin extends React.Component {
   }
   
   render(){
-    return(
-      <>
-        <form onSubmit={this.handleSubmit}>
+    if (this.props.mode === "login"){
+      return(
+        <>
+          <form onSubmit={this.handleLoginSubmit}>
+            <UserFormFields inheritedState={this.state} handleInputChange={e => handleInputChange.call(this, e)}/>
+            <input type="submit" value="Login" data-dismiss="modal" aria-label="Close"/><br/>
+            <span>Not a user? <button onClick={this.props.switchMode}>Signup</button></span>
+          </form>
+        </>
+      )
+    } else if (this.props.mode === "signup"){
+      return(
+        <form onSubmit={e => handleSubmit.call(this, {
+          e, 
+          callback: this.props.createUser,
+          currentState: this.state,
+          clearState: {username: "", password: ""}
+        })}>
           <UserFormFields inheritedState={this.state} handleInputChange={e => handleInputChange.call(this, e)}/>
-          <input type="submit" value="Login" data-dismiss="modal" aria-label="Close"/><br/>
-          <span>
-            Not a user? 
-            <Link to={{
-              pathname: "/signup",
-              context: this.props.context,
-              state: {...this.props.state} 
-            }}>Signup</Link>
-          </span>
+          <input type="submit" value="Signup"/><br/>
+          <span>Already a user? <button onClick={this.props.switchMode}>Login</button></span>
         </form>
-      </>
-    )
+      )
     }
+    
+  }
 }
 
 export default UserLogin

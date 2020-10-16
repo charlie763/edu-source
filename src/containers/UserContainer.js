@@ -6,26 +6,27 @@ import UserSignup from '../components/UserSignup'
 import { createUser, loginUser } from '../actions/userActions'
 
 class UserContainer extends React.Component {
+  state = {
+    mode: "login"
+  }
+
+  switchMode = () => {
+    if (this.state.mode === "login"){
+      this.setState({mode: "signup"})
+    } else if (this.state.mode === "signup"){
+      this.setState({mode: "login"})
+    }
+  }
+
   render(){
     return(
-      <Switch>
-        <Route exact path="/login">
-          <UserLogin 
-            loginUser={this.props.loginUser}
-            context={this.props.location.context}
-            state={this.props.location.state}
-            user={this.props.user}
-          />
-        </Route>
-        <Route exact path="/signup">
-          <UserSignup 
-            createUser={this.props.createUser}
-            context={this.props.location.context}
-            state={this.props.location.state}
-            user={this.props.user}
-          />
-        </Route>
-      </Switch>
+      <UserLogin 
+        loginUser={this.props.loginUser}
+        createUser={this.props.createUser}
+        user={this.props.user}
+        mode={this.state.mode}
+        switchMode={this.switchMode}
+      />
     )
   }
 }
