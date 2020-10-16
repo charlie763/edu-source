@@ -8,8 +8,8 @@ const ResourceThumbnail = props => {
       <div className="card-header">
         <div className="row justify-content-between">
           <div>
-            <span className="badge badge-pill">{props.resource.subject}</span> 
-            <span className="badge badge-pill">Grades: {displayGrade(props.resource.lowerGradeBound)}-{displayGrade(props.resource.upperGradeBound)}</span>
+            <span className="badge badge-primary badge-pill">{props.resource.subject}</span> 
+            <span className="badge badge-secondary badge-pill">Grades: {displayGrade(props.resource.lowerGradeBound)}-{displayGrade(props.resource.upperGradeBound)}</span>
           </div>
           <div>
             {props.inPlaylist ? 
