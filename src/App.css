@@ -3,7 +3,8 @@
 }
 
 .tertiary-background {
-  background-color: #4B88A2!important!;
+  background-color: #4B88A2!important;
+  border-color:  #4B88A2!important;
 }
 
 .secondary-text {
@@ -12,4 +13,11 @@
 
 .nav-item{
   margin: .25rem .5rem .25rem .5rem;
+}
+
+.non-button{
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  cursor: pointer;
 }

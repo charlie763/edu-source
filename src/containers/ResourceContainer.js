@@ -15,11 +15,23 @@ class ResourceContainer extends React.Component {
     if (!this.props.loadStatus){
       this.props.fetchResources()
     }
+    this.props.fetchPlaylists()
     this.props.authorizeUser()
   }
 
   findResource = id => {
     return this.props.resources.find(resource => resource.id == id)
+  }
+
+  isResourceInPlaylist = resourceId => {
+    for (const playlist of this.props.playlists){
+      for (const resource of playlist.resources){
+        if (resource.id === resourceId){
+          return true
+        }
+      }
+    }
+    return false
   }
 
   render(){
@@ -39,7 +51,6 @@ class ResourceContainer extends React.Component {
               return (
                 <PlaylistForm 
                   {...props} 
-                  displayGrade={displayGrade}
                   resources={this.props.resources}
                   fetchPlaylists={this.props.fetchPlaylists}
                   addResourceToPlaylist={this.props.addResourceToPlaylist}
@@ -63,11 +74,13 @@ class ResourceContainer extends React.Component {
               {...props} 
               resource={this.findResource(props.match.params.id)} 
               loadStatus={this.props.loadStatus} 
-              displayGrade={displayGrade}
             />
           } />
           <Route path={`${this.props.match.path}`}>
-            <Resources resources={this.props.resources} displayGrade={displayGrade}/>
+            <Resources 
+              resources={this.props.resources}
+              isResourceInPlaylist={this.isResourceInPlaylist} 
+            />
           </Route> 
         </Switch>
         
