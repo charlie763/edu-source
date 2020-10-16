@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { displayGrade } from '../utilities'
 import EmbedVideo from './EmbedVideo'
 import CommentContainer from '../containers/CommentContainer'
 
@@ -23,7 +24,7 @@ const Resource = props => {
         }}>
           Add To Bookshelf
         </Link><br/>
-        <span>{props.resource.subject} Grades: {props.displayGrade(props.resource.lowerGradeBound)} to {props.displayGrade(props.resource.upperGradeBound)}</span>
+        <span>{props.resource.subject} Grades: {displayGrade(props.resource.lowerGradeBound)} to {displayGrade(props.resource.upperGradeBound)}</span>
         <p>{props.resource.description}</p>
         <EmbedVideo videoUrl={props.resource.url} title={props.resource.title}/><br/>
         <Link to={`${props.match.url}/comments/new`}>Comment</Link>
