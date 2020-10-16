@@ -38,6 +38,7 @@ class PlaylistContext extends React.Component {
       case "bookshelves":
         return <Playlists 
                   playlists={this.props.playlists}
+                  user={this.props.user}
                   match={{path: "bookshelves"}}
               />
       default:
@@ -47,6 +48,7 @@ class PlaylistContext extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  user: state.user,
   playlists: state.playlists.list,
   resources: state.resources.list,
   loadStatus: state.resources.loadStatus
