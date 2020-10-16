@@ -49,7 +49,7 @@ class PlaylistContainer extends React.Component{
             />          
           }/>
           <Route path={`${this.props.match.path}`} render={props => 
-            <Playlists {...props} playlists={this.props.playlists}/>          
+            <Playlists {...props} playlists={this.props.playlists} user={this.props.user}/>          
           }/>
         </Switch>
       </div>
