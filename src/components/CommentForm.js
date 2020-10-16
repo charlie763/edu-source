@@ -28,7 +28,7 @@ class CommentForm extends React.Component{
                   callback: this.props.addComment,
                   currentState: {
                     ...this.state, 
-                    userId: this.props.user.userId, 
+                    userId: this.props.user.current.id, 
                     resourceId: this.props.resourceId,
                     user: this.props.user
                   },

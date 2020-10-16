@@ -40,7 +40,7 @@ class CommentContainer extends React.Component{
             }}/>
           }
         </Route>
-        <Comments comments={this.props.comments} />
+        <Comments comments={this.props.comments} user={this.props.user} />
       </div>
     )
   }
