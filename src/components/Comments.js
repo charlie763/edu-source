@@ -1,12 +1,13 @@
 import React from 'react'
 
 const Comments = props => (
-  <div>
-    <ul className="list-group-flush">
+  <div className="my-3">
+    <h5>Comments:</h5>
+    <ul className="list-group-flush px-0">
       {props.comments.map(comment => (
-        <li className="list-group-item">
-          <h5>{comment.user.username}</h5>
-          <p>{comment.text}</p>
+        <li className="list-group-item quartinary-background pt-3">
+          <h6 className="card-subtitle text-muted">{comment.user.username}: </h6>
+          <span>{comment.text}</span>
         </li>
       ))}
     </ul>

@@ -8,9 +8,7 @@ import Comments from '../components/Comments'
 
 class CommentContainer extends React.Component{
   componentDidMount(){
-    if (!this.props.loadStatus && this.props.resourceLoadStatus){
-      this.props.fetchComments(this.props.resourceId)
-    }
+    this.props.fetchComments(this.props.resourceId)
     this.props.authorizeUser()
   }
 
