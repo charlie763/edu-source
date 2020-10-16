@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { handleSubmit } from '../utilities'
-import Resources from './Resources'
+import PlaylistContext from './PlaylistContext'
 import '../stylesheets/resources.css'
 
 class ResourceForm extends React.Component {
@@ -74,7 +74,7 @@ class ResourceForm extends React.Component {
             <textarea type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/><br />
             <input type="submit"/>
           </form>
-          <Resources resources={this.props.resources}/>
+          <PlaylistContext context="resources"/>
         </div>
       )
     }

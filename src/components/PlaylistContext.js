@@ -10,10 +10,24 @@ class PlaylistContext extends React.Component {
     return this.props.resources.find(resource => resource.id == id)
   }
 
+  isResourceInPlaylist = resourceId => {
+    for (const playlist of this.props.playlists){
+      for (const resource of playlist.resources){
+        if (resource.id === resourceId){
+          return true
+        }
+      }
+    }
+    return false
+  }
+
   render(){
     switch(this.props.context){
       case "resources":
-        return <Resources resources={this.props.resources} displayGrade={displayGrade}/>
+        return <Resources 
+                resources={this.props.resources} 
+                isResourceInPlaylist={this.isResourceInPlaylist}
+              />
       case "resource":
         return  <Resource
                   match={{url: `/resources/${this.props.resourceId}`}}
