@@ -3,15 +3,15 @@ import { connect } from 'react-redux'
 import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
 import { fetchPlaylists, addResourceToPlaylist, removeResourceFromPlaylist, addPlaylist } from '../actions/playlistActions'
-import { authorizeUser } from '../actions/userActions'
-import { displayGrade, isResourceInPlaylist } from '../utilities'
+import { authorizeUser, loginUser } from '../actions/userActions'
+import { isResourceInPlaylist } from '../utilities'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 import Resource from '../components/Resource'
 import PlaylistForm from '../components/PlaylistForm'
 import PlaylistContext from '../components/PlaylistContext'
 import ModalWrapper from '../components/ModalWrapper'
-import addIcon from '../assets/add-icon.png'
+import UserLogin from '../components/UserLogin'
 
 class ResourceContainer extends React.Component {
   componentDidMount(){
@@ -63,11 +63,22 @@ class ResourceContainer extends React.Component {
                 </>
               )
             } else {
-              return <Redirect to={{
-                      pathname: "/login",
-                      context: this.props.location.context, 
-                      state: this.props.location.state ? this.props.location.state : null
-                    }}/>
+              return (
+                <>
+                  <ModalWrapper title="Add Resource To Playlist" id="playlist-select-form" previousUrl={this.props.match.url}>
+                    <UserLogin 
+                      loginUser={this.props.loginUser}
+                      context={this.props.location.context}
+                      state={this.props.location.state}
+                      user={this.props.user}
+                    />
+                  </ModalWrapper>
+                  <PlaylistContext 
+                    context={this.props.location.context}
+                    resourceId={this.props.location.state ? this.props.location.state.resourceId : null}
+                  />
+                </>
+              )
             }
           }}/>
           <Route path={`${this.props.match.path}/:id`} render={props => 
@@ -105,7 +116,8 @@ const mapDispatchToProps = {
   fetchPlaylists,
   addResourceToPlaylist,
   removeResourceFromPlaylist,
-  addPlaylist, 
+  addPlaylist,
+  loginUser, 
   authorizeUser
 }
 
