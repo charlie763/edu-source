@@ -65,7 +65,7 @@ class ResourceContainer extends React.Component {
             } else {
               return (
                 <>
-                  <ModalWrapper title="Add Resource To Playlist" id="playlist-select-form" previousUrl={this.props.match.url}>
+                  <ModalWrapper title="Login" id="login-form" previousUrl={this.props.match.url}>
                     <UserContainer />
                   </ModalWrapper>
                   <PlaylistContext 

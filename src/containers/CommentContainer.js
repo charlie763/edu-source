@@ -5,6 +5,8 @@ import { authorizeUser } from '../actions/userActions'
 import { addComment, fetchComments } from '../actions/commentActions'
 import CommentForm from '../components/CommentForm'
 import Comments from '../components/Comments'
+import ModalWrapper from '../components/ModalWrapper'
+import UserContainer from './UserContainer'
 
 class CommentContainer extends React.Component{
   componentDidMount(){
@@ -26,20 +28,23 @@ class CommentContainer extends React.Component{
   render(){
     return(
       <div>
-        <Route exact path={`${this.props.relativePath}/comments/new`}>
-          {this.props.user.valid ? 
-            <CommentForm 
-              resourceId={this.props.resourceId} 
-              user={this.props.user}
-              addComment={this.props.addComment}
-            /> : 
-            <Redirect to={{
-              pathname: "/login",
-              context: "resource",
-              state: { resourceId: this.props.resourceId } 
-            }}/>
+        <Route exact path={`${this.props.relativePath}/comments/new`} render={props => {
+          if (this.props.user.valid){
+            return (
+              <CommentForm 
+                resourceId={this.props.resourceId} 
+                user={this.props.user}
+                addComment={this.props.addComment}
+              />
+            )
+          } else {
+            return (
+              <ModalWrapper title="Login" id="login-form" previousUrl={`/resources/${this.props.resourceId}`}>
+                <UserContainer />
+              </ModalWrapper>
+            )
           }
-        </Route>
+        }}/>
         <Comments comments={this.props.comments} user={this.props.user} />
       </div>
     )

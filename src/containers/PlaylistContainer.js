@@ -8,6 +8,7 @@ import Playlists from '../components/Playlists'
 import Playlist from '../components/Playlist'
 import PlaylistAddForm from '../components/PlaylistAddForm'
 import ModalWrapper from '../components/ModalWrapper'
+import UserContainer from './UserContainer'
 
 class PlaylistContainer extends React.Component{
   componentDidMount(){
@@ -44,10 +45,16 @@ class PlaylistContainer extends React.Component{
               ) 
             } else {
               return (
-                <Redirect to={{
-                  pathname: "/login",
-                  context: "bookshelves"
-                }}/>
+                <>
+                  <ModalWrapper title="Login" id="login-form" previousUrl={this.props.match.url}>
+                    <UserContainer />
+                  </ModalWrapper>
+                  <Playlists 
+                      playlists={this.props.playlists}
+                      user={this.props.user}
+                      match={{path: "bookshelves"}}
+                  />
+                </>
               )
             }
           }}/>
