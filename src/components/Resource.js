@@ -30,7 +30,7 @@ const Resource = props => {
                   </button>
                   :
                   <Link to={{
-                    pathname: `/resources/playlists/new`,
+                    pathname: `/resources/${props.resource.id}/playlists/new`,
                     context: "resources", 
                     state: {resourceId: props.resource.id}
                   }}>
