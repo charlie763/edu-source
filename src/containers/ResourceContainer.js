@@ -2,13 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
-import { fetchPlaylists, addResourceToPlaylist, addPlaylist } from '../actions/playlistActions'
+import { fetchPlaylists, addResourceToPlaylist, removeResourceFromPlaylist, addPlaylist } from '../actions/playlistActions'
 import { authorizeUser } from '../actions/userActions'
 import { displayGrade, isResourceInPlaylist } from '../utilities'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 import Resource from '../components/Resource'
 import PlaylistForm from '../components/PlaylistForm'
+import PlaylistContext from '../components/PlaylistContext'
+import ModalWrapper from '../components/ModalWrapper'
 
 class ResourceContainer extends React.Component {
   componentDidMount(){
@@ -38,17 +40,23 @@ class ResourceContainer extends React.Component {
           <Route path={[`${this.props.match.path}/playlists/new`, `${this.props.match.path}/:id/playlists/new`]} render={props => { 
             if (this.props.user.valid){
               return (
-                <PlaylistForm 
-                  {...props} 
-                  resources={this.props.resources}
-                  fetchPlaylists={this.props.fetchPlaylists}
-                  addResourceToPlaylist={this.props.addResourceToPlaylist}
-                  addPlaylist={this.props.addPlaylist}
-                  playlists={this.props.playlists}
-                  playlistAdded={this.props.playlistAdded}
-                  findResource={this.findResource} 
-                  loadStatus={this.props.loadStatus}  
-                />
+                <>
+                  <ModalWrapper title="Add Playlist" id="playlist-select-form" previousUrl={this.props.match.url}>
+                    <PlaylistForm 
+                      {...props} 
+                      fetchPlaylists={this.props.fetchPlaylists}
+                      addResourceToPlaylist={this.props.addResourceToPlaylist}
+                      addPlaylist={this.props.addPlaylist}
+                      playlists={this.props.playlists}
+                      playlistAdded={this.props.playlistAdded}
+                      findResource={this.findResource}
+                    />
+                  </ModalWrapper>
+                  <PlaylistContext 
+                    context={this.props.location.context}
+                    resourceId={this.props.location.state ? this.props.location.state.resourceId : null}
+                  />
+                </>
               )
             } else {
               return <Redirect to={{
@@ -68,7 +76,8 @@ class ResourceContainer extends React.Component {
           <Route path={`${this.props.match.path}`}>
             <Resources 
               resources={this.props.resources}
-              isResourceInPlaylist={resourceId => isResourceInPlaylist.call(this, resourceId)} 
+              isResourceInPlaylist={resourceId => isResourceInPlaylist.call(this, resourceId)}
+              removeResourceFromPlaylist={this.props.removeResourceFromPlaylist} 
             />
           </Route> 
         </Switch>
@@ -91,6 +100,7 @@ const mapDispatchToProps = {
   fetchResources, 
   fetchPlaylists,
   addResourceToPlaylist,
+  removeResourceFromPlaylist,
   addPlaylist, 
   authorizeUser
 }

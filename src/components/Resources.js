@@ -8,6 +8,7 @@ const Resources = props => {
         {props.resources.map(resource => <ResourceThumbnail 
           key={resource.id} 
           resource={resource}
+          removeResourceFromPlaylist={props.removeResourceFromPlaylist}
           inPlaylist={props.isResourceInPlaylist(resource.id)}
           />
         )}

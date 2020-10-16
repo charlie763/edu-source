@@ -1,7 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import PlaylistAddForm from './PlaylistAddForm'
-import PlaylistContext from './PlaylistContext'
+import { handleInputChange } from '../utilities'
 
 class PlaylistForm extends React.Component{
   state = {
@@ -19,7 +18,8 @@ class PlaylistForm extends React.Component{
       this.props.addResourceToPlaylist(this.props.location.state.resourceId, this.props.playlistAdded.id)
       this.setState({
         name: "",
-        selectId: null
+        selectId: null,
+        submitted: false
       })
     }
   }
@@ -31,7 +31,22 @@ class PlaylistForm extends React.Component{
     })
   }
 
-  handleSelectSubmit = e=> {
+  handleAddSubmit = e => {
+    e.preventDefault()
+    this.props.addPlaylist({
+      name: this.state.name,
+      resources: [{...this.props.findResource(this.props.location.state.resourceId)}]
+    })
+    const id = this.state.selectId ? this.state.selectId : this.props.playlists[0].id
+    this.props.addResourceToPlaylist(this.props.location.state.resourceId, id)
+    this.setState({
+      name: "",
+      selectId: null,
+      submitted: true
+    })
+  }
+
+  handleSelectSubmit = e => {
     e.preventDefault()
     const id = this.state.selectId ? this.state.selectId : this.props.playlists[0].id
     this.props.addResourceToPlaylist(this.props.location.state.resourceId, id)
@@ -50,12 +65,13 @@ class PlaylistForm extends React.Component{
     } else {
       return (
         <div>
-          <PlaylistAddForm 
-            addPlaylist={this.props.addPlaylist}
-            clearState={{name: "", selectId: null}}
-            context={this.props.location.context}
-            resourceId={this.props.location.state ? this.props.location.state.resourceId : null}
-          />
+          <form onSubmit={this.handleAddSubmit}>
+            <div className="form-group">
+              <label>Playlist Name: </label>
+              <input className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
+            </div> 
+            <input className="btn btn-primary tertiary-background" type="submit" value="add"/>
+          </form>
           <form onSubmit={this.handleSelectSubmit}>
             <label>Select Playlist: </label>
             <select onChange={this.handleSelectChange}>
@@ -65,10 +81,6 @@ class PlaylistForm extends React.Component{
             </select><br/>
             <input type="submit" value="Select"/>
           </form>
-          <PlaylistContext 
-            context={this.props.location.context}
-            resourceId={this.props.location.state ? this.props.location.state.resourceId : null}
-          />
         </div>
       )
     }

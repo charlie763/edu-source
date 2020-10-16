@@ -1,3 +1,5 @@
+import cuid from 'cuid'
+
 function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: null}, action){
   switch(action.type){
     case "START_ADD":

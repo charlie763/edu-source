@@ -13,7 +13,7 @@ const ResourceThumbnail = props => {
           </div>
           <div>
             {props.inPlaylist ? 
-              <button className="non-button" onClick={() => props.removeResourceFromPlaylist(props.resource.id, props.playlist.id)}>
+              <button className="non-button" onClick={() => props.removeResourceFromPlaylist(props.resource.id, props.inPlaylist.id)}>
                 <svg height="1rem" viewBox="-110 -18 581 581.33331" width="1rem" xmlns="http://www.w3.org/2000/svg"><path d="m181.25 363.109375 172.75 181.890625v-545h-360v545l172.75-181.890625c1.886719-1.984375 4.511719-3.113281 7.25-3.113281s5.359375 1.128906 7.25 3.113281zm0 0"/></svg>
               </button>
               :
