@@ -1,5 +1,5 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { handleInputChange, handleSubmit } from '../utilities'
 
 class CommentForm extends React.Component{
@@ -14,8 +14,14 @@ class CommentForm extends React.Component{
     } else {
       return(
         <div className="modal" id="comment-form" tabindex="-1" role="dialog">
-          <div className="modal-dialog" role="document">
+          <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Add Comment</h5>
+                <Link to={`/resources/${this.props.resourceId}`} type="button" className="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </Link>
+              </div>
               <div className="modal-body">
                 <form onSubmit={e => handleSubmit.call(this, {
                   e,
@@ -28,8 +34,10 @@ class CommentForm extends React.Component{
                   },
                   clearState: {text: ""}
                 })}>
-                  <textarea name="text" value={this.state.text} placeholder="write comment here..." onChange={e => handleInputChange.call(this, e)} /><br/>
-                  <input type="submit" value="Post Comment"/>
+                  <div className="form-group">
+                    <textarea className="form-control" name="text" value={this.state.text} placeholder="write comment here..." onChange={e => handleInputChange.call(this, e)} />
+                  </div>
+                  <input className="btn btn-primary tertiary-background" type="submit" value="Post Comment"/>
                 </form>
               </div>
             </div>

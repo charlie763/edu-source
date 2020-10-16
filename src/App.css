@@ -11,6 +11,10 @@
   color: #E7E3DA!important;
 }
 
+.modal {
+  display: block!important;
+}
+
 .nav-item{
   margin: .25rem .5rem .25rem .5rem;
 }
