@@ -29,19 +29,17 @@ class ResourceContainer extends React.Component {
   render(){
     return(
       <div>
-        <Link to={`${this.props.match.url}/new`}>
-          <h5 className="my-3">
-            <img className="icon" src={addIcon} alt="add button"></img>
-            <span class="mx-2 primary-text badge">Add Resource</span>
-          </h5>
-        </Link>
         <Switch>
           <Route exact path={`${this.props.match.path}/new`}>
-            <ResourceForm 
-              addResource={this.props.addResource} 
-              displayGrade={displayGrade}
-              resources={this.props.resources} 
-            />
+            <>
+              <ModalWrapper title="Add Resource To Playlist" id="playlist-select-form" previousUrl={this.props.match.url}>
+                <ResourceForm 
+                  addResource={this.props.addResource} 
+                  resources={this.props.resources} 
+                />
+              </ModalWrapper>
+              <PlaylistContext context="resources"/>
+            </>
           </Route> 
           <Route path={[`${this.props.match.path}/playlists/new`, `${this.props.match.path}/:id/playlists/new`]} render={props => { 
             if (this.props.user.valid){

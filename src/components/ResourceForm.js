@@ -1,7 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { handleSubmit } from '../utilities'
-import PlaylistContext from './PlaylistContext'
+import { handleSubmit, displayGrade } from '../utilities'
 import '../stylesheets/resources.css'
 
 class ResourceForm extends React.Component {
@@ -61,10 +60,10 @@ class ResourceForm extends React.Component {
             <input type="text" name="subject" value={this.state.subject} onChange={this.handleInputChange}/><br /> {/*Change to datalist*/}
             <label>Grade Levels: </label>
             <div className="slider-container">
-              <span className="left-label">{this.props.displayGrade(this.state.lowerGradeBound)}</span>
+              <span className="left-label">{displayGrade(this.state.lowerGradeBound)}</span>
               <input type="range" className="slider" name="lowerGradeBound" min="0" max="12" value={this.state.lowerGradeBound} onChange={this.handleInputChange}/>
               <input type="range" className="slider" name="upperGradeBound" min="0" max="12" value={this.state.upperGradeBound} onChange={this.handleInputChange}/>
-              <span className="right-label">{this.props.displayGrade(this.state.upperGradeBound)}</span>
+              <span className="right-label">{displayGrade(this.state.upperGradeBound)}</span>
             </div><br/><br/>
             <label>Link: </label>
             <input type="text" name="url" value={this.state.url} onChange={this.handleInputChange}/><br />
@@ -74,7 +73,6 @@ class ResourceForm extends React.Component {
             <textarea type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/><br />
             <input type="submit"/>
           </form>
-          <PlaylistContext context="resources"/>
         </div>
       )
     }

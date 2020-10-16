@@ -1,9 +1,17 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import ResourceThumbnail from './ResourceThumbnail'
+import addIcon from '../assets/add-icon.png'
 
 const Resources = props => {
   return (
     <>
+      <Link to={`/resources/new`}>
+        <h5 className="my-3">
+          <img className="icon" src={addIcon} alt="add button"></img>
+          <span class="mx-2 primary-text badge">Add Resource</span>
+        </h5>
+      </Link>
       <div className="card-columns">
         {props.resources.map(resource => <ResourceThumbnail 
           key={resource.id} 
