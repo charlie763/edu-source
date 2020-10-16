@@ -4,7 +4,7 @@ import { Route, Link, Switch, Redirect } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
 import { fetchPlaylists, addResourceToPlaylist, addPlaylist } from '../actions/playlistActions'
 import { authorizeUser } from '../actions/userActions'
-import { displayGrade } from '../utilities'
+import { displayGrade, isResourceInPlaylist } from '../utilities'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 import Resource from '../components/Resource'
@@ -21,17 +21,6 @@ class ResourceContainer extends React.Component {
 
   findResource = id => {
     return this.props.resources.find(resource => resource.id == id)
-  }
-
-  isResourceInPlaylist = resourceId => {
-    for (const playlist of this.props.playlists){
-      for (const resource of playlist.resources){
-        if (resource.id === resourceId){
-          return true
-        }
-      }
-    }
-    return false
   }
 
   render(){
@@ -79,7 +68,7 @@ class ResourceContainer extends React.Component {
           <Route path={`${this.props.match.path}`}>
             <Resources 
               resources={this.props.resources}
-              isResourceInPlaylist={this.isResourceInPlaylist} 
+              isResourceInPlaylist={resourceId => isResourceInPlaylist.call(this, resourceId)} 
             />
           </Route> 
         </Switch>
