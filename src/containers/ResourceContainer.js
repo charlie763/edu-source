@@ -32,7 +32,7 @@ class ResourceContainer extends React.Component {
         <Switch>
           <Route exact path={`${this.props.match.path}/new`}>
             <>
-              <ModalWrapper title="Add Resource To Playlist" id="playlist-select-form" previousUrl={this.props.match.url}>
+              <ModalWrapper title="Add Resource" id="add-resource-form" previousUrl={this.props.match.url}>
                 <ResourceForm 
                   addResource={this.props.addResource} 
                   resources={this.props.resources} 

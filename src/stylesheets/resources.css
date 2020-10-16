@@ -55,12 +55,14 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
 
 .slider-container span.left-label{
   left: -15px;
+  top: -5px;
 }
 
 .slider-container span.right-label{
   position: relative;
   float: right;
   margin-right: -25px;
+  top: -5px;
 }
 
 .badge {

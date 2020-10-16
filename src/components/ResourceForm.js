@@ -47,31 +47,38 @@ class ResourceForm extends React.Component {
     } else {
       return(
         <div>
-          <h2>Add a Resource</h2>
           <form onSubmit={e => handleSubmit.call(this, {
             e, 
             callback: this.props.addResource,
             currentState: this.state,
             clearState: {...this.constructor.cleanState}
           })}>
-            <label>Title: </label>
-            <input type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/><br />
-            <label>Subject: </label>
-            <input type="text" name="subject" value={this.state.subject} onChange={this.handleInputChange}/><br /> {/*Change to datalist*/}
-            <label>Grade Levels: </label>
-            <div className="slider-container">
-              <span className="left-label">{displayGrade(this.state.lowerGradeBound)}</span>
-              <input type="range" className="slider" name="lowerGradeBound" min="0" max="12" value={this.state.lowerGradeBound} onChange={this.handleInputChange}/>
-              <input type="range" className="slider" name="upperGradeBound" min="0" max="12" value={this.state.upperGradeBound} onChange={this.handleInputChange}/>
-              <span className="right-label">{displayGrade(this.state.upperGradeBound)}</span>
-            </div><br/><br/>
-            <label>Link: </label>
-            <input type="text" name="url" value={this.state.url} onChange={this.handleInputChange}/><br />
-            <label>Embedded Video Link: </label>
-            <input type="text" name="videoUrl" value={this.state.videoUrl} onChange={this.handleInputChange}/><br />
-            <label>Description: </label>
-            <textarea type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/><br />
-            <input type="submit"/>
+            <div className="form-group">
+              <label>Title: </label>
+              <input className="form-control" type="text" name="title" value={this.state.title} onChange={this.handleInputChange}/>
+            </div>
+            <div className="form-group">
+              <label>Subject: </label>
+              <input className="form-control" type="text" name="subject" value={this.state.subject} onChange={this.handleInputChange}/>
+            </div>
+            <div className="form-group">
+              <label>Grade Levels: </label>
+              <div className="slider-container d-block">
+                <span className="left-label">{displayGrade(this.state.lowerGradeBound)}</span>
+                <input type="range" className="slider" name="lowerGradeBound" min="0" max="12" value={this.state.lowerGradeBound} onChange={this.handleInputChange}/>
+                <input type="range" className="slider" name="upperGradeBound" min="0" max="12" value={this.state.upperGradeBound} onChange={this.handleInputChange}/>
+                <span className="right-label">{displayGrade(this.state.upperGradeBound)}</span>
+              </div>
+            </div>
+            <div className="form-group">
+              <label>Link: </label>
+              <input className="form-control" type="text" name="url" value={this.state.url} onChange={this.handleInputChange}/>
+            </div>
+            <div className="form-group">
+              <label>Description: </label>
+              <textarea className="form-control" type="text" name="description" value={this.state.description} onChange={this.handleInputChange}/>
+            </div>
+            <input className="btn btn-primary tertiary-background" type="submit" value="Add Resource"/>
           </form>
         </div>
       )
