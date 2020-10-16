@@ -37,16 +37,6 @@ class PlaylistForm extends React.Component{
       name: this.state.name,
       resources: [{...this.props.findResource(this.props.location.state.resourceId)}]
     })
-    // const id = this.state.selectId ? this.state.selectId : this.props.playlists[0].id
-    // const interval = window.setInterval(() => {
-
-    // }, 1000)
-    // this.props.addResourceToPlaylist(this.props.location.state.resourceId, id)
-    // this.setState({
-    //   name: "",
-    //   selectId: null,
-    //   submitted: true
-    // })
   }
 
   handleSelectSubmit = e => {
