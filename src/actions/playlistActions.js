@@ -38,6 +38,7 @@ function addResourceToPlaylist(resourceID, playlistId){
     })
   }
   return dispatch => {
+    dispatch({type: "START_ADD", tempPlaylist: {name: "temp", resources: [{id: resourceID}]}})
     fetch(BASE_URL + `/${playlistId}`, configObj)
       .then(resp => resp.json())
       .then(updatedPlaylist => dispatch({
