@@ -28,7 +28,7 @@ class UserSignup extends React.Component {
                     }}/>
           default:
             return <Redirect to={{
-                      pathname: `${this.props.context}`,
+                      pathname: `${this.props.context ? this.props.context : "/"}`,
                       context: this.props.context,
                       state: {...this.props.state}
                     }}/>
