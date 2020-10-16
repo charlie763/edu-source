@@ -13,7 +13,7 @@ function App() {
       <Route path="/" component={NavBar} />
       <div className="container">
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={props => <ResourceContainer {...props}/>} />
           <Route path="/login" render={props => <UserContainer {...props} />} />
           <Route path="/signup" render={props => <UserContainer {...props} />} />
           <Route path="/resources" render={props => <ResourceContainer {...props}/>} />
