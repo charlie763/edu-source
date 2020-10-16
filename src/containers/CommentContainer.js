@@ -8,10 +8,17 @@ import Comments from '../components/Comments'
 
 class CommentContainer extends React.Component{
   componentDidMount(){
-    if (!this.props.loadStatus && this.props.resourceLoaded !== this.props.resourceId){
+    if (!this.props.loadStatus && this.props.resourceLoadStatus){
       this.props.fetchComments(this.props.resourceId)
     }
     this.props.authorizeUser()
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.resourceLoadStatus !== this.props.resourceLoadStatus){
+      debugger;
+      this.props.fetchComments(this.props.resourceId)
+    }
   }
 
   findResource = id => {
