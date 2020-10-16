@@ -11,6 +11,7 @@ import Resource from '../components/Resource'
 import PlaylistForm from '../components/PlaylistForm'
 import PlaylistContext from '../components/PlaylistContext'
 import ModalWrapper from '../components/ModalWrapper'
+import addIcon from '../assets/add-icon.png'
 
 class ResourceContainer extends React.Component {
   componentDidMount(){
@@ -28,7 +29,12 @@ class ResourceContainer extends React.Component {
   render(){
     return(
       <div>
-        <Link to={`${this.props.match.url}/new`}>Add Resource</Link>
+        <Link to={`${this.props.match.url}/new`}>
+          <h5 className="my-3">
+            <img className="icon" src={addIcon} alt="add button"></img>
+            <span class="mx-2 primary-text badge">Add Resource</span>
+          </h5>
+        </Link>
         <Switch>
           <Route exact path={`${this.props.match.path}/new`}>
             <ResourceForm 
