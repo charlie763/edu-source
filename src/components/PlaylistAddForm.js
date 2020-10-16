@@ -27,9 +27,6 @@ class PlaylistAddForm extends React.Component{
             <input type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
             <input type="submit" value="add"/>
           </form>
-          <PlaylistContext 
-            context={this.props.location ? this.props.location.context : null}
-          />
         </>
       )
     }

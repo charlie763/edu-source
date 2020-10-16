@@ -7,6 +7,7 @@ import { authorizeUser } from '../actions/userActions'
 import Playlists from '../components/Playlists'
 import Playlist from '../components/Playlist'
 import PlaylistAddForm from '../components/PlaylistAddForm'
+import ModalWrapper from '../components/ModalWrapper'
 
 class PlaylistContainer extends React.Component{
   componentDidMount(){
@@ -25,14 +26,21 @@ class PlaylistContainer extends React.Component{
           <Route path={`${this.props.match.path}/new`} render={props => {
             if (this.props.user.valid){ 
               return(
-                
-                        <PlaylistAddForm
-                          {...props}
-                          addPlaylist={this.props.addPlaylist}
-                          clearState={{name: ""}}
-                          playlists={this.props.playlists}
-                        />
-                    
+                <>
+                  <ModalWrapper title="Add Playlist" id="playlist-add-form" previousUrl="/bookshelves">
+                    <PlaylistAddForm
+                      {...props}
+                      addPlaylist={this.props.addPlaylist}
+                      clearState={{name: ""}}
+                      playlists={this.props.playlists}
+                    />
+                  </ModalWrapper>
+                  <Playlists 
+                      playlists={this.props.playlists}
+                      user={this.props.user}
+                      match={{path: "bookshelves"}}
+                  />
+                </>
               ) 
             } else {
               return (
