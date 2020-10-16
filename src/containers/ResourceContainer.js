@@ -41,7 +41,7 @@ class ResourceContainer extends React.Component {
             if (this.props.user.valid){
               return (
                 <>
-                  <ModalWrapper title="Add Playlist" id="playlist-select-form" previousUrl={this.props.match.url}>
+                  <ModalWrapper title="Add Resource To Playlist" id="playlist-select-form" previousUrl={this.props.match.url}>
                     <PlaylistForm 
                       {...props} 
                       fetchPlaylists={this.props.fetchPlaylists}

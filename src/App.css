@@ -47,3 +47,7 @@
   padding: 0!important;
   cursor: pointer;
 }
+
+.sub-form-group{
+  margin-bottom: 0px;
+}

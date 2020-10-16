@@ -3,7 +3,9 @@ import cuid from 'cuid'
 function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: null}, action){
   switch(action.type){
     case "START_ADD":
-      const tempPlaylist = { ...action.tempPlaylist }
+      const tempPlaylist = { 
+        ...action.tempPlaylist,
+        temp: true }
       return {
         list: [...state.list, tempPlaylist],
         loadStatus: state.loadStatus,
