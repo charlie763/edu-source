@@ -17,4 +17,15 @@ function displayGrade(grade){
   return grade === "0" ? "k" : grade
 }
 
-export { handleInputChange, handleSubmit, displayGrade }
+function isResourceInPlaylist(resourceId){
+  for (const playlist of this.props.playlists){
+    for (const resource of playlist.resources){
+      if (resource.id === resourceId){
+        return true
+      }
+    }
+  }
+  return false
+}
+
+export { handleInputChange, handleSubmit, displayGrade, isResourceInPlaylist }

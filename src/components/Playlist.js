@@ -14,15 +14,17 @@ const Playlist = props => {
   } else {
     return(
       <div>
-        <h2>{props.playlist.name}</h2>
+        <h2 className="my-3">{props.playlist.name}</h2>
         {props.playlist.resources.map(resource => 
-          <ResourceThumbnail 
-            key={resource.id} 
-            resource={resource}
-            displayGrade={displayGrade}
-            playlist={props.playlist}
-            removeResourceFromPlaylist={props.removeResourceFromPlaylist}
-          />
+          <div className="my-2">
+            <ResourceThumbnail 
+              key={resource.id} 
+              resource={resource}
+              inPlaylist={props.isResourceInPlaylist(resource.id)}
+              playlist={props.playlist}
+              removeResourceFromPlaylist={props.removeResourceFromPlaylist}
+            />
+          </div>
         )}
       </div>
     )

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Route, Switch, Redirect } from 'react-router-dom'
+import { isResourceInPlaylist } from '../utilities'
 import { fetchPlaylists, addPlaylist, removeResourceFromPlaylist } from '../actions/playlistActions'
 import { authorizeUser } from '../actions/userActions'
 import Playlists from '../components/Playlists'
@@ -46,6 +47,7 @@ class PlaylistContainer extends React.Component{
               playlist={this.findPlaylist(props.match.params.id)}
               loadStatus={this.props.loadStatus}
               removeResourceFromPlaylist={this.props.removeResourceFromPlaylist}
+              isResourceInPlaylist={resourceId => isResourceInPlaylist.call(this, resourceId)}
             />          
           }/>
           <Route path={`${this.props.match.path}`} render={props => 
