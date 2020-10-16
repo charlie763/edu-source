@@ -23,9 +23,11 @@ class PlaylistAddForm extends React.Component{
             currentState: {...this.state},
             clearState: {...this.props.clearState}
           })}>
-            <label>Add New Playlist: </label>
-            <input type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
-            <input type="submit" value="add"/>
+            <div className="form-group">
+              <label>Playlist Name: </label>
+              <input className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
+            </div> 
+            <input className="btn btn-primary tertiary-background" type="submit" value="add"/>
           </form>
         </>
       )
