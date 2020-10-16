@@ -10,7 +10,8 @@ import PlaylistContainer from './containers/PlaylistContainer'
 function App() {
   return (
     <Router>
-        <Route path="/" component={NavBar} />
+      <Route path="/" component={NavBar} />
+      <div className="container">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/login" render={props => <UserContainer {...props} />} />
@@ -18,6 +19,7 @@ function App() {
           <Route path="/resources" render={props => <ResourceContainer {...props}/>} />
           <Route path="/bookshelves" render={props => <PlaylistContainer {...props}/>}/>
         </Switch>
+      </div>
     </Router>
   );
 }
