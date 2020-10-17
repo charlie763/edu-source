@@ -9,7 +9,7 @@ const Resources = props => {
       <Link to={`/resources/new`}>
         <h5 className="my-3">
           <img className="icon" src={addIcon} alt="add button"></img>
-          <span class="mx-2 primary-text badge">Add Resource</span>
+          <span className="mx-2 primary-text badge">Add Resource</span>
         </h5>
       </Link>
       <div className="card-columns">
