@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect, Route } from 'react-router-dom'
 import { handleInputChange, handleSubmit } from '../utilities'
 import UserFormFields from './UserFormFields'
 
@@ -20,7 +21,9 @@ class UserLogin extends React.Component {
   }
   
   render(){
-    if (this.props.mode === "login"){
+    if (this.state.submitted && this.props.url === "/login"){
+      return <Redirect to="/"/>
+    } else if (this.props.mode === "login"){
       return(
         <>
           <form onSubmit={this.handleLoginSubmit}>

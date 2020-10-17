@@ -24,6 +24,7 @@ class UserContainer extends React.Component {
         user={this.props.user}
         mode={this.state.mode}
         switchMode={this.switchMode}
+        url = {this.props.match.url}
       />
     )
   }
