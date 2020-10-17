@@ -1,4 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description ##
+This is the frontend portion of this application. The backend repo can be found at: https://github.com/charlie763/edu-source-backend
 
 ## Available Scripts
 
