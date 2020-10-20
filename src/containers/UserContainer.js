@@ -19,7 +19,7 @@ class UserContainer extends React.Component {
   }
 
   render(){
-    if (this.props.match.url === "/logout") {
+    if (this.props.match && this.props.match.url === "/logout") {
       this.props.logoutUser()
       return <Redirect to="/" />
     } else {

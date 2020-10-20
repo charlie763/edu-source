@@ -1,9 +1,9 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
-import { connect } from 'react-redux'
+import { NavLink, useLocation } from 'react-router-dom'
+import SessionLink from './SessionLink'
 
-class NavBar extends React.Component {
-  render(){
+const NavBar = () => {
+    const location = useLocation()
     return(
       <nav id="navbar" className="navbar navbar-expand-lg navbar-light justify-content-between secondary-background">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,15 +23,11 @@ class NavBar extends React.Component {
           </ul>
         </div>
         <div>
-          {this.props.user.valid ?
-            <NavLink className="secondary-text" to="/logout">Logout</NavLink>
-            :
-            <NavLink className="secondary-text" to="/login">Login</NavLink>
-          }
+          <SessionLink location={location} />
         </div>
       </nav>
     )
-  }
+
 }
 
-export default connect(state => ({user: state.user}))(NavBar)
+export default NavBar

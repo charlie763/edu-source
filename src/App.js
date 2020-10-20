@@ -10,16 +10,30 @@ import PlaylistContainer from './containers/PlaylistContainer'
 function App() {
   return (
     <Router>
-      <Route path="/" component={NavBar} />
+      <NavBar />
       <div className="container">
         <Switch>
           <Route exact path="/" render={props => <ResourceContainer {...props}/>} />
           <Route path="/logout" render={props => <UserContainer {...props}/>}/>
-          <Route path="/login" render={props => 
-            <ModalWrapper title="Login" id="login-form" previousUrl="/">
-              <UserContainer {...props}/>
-            </ModalWrapper> 
-          }/>
+          <Route path="/login" render={props => {
+            // return (
+            //   <>
+            //     <ModalWrapper title="Login" id="login-form" previousUrl={url.slice(0,url.indexOf("/playlists"))}>
+            //       <UserContainer />
+            //     </ModalWrapper>
+            //     <PlaylistContext 
+            //       context={this.props.location.context}
+            //       resourceId={this.props.location.state ? this.props.location.state.resourceId : null}
+            //     />
+            //   </>
+            // )
+            // debugger;
+            return (
+              <ModalWrapper title="Login" id="login-form" previousUrl={props.location.previousUrl}>
+                <UserContainer {...props}/>
+              </ModalWrapper> 
+            )
+          }}/>
           <Route path="/signup" render={props => <UserContainer {...props} />} />
           <Route path="/resources" render={props => <ResourceContainer {...props}/>} />
           <Route path="/bookshelves" render={props => <PlaylistContainer {...props}/>}/>
