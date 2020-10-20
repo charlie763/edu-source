@@ -8,7 +8,8 @@ class UserContainer extends React.Component {
     mode: "login"
   }
 
-  switchMode = () => {
+  switchMode = e => {
+    e.preventDefault()
     if (this.state.mode === "login"){
       this.setState({mode: "signup"})
     } else if (this.state.mode === "signup"){

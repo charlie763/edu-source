@@ -32,6 +32,10 @@
   vertical-align: -webkit-baseline-middle;
 }
 
+.link {
+  vertical-align: baseline!important;
+  padding: 0!important;
+}
 
 .modal {
   display: block!important;

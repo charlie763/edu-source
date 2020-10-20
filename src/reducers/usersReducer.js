@@ -1,5 +1,3 @@
-import cuid from 'cuid'
-
 function usersReducer(state = { current: {}, valid: true, authCompleted: false, errors: {} }, action){
   switch(action.type){
     case "LOGIN_USER":
