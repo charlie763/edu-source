@@ -73,11 +73,13 @@ class ResourceContainer extends React.Component {
               )
             }
           }}/>
-          <Route path={`${this.props.match.path}/:id`} render={props => 
+          <Route path={`${this.props.match.path}/:id`} render={props =>
             <Resource
               {...props} 
               resource={findResource.call(this, props.match.params.id)} 
-              loadStatus={this.props.loadStatus} 
+              loadStatus={this.props.loadStatus}
+              isResourceInPlaylist={resourceId => isResourceInPlaylist.call(this, resourceId)}
+              removeResourceFromPlaylist={this.props.removeResourceFromPlaylist} 
             />
           } />
           <Route path={`${this.props.match.path}`}>

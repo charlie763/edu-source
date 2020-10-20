@@ -19,6 +19,7 @@ class PlaylistContext extends React.Component {
                   resource={findResource.call(this, this.props.resourceId)} 
                   loadStatus={this.props.loadStatus} 
                   displayGrade={displayGrade}
+                  isResourceInPlaylist={resourceId => isResourceInPlaylist.call(this, resourceId)}
                 />
       case "bookshelves":
         return <Playlists 
