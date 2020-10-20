@@ -14,7 +14,7 @@ function fetchPlaylists(){
   }
   return dispatch => {
     dispatch({type: 'LOAD_PLAYLISTS'})
-    fetch(BASE_URL + `/?token=${token}`, configObj)
+    fetch(BASE_URL, configObj)
       .then(resp => resp.json())
       .then(playlists => dispatch({
         type: "ADD_PLAYLISTS",

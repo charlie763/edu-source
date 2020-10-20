@@ -22,6 +22,12 @@ class ResourceContainer extends React.Component {
     this.props.authorizeUser()
   }
 
+  componentDidUpdate(prevProps){
+    if (prevProps.user.valid !== this.props.user.valid){
+      this.props.fetchPlaylists()
+    }
+  }
+
   render(){
     return(
       <div>

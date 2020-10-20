@@ -1,4 +1,5 @@
 import * as Cookies from "js-cookie"
+import { fetchPlaylists } from './playlistActions'
 const BASE_URL = 'http://localhost:3000'
 
 function buildPostObj(user){
@@ -41,7 +42,12 @@ function loginUser(user){
     dispatch({type: "START_AUTH"})
     fetch(BASE_URL.concat('/login'), configObj)
       .then(resp=>resp.json())
-      .then(userData => validateUser(dispatch, userData))
+      .then(userData => {
+        validateUser(dispatch, userData)
+        // if (userData.valid === "true") {
+        //   fetchPlaylists()
+        // }
+      })
   }
 }
 
