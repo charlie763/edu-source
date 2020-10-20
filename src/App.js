@@ -16,18 +16,6 @@ function App() {
           <Route exact path="/" render={props => <ResourceContainer {...props}/>} />
           <Route path="/logout" render={props => <UserContainer {...props}/>}/>
           <Route path="/login" render={props => {
-            // return (
-            //   <>
-            //     <ModalWrapper title="Login" id="login-form" previousUrl={url.slice(0,url.indexOf("/playlists"))}>
-            //       <UserContainer />
-            //     </ModalWrapper>
-            //     <PlaylistContext 
-            //       context={this.props.location.context}
-            //       resourceId={this.props.location.state ? this.props.location.state.resourceId : null}
-            //     />
-            //   </>
-            // )
-            // debugger;
             return (
               <ModalWrapper title="Login" id="login-form" previousUrl={props.location.previousUrl}>
                 <UserContainer {...props}/>
