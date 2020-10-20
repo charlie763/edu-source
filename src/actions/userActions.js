@@ -48,7 +48,7 @@ function loginUser(user){
 function logoutUser(){
   Cookies.remove("eduResourceSession")
   return dispatch => {
-    dispatch({type: "INVALID_USER", errors: "user logged out")
+    dispatch({type: "INVALID_USER", errors: "user logged out"})
   }
 }
 

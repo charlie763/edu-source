@@ -24,9 +24,9 @@ class NavBar extends React.Component {
         </div>
         <div>
           {this.props.user.valid ?
-            <NavLink className="secondary-text" to="/login">Login</NavLink>
-            :
             <NavLink className="secondary-text" to="/logout">Logout</NavLink>
+            :
+            <NavLink className="secondary-text" to="/login">Login</NavLink>
           }
         </div>
       </nav>

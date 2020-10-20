@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import UserLogin from '../components/UserLogin'
 import { createUser, loginUser, logoutUser } from '../actions/userActions'
+import { Redirect } from 'react-router-dom'
 
 class UserContainer extends React.Component {
   state = {
@@ -18,16 +19,21 @@ class UserContainer extends React.Component {
   }
 
   render(){
-    return(
-      <UserLogin 
-        loginUser={this.props.loginUser}
-        createUser={this.props.createUser}
-        user={this.props.user}
-        mode={this.state.mode}
-        switchMode={this.switchMode}
-        url = {this.props.match ? this.props.match.url : null}
-      />
-    )
+    if (this.props.match.url === "/logout") {
+      this.props.logoutUser()
+      return <Redirect to="/" />
+    } else {
+      return(
+        <UserLogin 
+          loginUser={this.props.loginUser}
+          createUser={this.props.createUser}
+          user={this.props.user}
+          mode={this.state.mode}
+          switchMode={this.switchMode}
+          url = {this.props.match ? this.props.match.url : null}
+        />
+      )
+    }
   }
 }
 
