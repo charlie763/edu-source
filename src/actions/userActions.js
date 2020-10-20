@@ -1,5 +1,4 @@
 import * as Cookies from "js-cookie"
-import { fetchPlaylists } from './playlistActions'
 const BASE_URL = 'http://localhost:3000'
 
 function buildPostObj(user){
@@ -42,12 +41,14 @@ function loginUser(user){
     dispatch({type: "START_AUTH"})
     fetch(BASE_URL.concat('/login'), configObj)
       .then(resp=>resp.json())
-      .then(userData => {
-        validateUser(dispatch, userData)
-        // if (userData.valid === "true") {
-        //   fetchPlaylists()
-        // }
-      })
+      .then(userData => validateUser(dispatch, userData))
+  }
+}
+
+function logoutUser(){
+  Cookies.remove("eduResourceSession")
+  return dispatch => {
+    dispatch({type: "INVALID_USER", errors: "user logged out")
   }
 }
 
@@ -82,4 +83,4 @@ function authorizeUser(){
   }
 }
 
-export { createUser, loginUser, authorizeUser }
+export { createUser, loginUser, authorizeUser, logoutUser }

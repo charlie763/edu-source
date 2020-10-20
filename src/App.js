@@ -14,6 +14,7 @@ function App() {
       <div className="container">
         <Switch>
           <Route exact path="/" render={props => <ResourceContainer {...props}/>} />
+          <Route path="/logout" render={props => <UserContainer {...props}/>}/>
           <Route path="/login" render={props => 
             <ModalWrapper title="Login" id="login-form" previousUrl="/">
               <UserContainer {...props}/>

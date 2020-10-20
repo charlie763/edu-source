@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import UserLogin from '../components/UserLogin'
-import { createUser, loginUser } from '../actions/userActions'
+import { createUser, loginUser, logoutUser } from '../actions/userActions'
 
 class UserContainer extends React.Component {
   state = {
@@ -31,4 +31,4 @@ class UserContainer extends React.Component {
   }
 }
 
-export default connect(state => ({user: state.user}), { createUser, loginUser })(UserContainer)
+export default connect(state => ({user: state.user}), { createUser, loginUser , logoutUser })(UserContainer)
