@@ -1,5 +1,4 @@
 import React from 'react'
-import { displayGrade } from '../utilities'
 import ResourceThumbnail from './ResourceThumbnail'
 
 const Playlist = props => {
