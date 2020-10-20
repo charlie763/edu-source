@@ -42,7 +42,7 @@ const Resource = props => {
             </div>
           </div>
           <div className="card-body">
-            <h4 classNmae="card-title">{props.resource.title}</h4>
+            <h4 className="card-title">{props.resource.title}</h4>
             <p>{props.resource.description}</p>
             <div className ="text-center">
               <EmbedVideo videoUrl={props.resource.url} title={props.resource.title}/>

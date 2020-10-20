@@ -29,7 +29,7 @@ const ResourceThumbnail = props => {
         </div>
       </div>
       <div className="card-body">
-        <h4 classNmae="card-title">{props.resource.title}</h4>
+        <h4 className="card-title">{props.resource.title}</h4>
       <br/>
         <p>{props.resource.description}</p>
         <Link className="btn btn-primary tertiary-background" to={`/resources/${props.resource.id}`}>See More</Link>

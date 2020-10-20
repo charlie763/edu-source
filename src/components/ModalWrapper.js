@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const ModalWrapper = props => {
   return(
-    <div className="modal" id={props.id} tabindex="-1" role="dialog">
+    <div className="modal" id={props.id} tabIndex="-1" role="dialog">
       <div className="modal-dialog modal-dialog-centered" role="document">
         <div className="modal-content">
           <div className="modal-header">

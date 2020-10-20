@@ -15,13 +15,13 @@ const Playlists = props => (
       }}>
         <h5>
           <img className="icon" src={addIcon} alt="add button"></img>
-          <span class="mx-2 primary-text badge">New Playlist</span>
+          <span className="mx-2 primary-text badge">New Playlist</span>
         </h5>
       </Link>
     </div>
     <div className="row justify-content-center">
       {props.playlists.map(playlist => 
-        <Link to={`/bookshelves/${playlist.id}`}>
+        <Link key={playlist.id} to={`/bookshelves/${playlist.id}`}>
           <div className="card">
             <div className="card-header">
               <h6 className="primary-text">{playlist.name}</h6>
