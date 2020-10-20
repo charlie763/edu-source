@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Link, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
 import { fetchPlaylists, addResourceToPlaylist, removeResourceFromPlaylist, addPlaylist } from '../actions/playlistActions'
 import { authorizeUser, loginUser } from '../actions/userActions'
@@ -23,7 +23,7 @@ class ResourceContainer extends React.Component {
   }
 
   findResource = id => {
-    return this.props.resources.find(resource => resource.id == id)
+    return this.props.resources.find(resource => resource.id == parseInt(id, 10))
   }
 
   render(){

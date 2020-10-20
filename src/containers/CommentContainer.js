@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Route, Redirect } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { authorizeUser } from '../actions/userActions'
 import { addComment, fetchComments } from '../actions/commentActions'
 import CommentForm from '../components/CommentForm'
@@ -19,10 +19,6 @@ class CommentContainer extends React.Component{
       debugger;
       this.props.fetchComments(this.props.resourceId)
     }
-  }
-
-  findResource = id => {
-    return this.props.resources.find(resource => resource.id == id)
   }
 
   render(){
