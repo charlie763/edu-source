@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { addResource, fetchResources } from '../actions/resourceActions'
 import { fetchPlaylists, addResourceToPlaylist, removeResourceFromPlaylist, addPlaylist } from '../actions/playlistActions'
 import { authorizeUser, loginUser } from '../actions/userActions'
-import { isResourceInPlaylist } from '../utilities'
+import { isResourceInPlaylist, findResource } from '../utilities'
 import ResourceForm from '../components/ResourceForm'
 import Resources from '../components/Resources'
 import Resource from '../components/Resource'
@@ -20,10 +20,6 @@ class ResourceContainer extends React.Component {
     }
     this.props.fetchPlaylists()
     this.props.authorizeUser()
-  }
-
-  findResource = id => {
-    return this.props.resources.find(resource => resource.id == parseInt(id, 10))
   }
 
   render(){
@@ -53,7 +49,7 @@ class ResourceContainer extends React.Component {
                       addPlaylist={this.props.addPlaylist}
                       playlists={this.props.playlists}
                       playlistAdded={this.props.playlistAdded}
-                      findResource={this.findResource}
+                      resources={this.props.resources}
                     />
                   </ModalWrapper>
                   <PlaylistContext 
@@ -80,7 +76,7 @@ class ResourceContainer extends React.Component {
           <Route path={`${this.props.match.path}/:id`} render={props => 
             <Resource
               {...props} 
-              resource={this.findResource(props.match.params.id)} 
+              resource={findResource.call(this, props.match.params.id)} 
               loadStatus={this.props.loadStatus} 
             />
           } />

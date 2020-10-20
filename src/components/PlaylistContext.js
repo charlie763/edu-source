@@ -1,15 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { displayGrade, isResourceInPlaylist } from '../utilities'
+import { displayGrade, isResourceInPlaylist, findResource } from '../utilities'
 import Resources from './Resources'
 import Resource from './Resource'
 import Playlists from './Playlists'
 
 class PlaylistContext extends React.Component {
-  findResource = id => {
-    return this.props.resources.find(resource => resource.id == id)
-  }
-
   render(){
     switch(this.props.context){
       case "resources":
@@ -20,7 +16,7 @@ class PlaylistContext extends React.Component {
       case "resource":
         return  <Resource
                   match={{url: `/resources/${this.props.resourceId}`}}
-                  resource={this.findResource(this.props.resourceId)} 
+                  resource={findResource.call(this, this.props.resourceId)} 
                   loadStatus={this.props.loadStatus} 
                   displayGrade={displayGrade}
                 />

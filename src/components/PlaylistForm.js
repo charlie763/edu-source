@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { handleInputChange } from '../utilities'
+import { handleInputChange, findResource } from '../utilities'
 
 class PlaylistForm extends React.Component{
   state = {
@@ -35,7 +35,7 @@ class PlaylistForm extends React.Component{
     e.preventDefault()
     this.props.addPlaylist({
       name: this.state.name,
-      resources: [{...this.props.findResource(this.props.location.state.resourceId)}]
+      resources: [{...findResource.call(this, this.props.location.state.resourceId)}]
     })
   }
 

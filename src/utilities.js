@@ -28,4 +28,8 @@ function isResourceInPlaylist(resourceId){
   return false
 }
 
-export { handleInputChange, handleSubmit, displayGrade, isResourceInPlaylist }
+function findResource(id){
+  return this.props.resources.find(resource => resource.id == parseInt(id, 10))
+}
+
+export { handleInputChange, handleSubmit, displayGrade, isResourceInPlaylist, findResource }
