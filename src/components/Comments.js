@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Comments = props => (
-  <div className="my-3">
+  <div className="my-3 comments-wrapper">
     <h5>Comments:</h5>
     <ul className="list-group-flush px-0">
       {props.comments.map(comment => (

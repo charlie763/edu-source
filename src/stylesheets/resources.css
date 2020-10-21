@@ -68,3 +68,11 @@ input[type='range']:nth-child(1)::-webkit-slider-thumb{
 .badge {
   margin: 0rem .25rem 0rem .25rem;
 }
+
+.comments-wrapper {
+  width: 80%;
+}
+
+.resource-wrapper {
+  width: 80%;
+}

@@ -23,7 +23,7 @@ class CommentContainer extends React.Component{
 
   render(){
     return(
-      <div>
+      <>
         <Route exact path={`${this.props.relativePath}/comments/new`} render={props => {
           if (this.props.user.valid){
             return (
@@ -42,7 +42,7 @@ class CommentContainer extends React.Component{
           }
         }}/>
         <Comments comments={this.props.comments} user={this.props.user} />
-      </div>
+      </>
     )
   }
 }
