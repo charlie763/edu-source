@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { displayGrade } from '../utilities'
+import EmbedVideo from './EmbedVideo'
 
 const ResourceThumbnail = props => {
   return (
@@ -30,7 +31,9 @@ const ResourceThumbnail = props => {
       </div>
       <div className="card-body">
         <h4 className="card-title">{props.resource.title}</h4>
-      <br/>
+        <div className ="embed-responsive embed-responsive-16by9">
+          <EmbedVideo videoUrl={props.resource.url} title={props.resource.title}/>
+        </div>
         <p>{props.resource.description}</p>
         <Link className="btn btn-primary tertiary-background" to={`/resources/${props.resource.id}`}>See More</Link>
       </div>

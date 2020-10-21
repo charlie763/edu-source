@@ -12,7 +12,7 @@ const EmbedVideo = ({ videoUrl, title }) => {
     return <></>
   }
   return (
-    <iframe title={title} width="560" height="315" src={`${embedUrl}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+    <iframe className="embed-responsive-item" title={title} width="560" height="315" src={`${embedUrl}`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
   )
 }
 
