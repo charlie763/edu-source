@@ -34,7 +34,7 @@ const ResourceThumbnail = props => {
         <div className ="embed-responsive embed-responsive-16by9">
           <EmbedVideo videoUrl={props.resource.url} title={props.resource.title}/>
         </div>
-        <p>{props.resource.description}</p>
+        <p>{props.resource.description.length > 180 ? props.resource.description.slice(0,180) + "..." : props.resource.description}</p>
         <Link className="btn btn-primary tertiary-background" to={`/resources/${props.resource.id}`}>See More</Link>
       </div>
     </div>
