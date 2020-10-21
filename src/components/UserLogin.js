@@ -23,7 +23,7 @@ class UserLogin extends React.Component {
   render(){
     if (this.state.submitted && this.props.url === "/login"){
       return <Redirect to="/"/>
-    } else if (this.props.mode === "login"){
+    } else if (this.props.mode === "Login"){
       return(
         <>
           <form onSubmit={this.handleLoginSubmit}>
@@ -34,7 +34,7 @@ class UserLogin extends React.Component {
           </form>
         </>
       )
-    } else if (this.props.mode === "signup"){
+    } else if (this.props.mode === "Signup"){
       return(
         <form onSubmit={e => handleSubmit.call(this, {
           e, 

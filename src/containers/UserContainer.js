@@ -3,18 +3,19 @@ import { connect } from 'react-redux'
 import UserLogin from '../components/UserLogin'
 import { createUser, loginUser, logoutUser } from '../actions/userActions'
 import { Redirect } from 'react-router-dom'
+import ModalWrapper from '../components/ModalWrapper'
 
 class UserContainer extends React.Component {
   state = {
-    mode: "login"
+    mode: "Login"
   }
 
   switchMode = e => {
     e.preventDefault()
-    if (this.state.mode === "login"){
-      this.setState({mode: "signup"})
-    } else if (this.state.mode === "signup"){
-      this.setState({mode: "login"})
+    if (this.state.mode === "Login"){
+      this.setState({mode: "Signup"})
+    } else if (this.state.mode === "Signup"){
+      this.setState({mode: "Login"})
     }
   }
 
@@ -24,14 +25,16 @@ class UserContainer extends React.Component {
       return <Redirect to="/" />
     } else {
       return(
-        <UserLogin 
-          loginUser={this.props.loginUser}
-          createUser={this.props.createUser}
-          user={this.props.user}
-          mode={this.state.mode}
-          switchMode={this.switchMode}
-          url = {this.props.match ? this.props.match.url : null}
-        />
+        <ModalWrapper title={this.state.mode} id="login-form" previousUrl={this.props.previousUrl}>
+          <UserLogin 
+            loginUser={this.props.loginUser}
+            createUser={this.props.createUser}
+            user={this.props.user}
+            mode={this.state.mode}
+            switchMode={this.switchMode}
+            url = {this.props.match ? this.props.match.url : null}
+          />
+        </ModalWrapper>
       )
     }
   }

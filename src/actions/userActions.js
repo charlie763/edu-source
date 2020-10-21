@@ -8,6 +8,7 @@ function buildPostObj(user){
       'Content-Type': 'application/json',
       Accept: 'application/json'
     },
+    credentials: 'include',
     body: JSON.stringify(user)
   })
 }
@@ -63,7 +64,8 @@ function authorizeUser(){
           'Content-Type': 'application/json',
           Accept: 'application/json',
           Authorization: token
-        }
+        },
+        credentials: 'include'
       }
       fetch(BASE_URL.concat('/authorize'), configObj)
         .then(resp => resp.json())
