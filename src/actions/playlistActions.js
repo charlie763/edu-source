@@ -1,5 +1,5 @@
 import * as Cookies from "js-cookie"
-const BASE_URL = 'http://localhost:3000/playlists'
+const BASE_URL = 'https://edusource-api.herokuapp.com/playlists'
 
 const token = () => Cookies.get("eduResourceSession")
 

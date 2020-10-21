@@ -1,5 +1,5 @@
 import * as Cookies from "js-cookie"
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://edusource-api.herokuapp.com'
 
 function buildPostObj(user){
   return ({

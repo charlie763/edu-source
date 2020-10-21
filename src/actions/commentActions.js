@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000/resources'
+const BASE_URL = 'https://edusource-api.herokuapp.com/resources'
 
 function addComment(comment){
   const configObj = {
