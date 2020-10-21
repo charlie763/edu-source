@@ -6,7 +6,7 @@ import addIcon from '../assets/add-icon.png'
 const Playlists = props => (
   <>
     <div className="row justify-content-center py-4">
-      <h3>Your Playlists</h3>
+    <h3>{props.user.valid ? `${props.user.current.username}'s Bookshelves` : "Your Bookshelves"}</h3>
     </div>
     <div className="row justify-content-center">
       <Link className="mx-4" to={{
@@ -15,7 +15,7 @@ const Playlists = props => (
       }}>
         <h5>
           <img className="icon" src={addIcon} alt="add button"></img>
-          <span className="mx-2 primary-text badge">New Playlist</span>
+          <span className="mx-2 primary-text badge">New Bookshelf</span>
         </h5>
       </Link>
     </div>

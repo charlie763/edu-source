@@ -60,7 +60,7 @@ class PlaylistForm extends React.Component{
         <div>
           <form onSubmit={this.handleAddSubmit}>
             <div className="form-group  sub-form-group">
-              <label>New Playlist: </label>
+              <label>New Bookshelf: </label>
               <input className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
             </div> 
             <input className="btn btn-primary tertiary-background" type="submit" value="add"/>
@@ -68,7 +68,7 @@ class PlaylistForm extends React.Component{
           <br/>
           <form onSubmit={this.handleSelectSubmit}>
             <div className="form-group sub-form-group">
-              <label>Existing Playlist: </label>
+              <label>Existing Bookshelves: </label>
               <select className="form-control" onChange={this.handleSelectChange}>
                 {this.props.playlists.map(playlist => (
                   <option id={playlist.id} key={playlist.id}>{playlist.name}</option>
