@@ -1,7 +1,7 @@
 ## Description ##
 EduSource is an application for parents, particularly in COVID times, to find, share, and organizing online educational resources for their children. Users can view resources uploaded by other users, see comments, play embedded videos, and bookmark resources so they can easily access them later. 
 
-This repo contains the frontend portion of this application build with React and Redux. The backend repo, built via a Rails API, can be found [here](https://github.com/charlie763/edu-source-backend)
+This repo contains the frontend portion of this application build with React and Redux. The backend repo, built via a Rails API, can be found [here](https://github.com/charlie763/edu-source-backend).
 
 *Screenshot of the home screen where you can view educational resources:*
 [![homescreen-screenshot.png](https://i.postimg.cc/xTD0sXq1/homescreen-screenshot.png)](https://postimg.cc/bdgcrNQ7)
@@ -72,3 +72,6 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## License
+This repository is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
