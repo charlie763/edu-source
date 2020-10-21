@@ -14,6 +14,7 @@ function buildPostObj(user){
 }
 
 function validateUser(dispatch, userData){
+  console.log(userData, "user data in validate user method")
   if (userData.valid === "true"){
     Cookies.remove("eduResourceSession")
     Cookies.set("eduResourceSession", userData.token, { expires: 14 })
