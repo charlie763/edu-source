@@ -10,7 +10,8 @@ function fetchPlaylists(){
       'Content-Type': 'application/json',
       Accept: 'application/json',
       Authorization: token()
-    }
+    },
+    credentials: 'include'
   }
   return dispatch => {
     dispatch({type: 'LOAD_PLAYLISTS'})
@@ -31,6 +32,7 @@ function addResourceToPlaylist(resourceID, playlistId){
       Accept: 'application/json',
       Authorization: token()
     },
+    credentials: 'include',
     body: JSON.stringify({
       update: "add resource",
       resource_id: resourceID,
@@ -56,6 +58,7 @@ function removeResourceFromPlaylist(resourceId, playlistId){
       Accept: 'application/json',
       Authorization: token()
     },
+    credentials: 'include',
     body: JSON.stringify({
       update: "remove resource",
       resource_id: resourceId,
@@ -80,6 +83,7 @@ function addPlaylist(playlist){
       Accept: 'application/json',
       Authorization: token()
     },
+    credentials: 'include',
     body: JSON.stringify(playlist)
   }
 
