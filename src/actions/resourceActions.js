@@ -1,4 +1,9 @@
-const BASE_URL = 'https://edusource-api.herokuapp.com/resources'
+let BASE_URL;
+if (process.env.NODE_ENV === 'production'){
+  BASE_URL = 'https://edusource-api.herokuapp.com/resources'
+} else {
+  BASE_URL = 'http://localhost:3000/resources'
+}
 
 function addResource(resource){
   const configObj = {

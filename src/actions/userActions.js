@@ -1,5 +1,11 @@
 import * as Cookies from "js-cookie"
-const BASE_URL = 'https://edusource-api.herokuapp.com'
+
+let BASE_URL;
+if (process.env.NODE_ENV === 'production'){
+  BASE_URL = 'https://edusource-api.herokuapp.com'
+} else {
+  BASE_URL = 'http://localhost:3000'
+}
 
 function buildPostObj(user){
   return ({
