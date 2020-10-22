@@ -22,7 +22,7 @@ const Playlists = props => (
     <div className="row justify-content-center">
       {props.playlists.map(playlist => 
         <Link key={playlist.id} to={`/bookshelves/${playlist.id}`}>
-          <div className="card">
+          <div className="card mx-2">
             <div className="card-header">
               <h6 className="primary-text">{playlist.name}</h6>
             </div>
