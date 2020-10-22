@@ -6,6 +6,9 @@ This repo contains the frontend portion of this application build with React and
 *Screenshot of the home screen where you can view educational resources:*
 [![homescreen-screenshot.png](https://i.postimg.cc/xTD0sXq1/homescreen-screenshot.png)](https://postimg.cc/bdgcrNQ7)
 
+## Heroku deployment ##
+This application is currently hosted live on Heroku. The main change that needs to be made for this to work is to `npm install serve` and set `"start": "serve -s build"` under `scripts` in `package.json`. The main branch will not have this start script, but the production branch does. Other environment sensative settings are managed with `process.env.NODE_ENV` statements.
+
 ## Available Scripts
 
 In the project directory, you can run:
