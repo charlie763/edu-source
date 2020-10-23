@@ -68,9 +68,7 @@ class ResourceContainer extends React.Component {
               const url = props.match.url
               return (
                 <>
-                  <ModalWrapper title="Login" id="login-form" previousUrl={url.slice(0,url.indexOf("/playlists"))}>
-                    <UserContainer />
-                  </ModalWrapper>
+                  <UserContainer previousUrl={url.slice(0,url.indexOf("/playlists"))}/>
                   <PlaylistContext 
                     context={this.props.location.context}
                     resourceId={this.props.location.state ? this.props.location.state.resourceId : null}

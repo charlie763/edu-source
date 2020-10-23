@@ -46,9 +46,7 @@ class PlaylistContainer extends React.Component{
             } else {
               return (
                 <>
-                  <ModalWrapper title="Login" id="login-form" previousUrl={this.props.match.url}>
-                    <UserContainer />
-                  </ModalWrapper>
+                  <UserContainer previousUrl={this.props.match.url}/>
                   <Playlists 
                       playlists={this.props.playlists}
                       user={this.props.user}

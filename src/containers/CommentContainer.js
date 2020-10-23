@@ -5,7 +5,6 @@ import { authorizeUser } from '../actions/userActions'
 import { addComment, fetchComments } from '../actions/commentActions'
 import CommentForm from '../components/CommentForm'
 import Comments from '../components/Comments'
-import ModalWrapper from '../components/ModalWrapper'
 import UserContainer from './UserContainer'
 
 class CommentContainer extends React.Component{
@@ -35,9 +34,7 @@ class CommentContainer extends React.Component{
             )
           } else {
             return (
-              <ModalWrapper title="Login" id="login-form" previousUrl={`/resources/${this.props.resourceId}`}>
-                <UserContainer />
-              </ModalWrapper>
+              <UserContainer previousUrl={`/resources/${this.props.resourceId}`}/>
             )
           }
         }}/>
