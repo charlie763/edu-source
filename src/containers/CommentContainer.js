@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { Route } from 'react-router-dom'
 import { authorizeUser } from '../actions/userActions'
 import { addComment, fetchComments } from '../actions/commentActions'
-import CommentForm from '../components/CommentForm'
-import Comments from '../components/Comments'
+import CommentForm from '../components/comments/CommentForm'
+import Comments from '../components/comments/Comments'
 import UserContainer from './UserContainer'
 
 class CommentContainer extends React.Component{

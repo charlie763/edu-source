@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import { handleInputChange, handleSubmit } from '../utilities'
+import { handleInputChange, handleSubmit } from '../../utilities'
 
 class CommentForm extends React.Component{
   state = {
