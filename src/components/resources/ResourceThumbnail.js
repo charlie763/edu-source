@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { displayGrade } from '../utilities'
-import EmbedVideo from './EmbedVideo'
+import { displayGrade } from '../../utilities'
+import EmbedVideo from '../EmbedVideo'
 
 const ResourceThumbnail = props => {
   return (

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { displayGrade } from '../utilities'
-import EmbedVideo from './EmbedVideo'
-import CommentContainer from '../containers/CommentContainer'
+import { displayGrade } from '../../utilities'
+import EmbedVideo from '../EmbedVideo'
+import CommentContainer from '../../containers/CommentContainer'
 
 const Resource = props => {
   if (!props.loadStatus || props.loadStatus === "pending"){

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { handleSubmit, displayGrade } from '../utilities'
-import '../stylesheets/resources.css'
+import { handleSubmit, displayGrade } from '../../utilities'
+import '../../stylesheets/resources.css'
 
 class ResourceForm extends React.Component {
   static cleanState = {

@@ -1,9 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { displayGrade, isResourceInPlaylist, findResource } from '../utilities'
-import Resources from './Resources'
-import Resource from './Resource'
-import Playlists from './Playlists'
+import Resources from './resources/Resources'
+import Resource from './resources/Resource'
+import Playlists from './playlists/Playlists'
 
 class PlaylistContext extends React.Component {
   render(){

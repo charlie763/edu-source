@@ -1,6 +1,6 @@
 import React from 'react'
 import { Redirect } from 'react-router-dom'
-import { handleInputChange, findResource } from '../utilities'
+import { handleInputChange, findResource } from '../../utilities'
 
 class PlaylistForm extends React.Component{
   state = {

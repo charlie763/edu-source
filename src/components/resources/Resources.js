@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import ResourceThumbnail from './ResourceThumbnail'
-import addIcon from '../assets/add-icon.png'
+import addIcon from '../../assets/add-icon.png'
 
 const Resources = props => {
   return (
