@@ -21,3 +21,15 @@ it ('matches the snapshot', () => {
     ).toJSON()
   expect(tree).toMatchSnapshot()
 })
+
+it ('redirects to the resource view once submitted', () => {
+  
+})
+
+it ('redirects to the resource view if the x is clicked', () => {
+  
+})
+
+it ('triggers the addComment action upon submission', () => {
+  
+})
