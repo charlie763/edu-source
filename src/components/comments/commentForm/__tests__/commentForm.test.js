@@ -19,19 +19,21 @@ const user = {
   errors: {}
 }
 
+const props = {
+  resourceId: 1, 
+  user,
+  addComment
+}
+
 it ('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(<Router><CommentForm 
-    resourceId={1} 
-    user={user}
-    addComment={addComment}/></Router>, div)
+    {...props}/></Router>, div)
 })
 
 it ('matches the snapshot', () => {
   const tree = renderer.create(<Router><CommentForm 
-    resourceId={1} 
-    user={user}
-    addComment={addComment}/></Router>
+    {...props} /></Router>
     ).toJSON()
   expect(tree).toMatchSnapshot()
 })
@@ -39,9 +41,7 @@ it ('matches the snapshot', () => {
 it ('redirects to the resource view once submitted', () => {
   const { getByTestId, history } = renderWithRouter(
     <CommentForm 
-    resourceId={1} 
-    user={user}
-    addComment={addComment}/>,
+    {...props}/>,
   );
 
   fireEvent.click(getByTestId("comment-submit"));
