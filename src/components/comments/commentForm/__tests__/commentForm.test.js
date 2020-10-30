@@ -49,5 +49,10 @@ it ('redirects to the resource view if the x is clicked', () => {
 
 it ('triggers the addComment action upon submission', () => {
 //mock addcomment
-//use expect.toBeCalled(mock)
+//use expect(mock).toBeCalled()
+})
+
+it ('triggers the addComment action with the correct arguments passed in', () => {
+  //mock addcomment
+  //use expect(mock).toBeCalledWith(args)
 })
