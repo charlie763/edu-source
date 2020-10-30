@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+<div
+  className="modal"
+  id="comment-form"
+  role="dialog"
+  tabIndex="-1"
+>
+  <div
+    className="modal-dialog modal-dialog-centered"
+    role="document"
+  >
+    <div
+      className="modal-content"
+    >
+      <div
+        className="modal-header"
+      >
+        <h5
+          className="modal-title"
+        >
+          Add Comment
+        </h5>
+        <a
+          aria-label="Close"
+          className="close"
+          data-dismiss="modal"
+          href="/resources/1"
+          onClick={[Function]}
+          type="button"
+        >
+          <span
+            aria-hidden="true"
+          >
+            ×
+          </span>
+        </a>
+      </div>
+      <div
+        className="modal-body"
+      >
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="form-group"
+          >
+            <textarea
+              className="form-control"
+              name="text"
+              onChange={[Function]}
+              placeholder="write comment here..."
+              value=""
+            />
+          </div>
+          <input
+            className="btn btn-primary tertiary-background"
+            type="submit"
+            value="Post Comment"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
