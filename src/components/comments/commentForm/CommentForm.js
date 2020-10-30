@@ -37,7 +37,7 @@ class CommentForm extends React.Component{
                   <div className="form-group">
                     <textarea className="form-control" name="text" value={this.state.text} placeholder="write comment here..." onChange={e => handleInputChange.call(this, e)} />
                   </div>
-                  <input className="btn btn-primary tertiary-background" type="submit" value="Post Comment"/>
+                  <input data-testid="comment-submit" className="btn btn-primary tertiary-background" type="submit" value="Post Comment"/>
                 </form>
               </div>
             </div>
