@@ -5,6 +5,9 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { addComment } from '../../../../actions/commentActions'
 import renderer from 'react-test-renderer'
 import {cleanup, fireEvent, render} from '@testing-library/react'
+import { renderWithRouter } from '../../../../setupTests'
+
+afterEach(cleanup)
 
 const user = {
   current: {
@@ -34,14 +37,15 @@ it ('matches the snapshot', () => {
 })
 
 it ('redirects to the resource view once submitted', () => {
-  const { getByTestId } = render(
-    <Router><CommentForm 
+  const { getByTestId, history } = renderWithRouter(
+    <CommentForm 
     resourceId={1} 
     user={user}
-    addComment={addComment}/></Router>,
+    addComment={addComment}/>,
   );
 
   fireEvent.click(getByTestId("comment-submit"));
+  expect(history.location.pathname).toEqual('/resources/1')
 })
 
 it ('redirects to the resource view if the x is clicked', () => {
