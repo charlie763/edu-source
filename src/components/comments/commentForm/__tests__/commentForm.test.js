@@ -27,29 +27,24 @@ const props = {
 
 it ('renders without crashing', () => {
   const div = document.createElement('div')
-  ReactDOM.render(<Router><CommentForm 
-    {...props}/></Router>, div)
+  ReactDOM.render(<Router><CommentForm {...props}/></Router>, div)
 })
 
 it ('matches the snapshot', () => {
-  const tree = renderer.create(<Router><CommentForm 
-    {...props} /></Router>
-    ).toJSON()
+  const tree = renderer.create(<Router><CommentForm {...props} /></Router>).toJSON()
   expect(tree).toMatchSnapshot()
 })
 
 it ('redirects to the resource view once submitted', () => {
-  const { getByTestId, history } = renderWithRouter(
-    <CommentForm 
-    {...props}/>,
-  );
-
+  const { getByTestId, history } = renderWithRouter(<CommentForm {...props}/>,);
   fireEvent.click(getByTestId("comment-submit"));
   expect(history.location.pathname).toEqual('/resources/1')
 })
 
 it ('redirects to the resource view if the x is clicked', () => {
-
+  const { getByTestId, history } = renderWithRouter(<CommentForm {...props}/>,);
+  fireEvent.click(getByTestId("exit-comment-modal"));
+  expect(history.location.pathname).toEqual('/resources/1')
 })
 
 it ('triggers the addComment action upon submission', () => {

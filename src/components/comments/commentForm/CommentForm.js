@@ -18,7 +18,7 @@ class CommentForm extends React.Component{
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Add Comment</h5>
-                <Link to={`/resources/${this.props.resourceId}`} type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <Link data-testid="exit-comment-modal" to={`/resources/${this.props.resourceId}`} type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </Link>
               </div>

@@ -26,6 +26,7 @@ exports[`matches the snapshot 1`] = `
           aria-label="Close"
           className="close"
           data-dismiss="modal"
+          data-testid="exit-comment-modal"
           href="/resources/1"
           onClick={[Function]}
           type="button"
