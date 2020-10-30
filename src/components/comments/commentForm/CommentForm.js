@@ -13,7 +13,7 @@ class CommentForm extends React.Component{
       return <Redirect to={`/resources/${this.props.resourceId}`}/>
     } else {
       return(
-        <div className="modal" id="comment-form" tabindex="-1" role="dialog">
+        <div className="modal" id="comment-form" tabIndex="-1" role="dialog">
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
