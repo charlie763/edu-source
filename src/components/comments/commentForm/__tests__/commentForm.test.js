@@ -19,12 +19,12 @@ const user = {
   errors: {}
 }
 
-const addCommentMock = jest.mock(addComment)
+const addCommentMock = jest.mock('../../../../actions/commentActions')
 
 const props = {
   resourceId: 1, 
   user,
-  addCommentMock
+  addComment
 }
 
 it ('renders without crashing', () => {
