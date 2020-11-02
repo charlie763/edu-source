@@ -25,6 +25,14 @@ const props = {
   addComment
 }
 
+const submitState = {
+  text: "",
+  submitted: false, 
+  userId: 1, 
+  resourceId: 1,
+  user
+}
+
 const addCommentMock = jest.fn()
 const mockedProps = {...props, addComment: addCommentMock}
 
@@ -54,12 +62,11 @@ it ('triggers the addComment action upon submission', () => {
   const { getByTestId } = renderWithRouter(<CommentForm {...mockedProps}/>,);
   fireEvent.click(getByTestId("comment-submit"));
   expect(addCommentMock).toBeCalled()
-//mock addcomment
-//use expect(mock).toBeCalled()
 })
 
 it ('triggers the addComment action with the correct arguments passed in', () => {
-  //mock addcomment
-  //use expect(mock).toBeCalledWith(args)
+  const { getByTestId } = renderWithRouter(<CommentForm {...mockedProps}/>,);
+  fireEvent.click(getByTestId("comment-submit"));
+  expect(addCommentMock).toBeCalledWith(submitState)
 })
 
