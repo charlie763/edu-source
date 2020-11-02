@@ -19,13 +19,14 @@ const user = {
   errors: {}
 }
 
-const addCommentMock = jest.mock('../../../../actions/commentActions')
-
 const props = {
   resourceId: 1, 
   user,
   addComment
 }
+
+const addCommentMock = jest.fn()
+const mockedProps = {...props, addComment: addCommentMock}
 
 it ('renders without crashing', () => {
   const div = document.createElement('div')
@@ -50,6 +51,9 @@ it ('redirects to the resource view if the x is clicked', () => {
 })
 
 it ('triggers the addComment action upon submission', () => {
+  const { getByTestId } = renderWithRouter(<CommentForm {...mockedProps}/>,);
+  fireEvent.click(getByTestId("comment-submit"));
+  expect(addCommentMock).toBeCalled()
 //mock addcomment
 //use expect(mock).toBeCalled()
 })
