@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom'
 import { authorizeUser } from '../actions/userActions'
 import { addComment, fetchComments } from '../actions/commentActions'
 import CommentForm from '../components/comments/commentForm/CommentForm'
-import Comments from '../components/comments/Comments'
+import Comments from '../components/comments/comments/Comments'
 import UserContainer from './UserContainer'
 
 class CommentContainer extends React.Component{

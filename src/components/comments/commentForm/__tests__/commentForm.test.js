@@ -47,7 +47,7 @@ it ('matches the snapshot', () => {
 })
 
 it ('redirects to the resource view once submitted', () => {
-  const { getByTestId, history } = renderWithRouter(<CommentForm {...props}/>,);
+  const { getByTestId, history } = renderWithRouter(<CommentForm {...mockedProps}/>,);
   fireEvent.click(getByTestId("comment-submit"));
   expect(history.location.pathname).toEqual('/resources/1')
 })
