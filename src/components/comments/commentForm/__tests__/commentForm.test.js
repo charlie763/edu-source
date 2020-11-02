@@ -19,10 +19,12 @@ const user = {
   errors: {}
 }
 
+const addCommentMock = jest.mock(addComment)
+
 const props = {
   resourceId: 1, 
   user,
-  addComment
+  addCommentMock
 }
 
 it ('renders without crashing', () => {
@@ -56,3 +58,4 @@ it ('triggers the addComment action with the correct arguments passed in', () =>
   //mock addcomment
   //use expect(mock).toBeCalledWith(args)
 })
+
