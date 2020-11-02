@@ -1,7 +1,7 @@
 ## Description ##
 EduSource is an application for parents, particularly in COVID times, to find, share, and organize online educational resources for their children. Users can view resources uploaded by other users, see comments, play embedded videos, and bookmark resources so they can easily access them later. The frontend is built with React/Redux, and the backend is built with a Rails API. I used this project as an opportunity to practice setting up sessions workflow, maintaining page context through react-router-dom, and managing the flow of data between a decoupled frontend and backend.
 
-This repo contains the frontend portion of this application build with React and Redux. The backend repo, built via a Rails API, can be found [here](https://github.com/charlie763/edu-source-backend) and the app is live [here]](https://edusource.herokuapp.com/)
+This repo contains the frontend portion of this application build with React and Redux. The backend repo, built via a Rails API, can be found [here](https://github.com/charlie763/edu-source-backend) and the app is live [here](https://edusource.herokuapp.com/)
 
 *Screenshot of the home screen where you can view educational resources:*
 [![homescreen-screenshot.png](https://i.postimg.cc/xTD0sXq1/homescreen-screenshot.png)](https://postimg.cc/bdgcrNQ7)
