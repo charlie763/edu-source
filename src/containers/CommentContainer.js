@@ -15,7 +15,6 @@ class CommentContainer extends React.Component{
 
   componentDidUpdate(prevProps){
     if (prevProps.resourceLoadStatus !== this.props.resourceLoadStatus){
-      debugger;
       this.props.fetchComments(this.props.resourceId)
     }
   }
