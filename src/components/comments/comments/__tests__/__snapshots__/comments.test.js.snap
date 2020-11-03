@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot given mocked comments data 1`] = `
+<div
+  className="my-3 comments-wrapper"
+>
+  <h5>
+    Comments:
+  </h5>
+  <ul
+    className="list-group-flush px-0"
+  >
+    <li
+      className="list-group-item quartinary-background pt-3"
+    >
+      <h6
+        className="card-subtitle text-muted"
+      >
+        Naninbah
+        : 
+      </h6>
+      <span>
+        My kids love this!
+      </span>
+    </li>
+    <li
+      className="list-group-item quartinary-background pt-3"
+    >
+      <h6
+        className="card-subtitle text-muted"
+      >
+        Charlie
+        : 
+      </h6>
+      <span>
+        This is a test comment!
+      </span>
+    </li>
+  </ul>
+</div>
+`;

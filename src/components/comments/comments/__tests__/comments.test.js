@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Comments from '../Comments'
+import renderer from 'react-test-renderer'
 
 const comments = [
   {
@@ -33,7 +34,8 @@ it ('renders without crashing', ()=> {
 })
 
 it ('matches the snapshot given mocked comments data', ()=> {
-
+  const tree = renderer.create(<Comments comments={comments}/>).toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 it ('displays the correct number of comments', ()=> {
