@@ -13,6 +13,7 @@ exports[`matches the snapshot given mocked comments data 1`] = `
   >
     <li
       className="list-group-item quartinary-background pt-3"
+      data-testid="comment-wrapper"
     >
       <h6
         className="card-subtitle text-muted"
@@ -26,6 +27,7 @@ exports[`matches the snapshot given mocked comments data 1`] = `
     </li>
     <li
       className="list-group-item quartinary-background pt-3"
+      data-testid="comment-wrapper"
     >
       <h6
         className="card-subtitle text-muted"

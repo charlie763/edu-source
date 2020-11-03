@@ -43,7 +43,8 @@ it ('matches the snapshot given mocked comments data', ()=> {
 })
 
 it ('displays the correct number of comments', ()=> {
-  
+  const { queryAllByTestId } = render(<Comments comments={comments}/>)
+  expect(queryAllByTestId('comment-wrapper')).toHaveLength(2)
 })
 
 it ('displays the name of the user who made the comment', ()=> {
