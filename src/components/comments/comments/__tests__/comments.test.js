@@ -53,5 +53,6 @@ it ('displays the name of the user who made the comment', ()=> {
 })
 
 it ('displays the text of the comment', ()=> {
-
+  const { getByTestId } = render(<Comments comments={comments}/>)
+  expect(getByTestId('comments-wrapper')).toHaveTextContent("My kids love this!")
 })
