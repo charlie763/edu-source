@@ -2,6 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Comments from '../Comments'
 import renderer from 'react-test-renderer'
+import { render, cleanup } from '@testing-library/react'
+import '@testing-library/jest-dom/extend-expect'
+
+afterEach(cleanup)
 
 const comments = [
   {
@@ -12,7 +16,7 @@ const comments = [
     created_at: '2020-10-21T16:54:41.856Z',
     updated_at: '2020-10-21T16:54:41.856Z',
     user: {
-      username: 'Naninbah'
+      username: 'Nanibah'
     }
   },
   {
@@ -39,11 +43,13 @@ it ('matches the snapshot given mocked comments data', ()=> {
 })
 
 it ('displays the correct number of comments', ()=> {
-
+  
 })
 
 it ('displays the name of the user who made the comment', ()=> {
-
+  const { getByTestId } = render(<Comments comments={comments}/>)
+  expect(getByTestId('comments-wrapper')).toHaveTextContent("Nanibah")
+  expect(getByTestId('comments-wrapper')).toHaveTextContent("Charlie")
 })
 
 it ('displays the text of the comment', ()=> {

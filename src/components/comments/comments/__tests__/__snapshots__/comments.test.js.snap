@@ -3,6 +3,7 @@
 exports[`matches the snapshot given mocked comments data 1`] = `
 <div
   className="my-3 comments-wrapper"
+  data-testid="comments-wrapper"
 >
   <h5>
     Comments:
@@ -16,7 +17,7 @@ exports[`matches the snapshot given mocked comments data 1`] = `
       <h6
         className="card-subtitle text-muted"
       >
-        Naninbah
+        Nanibah
         : 
       </h6>
       <span>
