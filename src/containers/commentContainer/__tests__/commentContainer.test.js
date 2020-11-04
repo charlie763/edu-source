@@ -7,7 +7,6 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from '../../../reducers/rootReducer'
 import { fetchComments } from '../../../actions/commentActions'
-import { act } from 'react-dom/test-utils'
 import { renderWithStore } from '../../../setupTests'
 
 const mockFns = {
@@ -57,17 +56,18 @@ it ('renders without crashing', ()=> {
 it ('fetches comments upon rendering', ()=> {
   //fix: need to look at testing redux docs and add mockStore and then connect the mock function because currently the real fn is being connected
   const spy = jest.spyOn(mockFns, "fetchComments")
-  console.log(spy.getMockName())
   // .mockImplementation(() => 
   //     Promise.resolve({
   //       json: () => Promise.resolve(comments)
   //     })
   //   )
   renderWithStore(<Router>
-    <CommentContainer 
-      relativePath={"/resources/:id"} 
-      resourceId={1} />
-  </Router>)
+                    <CommentContainer 
+                      relativePath={"/resources/:id"} 
+                      resourceId={1} />
+                  </Router>,
+                  { initialState: { comments: {list: [], loadStatus: null, resourceLoaded: null} } }
+                  )
   
   // expect(spy).toHaveBeenCalled()
   mockFns.fetchComments.mockRestore()
