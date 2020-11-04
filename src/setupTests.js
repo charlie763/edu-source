@@ -8,6 +8,24 @@ import React from 'react'
 import { Router } from 'react-router-dom'
 import { render } from '@testing-library/react'
 import { createMemoryHistory } from 'history'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './reducers/rootReducer'
+
+function renderWithStore(
+  ui,
+  {
+    initialState,
+    store = createStore(rootReducer, initialState),
+    ...renderOptions
+  } = {}
+) {
+  function Wrapper({ children }) {
+    return <Provider store={store}>{children}</Provider>
+  }
+  return render(ui, { wrapper: Wrapper, ...renderOptions })
+}
+
 
 function renderWithRouter(
   ui,
@@ -22,5 +40,5 @@ function renderWithRouter(
   }
 }
 
-export { renderWithRouter }
+export { renderWithRouter, renderWithStore }
 
