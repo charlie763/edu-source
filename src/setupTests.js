@@ -11,8 +11,6 @@ import { createMemoryHistory } from 'history'
 import { Provider } from 'react-redux'
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import { createStore } from 'redux'
-import rootReducer from './reducers/rootReducer'
 
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
@@ -21,7 +19,7 @@ function renderWithStore(
   ui,
   {
     initialState,
-    store = createStore(rootReducer, initialState),
+    store = mockStore(initialState),
     ...renderOptions
   } = {}
 ) {

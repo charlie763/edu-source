@@ -66,7 +66,10 @@ it ('fetches comments upon rendering', ()=> {
                       relativePath={"/resources/:id"} 
                       resourceId={1} />
                   </Router>,
-                  { initialState: { comments: {list: [], loadStatus: null, resourceLoaded: null} } }
+                  { initialState: { 
+                      comments: {list: [], loadStatus: null, resourceLoaded: null},
+                      resources: {list: [], loadStatus:null} 
+                    } }
                   )
   
   // expect(spy).toHaveBeenCalled()
