@@ -38,10 +38,8 @@ beforeEach(() => {
   store = createStore(rootReducer, applyMiddleware(thunk))
 })
 
-const div = document.createElement('div')
-
-
 it ('renders without crashing', ()=> {
+  const div = document.createElement('div')
   ReactDOM.render(<Provider store={store}>
                     <Router>
                       <CommentContainer 
@@ -56,20 +54,27 @@ it ('renders without crashing', ()=> {
 it ('loads comments upon rendering', ()=> {
   expect(store.getState().comments.loadStatus).toBe(null)
   render(<Provider store={store}>
-            <Router>
+          <Router>
             <CommentContainer 
               relativePath={"/resources/:id"} 
               resourceId={1}
             />
           </Router>
-        </Provider>
-        )
- 
+        </Provider>)
   expect(store.getState().comments.loadStatus).not.toBe(null)
 })
 
 it ('authorizes users upon rendering', ()=> {
-
+  expect(store.getState().user.authCompleted).toBe(false)
+  render(<Provider store={store}>
+          <Router>
+            <CommentContainer 
+              relativePath={"/resources/:id"} 
+              resourceId={1}
+            />
+          </Router>
+        </Provider>)
+  expect(store.getState().user.authCompleted).toBe(true)
 })
 
 it ('fetches comments again if the resources loads after the first fetch', ()=> {

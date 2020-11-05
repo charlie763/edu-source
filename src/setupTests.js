@@ -23,7 +23,6 @@ function renderWithStore(
     ...renderOptions
   } = {}
 ) {
-  console.log(store.getActions())
   function Wrapper({ children }) {
     return <Provider store={store}>{children}</Provider>
   }
