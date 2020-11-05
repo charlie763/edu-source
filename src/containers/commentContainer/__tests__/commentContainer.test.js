@@ -82,7 +82,15 @@ it ('authorizes users upon rendering', ()=> {
 // })
 
 it ('renders a Comments component', ()=> {
-
+  const { getByTestId } = render(<Provider store={store}>
+                                  <Router>
+                                    <CommentContainer 
+                                      relativePath={"/resources/:id"} 
+                                      resourceId={1}
+                                    />
+                                  </Router>
+                                </Provider>)
+  expect(getByTestId('comments-wrapper')).toBeDefined()
 })
 
 describe('new comment routing', ()=> {
