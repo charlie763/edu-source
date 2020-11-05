@@ -7,11 +7,6 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from '../../../reducers/rootReducer'
 import { render } from '@testing-library/react'
-import Enzyme from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import { mount } from 'enzyme'
-
-Enzyme.configure({ adapter: new Adapter() })
 
 const comments = [
   {
@@ -82,22 +77,9 @@ it ('authorizes users upon rendering', ()=> {
   expect(store.getState().user.authCompleted).toBe(true)
 })
 
-it ('fetches comments again if the resources loads after the first fetch', ()=> {
-  const wrapper = mount(<Provider store={store}>
-    <Router>
-      <CommentContainer 
-        relativePath={"/resources/:id"} 
-        resourceId={1}
-      />
-    </Router>
-  </Provider>)
-  console.log(wrapper.children().children().props())
-  wrapper.setProps({resourceLoaded: false})
-  wrapper.setProps({loadStatus: null})
-  wrapper.children().children().setProps({resourceLoaded: true})
-  console.log(wrapper.props())
-  expect(store.getState().comments.loadStatus).not.toBe(null)
-})
+// it ('fetches comments again if the resources loads after the first fetch', ()=> {
+
+// })
 
 it ('renders a Comments component', ()=> {
 
