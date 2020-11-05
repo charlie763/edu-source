@@ -43,10 +43,6 @@ it ('authorizes users upon rendering', ()=> {
   expect(store.getState().user.authCompleted).toBe(true)
 })
 
-// it ('fetches comments again if the resources loads after the first fetch', ()=> {
-
-// })
-
 it ('renders a Comments component', ()=> {
   const { getByTestId } = renderWithStoreAndRouter(<CommentContainer {...props}/>, {store: store})
   expect(getByTestId('comments-wrapper')).toBeDefined()
