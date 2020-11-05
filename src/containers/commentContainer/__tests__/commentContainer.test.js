@@ -7,6 +7,7 @@ import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from '../../../reducers/rootReducer'
 import { render } from '@testing-library/react'
+import { renderWithStoreAndRouter } from '../../../setupTests'
 
 const comments = [
   {
@@ -33,6 +34,11 @@ const comments = [
   }
 ]
 
+const props = {
+  relativePath: "/resources/:id", 
+  resourceId: 1
+}
+
 let store
 beforeEach(() => {
   store = createStore(rootReducer, applyMiddleware(thunk))
@@ -53,27 +59,13 @@ it ('renders without crashing', ()=> {
 
 it ('loads comments upon rendering', ()=> {
   expect(store.getState().comments.loadStatus).toBe(null)
-  render(<Provider store={store}>
-          <Router>
-            <CommentContainer 
-              relativePath={"/resources/:id"} 
-              resourceId={1}
-            />
-          </Router>
-        </Provider>)
+  renderWithStoreAndRouter(<CommentContainer {...props}/>, {store: store})
   expect(store.getState().comments.loadStatus).not.toBe(null)
 })
 
 it ('authorizes users upon rendering', ()=> {
   expect(store.getState().user.authCompleted).toBe(false)
-  render(<Provider store={store}>
-          <Router>
-            <CommentContainer 
-              relativePath={"/resources/:id"} 
-              resourceId={1}
-            />
-          </Router>
-        </Provider>)
+  renderWithStoreAndRouter(<CommentContainer {...props}/>, {store: store})
   expect(store.getState().user.authCompleted).toBe(true)
 })
 
@@ -82,20 +74,13 @@ it ('authorizes users upon rendering', ()=> {
 // })
 
 it ('renders a Comments component', ()=> {
-  const { getByTestId } = render(<Provider store={store}>
-                                  <Router>
-                                    <CommentContainer 
-                                      relativePath={"/resources/:id"} 
-                                      resourceId={1}
-                                    />
-                                  </Router>
-                                </Provider>)
+  const { getByTestId } = renderWithStoreAndRouter(<CommentContainer {...props}/>, {store: store})
   expect(getByTestId('comments-wrapper')).toBeDefined()
 })
 
 describe('new comment routing', ()=> {
   it ('renders a CommentForm component if there is a valid user', ()=> {
-
+    
   })
   it ('renders a login modal if there is NOT a valid user', ()=> {
 

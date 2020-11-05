@@ -15,19 +15,21 @@ import thunk from 'redux-thunk'
 const middlewares = [thunk]
 const mockStore = configureMockStore(middlewares)
 
-function renderWithStore(
+function renderWithStoreAndRouter(
   ui,
   {
     initialState,
     store = mockStore(initialState),
-    ...renderOptions
+    route = '/',
+    history = createMemoryHistory({ initialEntries: [route] })
   } = {}
 ) {
-  function Wrapper({ children }) {
-    return <Provider store={store}>{children}</Provider>
-  }
   return {
-    ...render(ui, { wrapper: Wrapper, ...renderOptions }),
+    ...render(<Provider store={store}>
+                <Router history={history}>
+                  {ui}
+                </Router>
+              </Provider>),
     store
   }
 }
@@ -46,5 +48,5 @@ function renderWithRouter(
   }
 }
 
-export { renderWithRouter, renderWithStore }
+export { renderWithRouter, renderWithStoreAndRouter }
 
