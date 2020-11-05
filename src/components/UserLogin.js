@@ -26,7 +26,7 @@ class UserLogin extends React.Component {
     } else if (this.props.mode === "Login"){
       return(
         <>
-          <form onSubmit={this.handleLoginSubmit}>
+          <form data-testid="login-form" onSubmit={this.handleLoginSubmit}>
             <UserFormFields inheritedState={this.state} handleInputChange={e => handleInputChange.call(this, e)}/>
             <input className="btn btn-primary tertiary-background" type="submit" value="Login" data-dismiss="modal" aria-label="Close"/><br/>
             <br/>

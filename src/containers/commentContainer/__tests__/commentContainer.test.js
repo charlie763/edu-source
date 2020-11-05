@@ -53,21 +53,36 @@ it ('renders a Comments component', ()=> {
 })
 
 describe('new comment routing', ()=> {
-  it ('renders a CommentForm component if there is a valid user and routed to new comment route', ()=> {
+  const initialState = {
+    comments: {list: [], loadStatus: null, resourceLoaded: null},
+    resources: {list: [], loadStatus:null},
+  }
+  const route = "/resources/1/comments/new"
+  it ('renders a CommentForm component if there is a valid user', ()=> {
     const { getByTestId } = renderWithStoreAndRouter(<CommentContainer {...props}/>, 
       { 
         initialState: {
-          comments: {list: [], loadStatus: null, resourceLoaded: null},
-          resources: {list: [], loadStatus:null},
+          ...initialState,
           user: {valid: true}
        },
-       route: "/resources/1/comments/new"
+       route
       }
     )
-    expect(getByTestId("comment-form")).toBeDefined
+    expect(getByTestId("comment-form")).toBeDefined()
   })
-  it ('renders a login modal if there is NOT a valid user', ()=> {
 
+  it ('renders a login form if there is NOT a valid user', ()=> {
+    const { getByTestId } = renderWithStoreAndRouter(<CommentContainer {...props}/>, 
+      { 
+        initialState: {
+          ...initialState,
+          user: {valid: false}
+       },
+       route
+      }
+    )
+    expect(()=> getByTestId("comment-form")).toThrowError()
+    expect(getByTestId("login-form")).toBeDefined()
   })
 })
 
