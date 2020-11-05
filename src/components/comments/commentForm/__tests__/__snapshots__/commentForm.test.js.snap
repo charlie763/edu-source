@@ -3,6 +3,7 @@
 exports[`matches the snapshot 1`] = `
 <div
   className="modal"
+  data-testid="comment-form"
   id="comment-form"
   role="dialog"
   tabIndex="-1"

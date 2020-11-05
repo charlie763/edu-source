@@ -30,7 +30,8 @@ function renderWithStoreAndRouter(
                   {ui}
                 </Router>
               </Provider>),
-    store
+    store,
+    history
   }
 }
 
