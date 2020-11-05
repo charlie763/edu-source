@@ -6,33 +6,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from '../../../reducers/rootReducer'
-import { render } from '@testing-library/react'
 import { renderWithStoreAndRouter } from '../../../setupTests'
-
-const comments = [
-  {
-    id: 4,
-    text: 'My kids love this!',
-    resource_id: 4,
-    user_id: 3,
-    created_at: '2020-10-21T16:54:41.856Z',
-    updated_at: '2020-10-21T16:54:41.856Z',
-    user: {
-      username: 'Nanibah'
-    }
-  },
-  {
-    id: 5,
-    text: 'This is a test comment!',
-    resource_id: 4,
-    user_id: 1,
-    created_at: '2020-10-21T16:54:41.856Z',
-    updated_at: '2020-10-21T16:54:41.856Z',
-    user: {
-      username: 'Charlie'
-    }
-  }
-]
 
 const props = {
   relativePath: "/resources/:id", 
