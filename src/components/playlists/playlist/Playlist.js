@@ -1,5 +1,5 @@
 import React from 'react'
-import ResourceThumbnail from '../resources/ResourceThumbnail'
+import ResourceThumbnail from '../../resources/ResourceThumbnail'
 
 const Playlist = props => {
   if (!props.loadStatus || props.loadStatus === "pending"){

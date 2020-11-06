@@ -51,9 +51,10 @@ it ('renders a Comments component', ()=> {
 describe('new comment routing', ()=> {
   const initialState = {
     comments: {list: [], loadStatus: null, resourceLoaded: null},
-    resources: {list: [], loadStatus:null},
+    resources: {list: [], loadStatus: null},
   }
   const route = "/resources/1/comments/new"
+
   it ('renders a CommentForm component if there is a valid user', ()=> {
     const { getByTestId } = renderWithStoreAndRouter(<CommentContainer {...props}/>, 
       { 
