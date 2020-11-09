@@ -75,7 +75,8 @@ it ('displays the name of the playlist', () => {
 })
 
 it ('renders the correct number of resources per the playlist', () => {
-
+  const { queryAllByTestId } = renderWithRouter(<Playlist {...mockProps} loadStatus={"complete"}/>)
+  expect(queryAllByTestId('resource-wrapper')).toHaveLength(2)
 })
 
 it ('renders a ResourceThumbnail component per each resource in the playlist', () => {

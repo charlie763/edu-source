@@ -15,7 +15,7 @@ const Playlist = props => {
       <div data-testid="playlist-wrapper">
         <h2 className="my-3">{props.playlist.name}</h2>
         {props.playlist.resources.map(resource => 
-          <div key={resource.id} className="my-2">
+          <div data-testid="resource-wrapper" key={resource.id} className="my-2">
             <ResourceThumbnail 
               resource={resource}
               inPlaylist={props.isResourceInPlaylist(resource.id)}

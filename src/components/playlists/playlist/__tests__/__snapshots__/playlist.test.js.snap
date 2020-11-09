@@ -11,6 +11,7 @@ exports[`matches the snapshot given mocked playlist data 1`] = `
   </h2>
   <div
     className="my-2"
+    data-testid="resource-wrapper"
   >
     <div
       className="card"
@@ -92,6 +93,7 @@ exports[`matches the snapshot given mocked playlist data 1`] = `
   </div>
   <div
     className="my-2"
+    data-testid="resource-wrapper"
   >
     <div
       className="card"
