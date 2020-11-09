@@ -4,7 +4,7 @@ import ResourceThumbnail from '../../resources/ResourceThumbnail'
 const Playlist = props => {
   if (!props.loadStatus || props.loadStatus === "pending"){
     return(
-      <div id="playlist-wrapper" data-testid="playlist-wrapper">Loading...</div>
+      <div data-testid="playlist-wrapper">Loading...</div>
     )
   } else if (!props.playlist){
     return(

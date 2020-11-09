@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot given mocked playlist data 1`] = `
+<div
+  data-testid="playlist-wrapper"
+>
+  <h2
+    className="my-3"
+  >
+    Default Bookshelf
+  </h2>
+  <div
+    className="my-2"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="card-header"
+      >
+        <div
+          className="row justify-content-between"
+        >
+          <div>
+            <span
+              className="badge badge-primary badge-pill"
+            >
+              Biology
+            </span>
+            <span
+              className="badge badge-secondary badge-pill"
+            >
+              Grades: 
+              0
+              -
+              5
+            </span>
+          </div>
+          <div>
+            <button
+              className="non-button"
+              onClick={[Function]}
+            >
+              <svg
+                height="1rem"
+                viewBox="-110 -18 581 581.33331"
+                width="1rem"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m181.25 363.109375 172.75 181.890625v-545h-360v545l172.75-181.890625c1.886719-1.984375 4.511719-3.113281 7.25-3.113281s5.359375 1.128906 7.25 3.113281zm0 0"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="card-body"
+      >
+        <h4
+          className="card-title"
+        >
+          Photosynthesis | Educational Video for Kids
+        </h4>
+        <div
+          className="embed-responsive embed-responsive-16by9"
+        >
+          <iframe
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen={true}
+            className="embed-responsive-item"
+            frameBorder="0"
+            height="315"
+            src="https://www.youtube.com/embed/UPBMG5EYydo"
+            title="Photosynthesis | Educational Video for Kids"
+            width="560"
+          />
+        </div>
+        <p>
+          Photosynthesis is a process used by plants and other organisms to convert light energy into chemical energy that can later be released to fuel the organisms' activities. This chemi...
+        </p>
+        <a
+          className="btn btn-primary tertiary-background"
+          href="/resources/1"
+          onClick={[Function]}
+        >
+          See More
+        </a>
+      </div>
+    </div>
+  </div>
+  <div
+    className="my-2"
+  >
+    <div
+      className="card"
+    >
+      <div
+        className="card-header"
+      >
+        <div
+          className="row justify-content-between"
+        >
+          <div>
+            <span
+              className="badge badge-primary badge-pill"
+            >
+              Science
+            </span>
+            <span
+              className="badge badge-secondary badge-pill"
+            >
+              Grades: 
+              3
+              -
+              8
+            </span>
+          </div>
+          <div>
+            <button
+              className="non-button"
+              onClick={[Function]}
+            >
+              <svg
+                height="1rem"
+                viewBox="-110 -18 581 581.33331"
+                width="1rem"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="m181.25 363.109375 172.75 181.890625v-545h-360v545l172.75-181.890625c1.886719-1.984375 4.511719-3.113281 7.25-3.113281s5.359375 1.128906 7.25 3.113281zm0 0"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div
+        className="card-body"
+      >
+        <h4
+          className="card-title"
+        >
+          Instructions for Science Volcano
+        </h4>
+        <p />
+        <a
+          className="btn btn-primary tertiary-background"
+          href="/resources/2"
+          onClick={[Function]}
+        >
+          See More
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
