@@ -2,9 +2,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Playlist from '../Playlist'
 import { BrowserRouter as Router } from 'react-router-dom'
-import Adapter from 'enzyme-adapter-react-16';
+import Adapter from 'enzyme-adapter-react-16'
 import { shallow, configure } from 'enzyme'
 import renderer from 'react-test-renderer'
+import { cleanup } from '@testing-library/react'
+import { renderWithRouter, renderWithStoreAndRouter } from '../../../../setupTests'
+import '@testing-library/jest-dom/extend-expect'
 
 configure({ adapter: new Adapter() });
 
@@ -40,6 +43,8 @@ const mockProps = {
   removeResourceFromPlaylist: jest.fn()
 }
 
+afterEach(cleanup)
+
 it ('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(<Playlist />, div)
@@ -65,7 +70,8 @@ it ('matches the snapshot given mocked playlist data', () => {
 })
 
 it ('displays the name of the playlist', () => {
-
+  const { getByTestId } = renderWithRouter(<Playlist {...mockProps} loadStatus={"complete"}/>)
+  expect(getByTestId('playlist-wrapper')).toHaveTextContent('Default Bookshelf')
 })
 
 it ('renders the correct number of resources per the playlist', () => {
