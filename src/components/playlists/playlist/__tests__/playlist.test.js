@@ -6,8 +6,9 @@ import Adapter from 'enzyme-adapter-react-16'
 import { shallow, configure } from 'enzyme'
 import renderer from 'react-test-renderer'
 import { cleanup } from '@testing-library/react'
-import { renderWithRouter, renderWithStoreAndRouter } from '../../../../setupTests'
+import { renderWithRouter } from '../../../../setupTests'
 import '@testing-library/jest-dom/extend-expect'
+import ResourceThumbnail from '../../../resources/ResourceThumbnail'
 
 configure({ adapter: new Adapter() });
 
@@ -80,5 +81,6 @@ it ('renders the correct number of resources per the playlist', () => {
 })
 
 it ('renders a ResourceThumbnail component per each resource in the playlist', () => {
-
+  const wrapper = shallow(<Playlist {...mockProps} loadStatus={"complete"}/>)
+  expect(wrapper.find(ResourceThumbnail)).toHaveLength(2)
 })
