@@ -6,7 +6,7 @@ import { fetchPlaylists, addPlaylist, removeResourceFromPlaylist } from '../acti
 import { authorizeUser } from '../actions/userActions'
 import Playlists from '../components/playlists/Playlists'
 import Playlist from '../components/playlists/playlist/Playlist'
-import PlaylistAddForm from '../components/playlists/PlaylistAddForm'
+import PlaylistAddForm from '../components/playlists/playlistAddForm/PlaylistAddForm'
 import ModalWrapper from '../components/ModalWrapper'
 import UserContainer from './UserContainer'
 
