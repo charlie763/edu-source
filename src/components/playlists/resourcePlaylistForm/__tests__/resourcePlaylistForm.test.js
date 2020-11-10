@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PlaylistForm from '../ResourcePlaylistForm'
+import renderer from 'react-test-renderer'
 
 const mockProps = {
   fetchPlaylists: jest.fn(),
@@ -77,7 +78,8 @@ it ('renders without crashing', () => {
 })
 
 it ('matches the snapshot', () => {
-
+  const tree = renderer.create(<PlaylistForm {...mockProps}/>).toJSON()
+  expect(tree).toMatchSnapshot()
 })
 
 it ('fetches playlists on mounting of component', () => {

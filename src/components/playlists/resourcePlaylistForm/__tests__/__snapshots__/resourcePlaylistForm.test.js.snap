@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group  sub-form-group"
+    >
+      <label>
+        New Bookshelf: 
+      </label>
+      <input
+        className="form-control"
+        name="name"
+        onChange={[Function]}
+        type="text"
+        value=""
+      />
+      <br />
+    </div>
+    <input
+      className="btn btn-primary tertiary-background"
+      type="submit"
+      value="add"
+    />
+  </form>
+  <br />
+  <form
+    onSubmit={[Function]}
+  >
+    <div
+      className="form-group sub-form-group"
+    >
+      <label>
+        Existing Bookshelves: 
+      </label>
+      <select
+        className="form-control"
+        onChange={[Function]}
+      >
+        <option
+          id={23}
+        >
+          playlist 1
+        </option>
+        <option
+          id={24}
+        >
+          playlist 2
+        </option>
+      </select>
+      <br />
+    </div>
+    <input
+      className="btn btn-primary tertiary-background"
+      type="submit"
+      value="Select"
+    />
+  </form>
+</div>
+`;
