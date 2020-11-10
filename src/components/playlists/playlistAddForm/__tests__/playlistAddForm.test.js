@@ -29,12 +29,10 @@ it ('redirects to the /bookshelves route after submission if brought up from tha
   expect(history.location.pathname).toBe('/bookshelves')
 })
 
-it ('redirects to the /resources route after submission if brought up from that route', ()=> {
-
-})
-
 it ('triggers addPlaylist function on submission', () => {
-
+  const { getByTestId } = renderWithRouter(<PlaylistAddForm {...mockProps}/>)
+  fireEvent.click(getByTestId('add-playlist-submit'))
+  expect(mockProps.addPlaylist).toHaveBeenCalled()
 })
 
 it ('triggers addPlaylist with the correct arguments on submission', () => {
