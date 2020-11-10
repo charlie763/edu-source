@@ -14,6 +14,7 @@ class PlaylistForm extends React.Component{
   }
 
   componentDidUpdate(prevProps){
+    //this code makes sure that a resource gets added to a playlist that has recently been added from the playlist form
     if (!prevProps.playlistAdded && this.props.playlistAdded){
       this.props.addResourceToPlaylist(this.props.location.state.resourceId, this.props.playlistAdded.id)
       this.setState({
