@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches the snapshot 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="form-group"
+  >
+    <label>
+      Playlist Name: 
+    </label>
+    <input
+      className="form-control"
+      name="name"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+    <br />
+  </div>
+  <input
+    className="btn btn-primary tertiary-background"
+    type="submit"
+    value="add"
+  />
+</form>
+`;

@@ -33,7 +33,6 @@ class PlaylistContainer extends React.Component{
                       {...props}
                       addPlaylist={this.props.addPlaylist}
                       clearState={{name: ""}}
-                      playlists={this.props.playlists}
                     />
                   </ModalWrapper>
                   <Playlists 
