@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PlaylistForm from '../ResourcePlaylistForm'
 import renderer from 'react-test-renderer'
+import { cleanup, fireEvent, render } from '@testing-library/react'
 
 const mockProps = {
   fetchPlaylists: jest.fn(),
@@ -72,6 +73,8 @@ const mockProps = {
   playlistAdded: null
 }
 
+afterEach(cleanup)
+
 it ('renders without crashing', () => {
   const div = document.createElement('div')
   ReactDOM.render(<PlaylistForm {...mockProps}/>, div)
@@ -82,8 +85,9 @@ it ('matches the snapshot', () => {
   expect(tree).toMatchSnapshot()
 })
 
-it ('fetches playlists on mounting of component', () => {
-
+it ('fetchPlaylists is called on mounting of component', () => {
+  render(<PlaylistForm {...mockProps} />)
+  expect(mockProps.fetchPlaylists).toBeCalled()
 })
 
 it ('redirects to the resource page upon submit', () => {
