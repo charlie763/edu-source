@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom'
 import PlaylistAddForm from '../PlaylistAddForm'
 import { BrowserRouter as Router } from 'react-router-dom'
 import renderer from 'react-test-renderer'
+import { renderWithRouter } from '../../../../setupTests'
+import { cleanup, fireEvent } from '@testing-library/react'
 
 const mockProps = {
   addPlaylist: jest.fn(),
-  clearState: {name: ""}
+  clearState: {name: ""},
 }
+
+afterEach(cleanup)
 
 it ('renders without crashing', () => {
   const div = document.createElement('div')
@@ -20,10 +24,12 @@ it ('matches the snapshot', () => {
 })
 
 it ('redirects to the /bookshelves route after submission if brought up from that route', ()=> {
-
+  const { getByTestId, history } = renderWithRouter(<PlaylistAddForm {...mockProps}/>, {route: '/bookshelves'})
+  fireEvent.click(getByTestId('add-playlist-submit'))
+  expect(history.location.pathname).toBe('/bookshelves')
 })
 
-it ('redirects to the /bookshelves route after submission if brought up from that route', ()=> {
+it ('redirects to the /resources route after submission if brought up from that route', ()=> {
 
 })
 

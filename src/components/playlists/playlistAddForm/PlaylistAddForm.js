@@ -10,9 +10,7 @@ class PlaylistAddForm extends React.Component{
 
   render(){
     if (this.state.submitted){
-      const context = this.props.location ? this.props.location.context : this.props.context
-      const redirectUrl = context === "resource" ? `${context}s/${this.props.resourceId}` : context
-      return <Redirect to={`/${redirectUrl}`} />
+      return <Redirect to="/bookshelves" />
     } else {
       return(
         <>
@@ -26,7 +24,7 @@ class PlaylistAddForm extends React.Component{
               <label>Playlist Name: </label>
               <input className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
             </div> 
-            <input className="btn btn-primary tertiary-background" type="submit" value="add"/>
+            <input data-testid="add-playlist-submit" className="btn btn-primary tertiary-background" type="submit" value="add"/>
           </form>
         </>
       )
