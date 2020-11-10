@@ -3,6 +3,7 @@ function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: nu
     case "START_ADD":
       const tempPlaylist = { 
         ...action.tempPlaylist,
+        resources: [],
         temp: true }
       return {
         list: [...state.list, tempPlaylist],
@@ -14,7 +15,7 @@ function playlistsReducer(state = {list: [], loadStatus: null, playlistAdded: nu
         ...action.respPlaylist,
       }
       return {
-        list: [...state.list, newPlaylist],
+        list: [...state.list.filter(playlist => !playlist.temp), newPlaylist],
         loadStatus: state.loadStatus,
         playlistAdded: action.respPlaylist
       }
