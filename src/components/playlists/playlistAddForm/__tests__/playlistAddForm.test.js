@@ -32,9 +32,16 @@ it ('redirects to the /bookshelves route after submission if brought up from tha
 it ('triggers addPlaylist function on submission', () => {
   const { getByTestId } = renderWithRouter(<PlaylistAddForm {...mockProps}/>)
   fireEvent.click(getByTestId('add-playlist-submit'))
-  expect(mockProps.addPlaylist).toHaveBeenCalled()
+  expect(mockProps.addPlaylist).toBeCalled()
 })
 
 it ('triggers addPlaylist with the correct arguments on submission', () => {
-
+  const submitState = {
+    name: "new playlist",
+    submitted: false
+  }
+  const { getByTestId } = renderWithRouter(<PlaylistAddForm {...mockProps}/>)
+  fireEvent.change(getByTestId('add-playlist-input'), { target: { value: `${submitState.name}` } })
+  fireEvent.click(getByTestId('add-playlist-submit'))
+  expect(mockProps.addPlaylist).toBeCalledWith(submitState)
 })

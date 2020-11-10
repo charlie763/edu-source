@@ -22,7 +22,7 @@ class PlaylistAddForm extends React.Component{
           })}>
             <div className="form-group">
               <label>Playlist Name: </label>
-              <input className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
+              <input data-testid="add-playlist-input" className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
             </div> 
             <input data-testid="add-playlist-submit" className="btn btn-primary tertiary-background" type="submit" value="add"/>
           </form>
