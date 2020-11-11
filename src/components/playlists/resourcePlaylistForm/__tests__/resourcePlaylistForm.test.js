@@ -96,21 +96,40 @@ describe('add playlist functionality', () => {
   beforeEach(() => {
     ({ getByTestId, history, rerender } = renderWithRouter(
       <PlaylistForm {...mockProps} />, 
-      {route: '/resources', state: {resourceId: 1}}
+      { route: '/resources', state: { resourceId: 1 } }
     ))
     rerender(<PlaylistForm {...mockProps} location={history.location}/>)
-    fireEvent.click(getByTestId('add-playlist-submit'))
   })
   it ('redirects to the resource page upon add playlist submit', () => {
+    fireEvent.click(getByTestId('add-playlist-submit'))
     expect(history.location.pathname).toBe('/resources')
   })
   
   it ('triggers the addPlaylist function upon clicking add playlist', () => {
+    fireEvent.click(getByTestId('add-playlist-submit'))
     expect(mockProps.addPlaylist).toBeCalled()
   })
   
   it ('passes in a correctly formatted playlist as an argument to addPlaylsit upon add submission', () => {
-  
+    const submitState = {
+      name: "new playlist",
+      resources: [
+        {
+          id: 1,
+          title: 'Algebra Introduction - Basic Overview - Online Crash Course Review Video Tutorial Lessons',
+          description: '1 hour video goving over basic algebra as you might learn it in high school',
+          lowerGradeBound: 9,
+          upperGradeBound: 12,
+          subject: 'Math',
+          url: 'https://www.youtube.com/watch?v=grnP3mduZkM',
+          videoUrl: 'https://www.youtube.com/watch?v=grnP3mduZkM',
+          rating: 3
+        }
+      ]
+    }
+    fireEvent.change(getByTestId('playlist-name-input'), { target: { value: `${submitState.name}` } })
+    fireEvent.click(getByTestId('add-playlist-submit'))
+    expect(mockProps.addPlaylist).toBeCalledWith(submitState)
   })
 })
 

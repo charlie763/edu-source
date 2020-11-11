@@ -13,6 +13,7 @@ exports[`matches the snapshot 1`] = `
       </label>
       <input
         className="form-control"
+        data-testid="playlist-name-input"
         name="name"
         onChange={[Function]}
         type="text"

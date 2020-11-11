@@ -60,7 +60,7 @@ class PlaylistForm extends React.Component{
           <form onSubmit={this.handleAddSubmit}>
             <div className="form-group  sub-form-group">
               <label>New Bookshelf: </label>
-              <input className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
+              <input data-testid="playlist-name-input" className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
             </div> 
             <input data-testid="add-playlist-submit" className="btn btn-primary tertiary-background" type="submit" value="add"/>
           </form>
