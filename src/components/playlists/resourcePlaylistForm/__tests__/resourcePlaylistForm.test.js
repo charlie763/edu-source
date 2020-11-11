@@ -4,6 +4,11 @@ import PlaylistForm from '../ResourcePlaylistForm'
 import renderer from 'react-test-renderer'
 import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { renderWithRouter } from '../../../../setupTests'
+import Adapter from 'enzyme-adapter-react-16'
+import { mount, configure } from 'enzyme'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
+configure({ adapter: new Adapter() });
 
 const mockProps = {
   fetchPlaylists: jest.fn(),
@@ -93,16 +98,20 @@ it ('fetchPlaylists is called on mounting of component', () => {
 
 describe('submit form functionality', () => {
   let getByTestId, history
-  const spy = jest.spyOn(PlaylistForm.prototype, 'setState')
   beforeEach(() => {
     ({ getByTestId, history } = renderWithRouter(<PlaylistForm {...mockProps} location={{state: { resourceId: 1 } }} />))
   })
-  it ('redirects to the resource page upon add playlist submit', async () => {
-    
-    console.log(spy)
-    fireEvent.click(getByTestId('add-playlist-submit'))
-    await waitFor(() => { expect(spy).toBeCalled() } )
-    expect(history.location.pathname).toBe('/resources')
+
+  it ('redirects to the resource page upon submit', async () => {
+    const initialRoute = '/resources/playlists/new'
+    const wrapper = mount(
+      <Router history={createMemoryHistory({ initialEntries: [`${initialRoute}`] })} >
+        <PlaylistForm {...mockProps} location={{state: { resourceId: 1 } }} />
+      </Router>
+    )
+    expect(wrapper.prop('history').location.pathname).toEqual(initialRoute)
+    wrapper.find(PlaylistForm).setState({submitted: true}) //make assumption about implementation and how component keeps track of submission
+    expect(wrapper.prop('history').location.pathname).toEqual('/resources')
   })
   
   it ('triggers the addPlaylist function upon clicking add playlist', () => {
