@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PlaylistForm from '../ResourcePlaylistForm'
 import renderer from 'react-test-renderer'
-import { cleanup, fireEvent, render } from '@testing-library/react'
+import { cleanup, fireEvent, render, waitFor } from '@testing-library/react'
 import { renderWithRouter } from '../../../../setupTests'
 
 const mockProps = {
@@ -91,17 +91,17 @@ it ('fetchPlaylists is called on mounting of component', () => {
   expect(mockProps.fetchPlaylists).toBeCalled()
 })
 
-describe('add playlist functionality', () => {
-  let getByTestId, history, rerender
+describe('submit form functionality', () => {
+  let getByTestId, history
+  const spy = jest.spyOn(PlaylistForm.prototype, 'setState')
   beforeEach(() => {
-    ({ getByTestId, history, rerender } = renderWithRouter(
-      <PlaylistForm {...mockProps} />, 
-      { route: '/resources', state: { resourceId: 1 } }
-    ))
-    rerender(<PlaylistForm {...mockProps} location={history.location}/>)
+    ({ getByTestId, history } = renderWithRouter(<PlaylistForm {...mockProps} location={{state: { resourceId: 1 } }} />))
   })
-  it ('redirects to the resource page upon add playlist submit', () => {
+  it ('redirects to the resource page upon add playlist submit', async () => {
+    
+    console.log(spy)
     fireEvent.click(getByTestId('add-playlist-submit'))
+    await waitFor(() => { expect(spy).toBeCalled() } )
     expect(history.location.pathname).toBe('/resources')
   })
   
@@ -131,18 +131,23 @@ describe('add playlist functionality', () => {
     fireEvent.click(getByTestId('add-playlist-submit'))
     expect(mockProps.addPlaylist).toBeCalledWith(submitState)
   })
+
+  it ('redirects to resources upon select playlist submit', () => {
+    fireEvent.click(getByTestId('select-playlist-submit'))
+    expect(history.location.pathname).toBe('/resources')
+  })
+
+  it ('triggers the addResourceToPlaylist function upon submit', () => {
+    //both when adding a new playlist
+    //and selecting a playlist
+  })
+  
+  it ('passes in the correct resource id as an argument to addResourceToPlaylist upon submission', () => {
+  
+  })
+  
+  it ('passes in the correct playlist id as an argument to addResourceToPlaylist upon submission', () => {
+  
+  })
 })
 
-
-it ('triggers the addResourceToPlaylist function upon submit', () => {
-  //both when adding a new playlist
-  //and selecting a playlist
-})
-
-it ('passes in the correct resource id as an argument to addResourceToPlaylist upon submission', () => {
-
-})
-
-it ('passes in the correct playlist id as an argument to addResourceToPlaylist upon submission', () => {
-
-})

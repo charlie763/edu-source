@@ -24,7 +24,7 @@ it ('matches the snapshot', () => {
 })
 
 it ('redirects to the /bookshelves route after submission if brought up from that route', ()=> {
-  const { getByTestId, history } = renderWithRouter(<PlaylistAddForm {...mockProps}/>, {route: '/bookshelves'})
+  const { getByTestId, history } = renderWithRouter(<PlaylistAddForm {...mockProps}/>)
   fireEvent.click(getByTestId('add-playlist-submit'))
   expect(history.location.pathname).toBe('/bookshelves')
 })

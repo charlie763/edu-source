@@ -45,9 +45,11 @@ function renderWithRouter(
   } = {}
 ) {
   history.push(route, state)
+  const jsx = <Router history={history}>{ui}</Router>
   return {
-    ...render(<Router history={history}>{ui}</Router>),
+    ...render(jsx),
     history,
+    jsx
   }
 }
 
