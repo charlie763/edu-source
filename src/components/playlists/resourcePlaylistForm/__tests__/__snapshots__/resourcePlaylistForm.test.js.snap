@@ -22,6 +22,7 @@ exports[`matches the snapshot 1`] = `
     </div>
     <input
       className="btn btn-primary tertiary-background"
+      data-testid="add-playlist-submit"
       type="submit"
       value="add"
     />
@@ -55,6 +56,7 @@ exports[`matches the snapshot 1`] = `
     </div>
     <input
       className="btn btn-primary tertiary-background"
+      data-testid="select-playlist-submit"
       type="submit"
       value="Select"
     />

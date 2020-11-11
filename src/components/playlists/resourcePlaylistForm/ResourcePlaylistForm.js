@@ -53,9 +53,7 @@ class PlaylistForm extends React.Component{
 
   render(){
     if (this.state.submitted){
-      const context = this.props.location.context
-      const redirectUrl = context === "resource" ? `${context}s/${this.props.location.state.resourceId}` : context
-      return <Redirect to={`/${redirectUrl}`} />
+      return <Redirect to="/resources" />
     } else {
       return (
         <div>
@@ -64,7 +62,7 @@ class PlaylistForm extends React.Component{
               <label>New Bookshelf: </label>
               <input className="form-control" type="text" name="name" value={this.state.name} onChange={e => handleInputChange.call(this, e)} /><br/>
             </div> 
-            <input className="btn btn-primary tertiary-background" type="submit" value="add"/>
+            <input data-testid="add-playlist-submit" className="btn btn-primary tertiary-background" type="submit" value="add"/>
           </form>
           <br/>
           <form onSubmit={this.handleSelectSubmit}>
@@ -76,7 +74,7 @@ class PlaylistForm extends React.Component{
                 ))}
               </select><br/>
             </div>
-            <input className="btn btn-primary tertiary-background" type="submit" value="Select"/>
+            <input data-testid="select-playlist-submit" className="btn btn-primary tertiary-background" type="submit" value="Select"/>
           </form>
         </div>
       )

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import PlaylistForm from '../ResourcePlaylistForm'
 import renderer from 'react-test-renderer'
 import { cleanup, fireEvent, render } from '@testing-library/react'
+import { renderWithRouter } from '../../../../setupTests'
 
 const mockProps = {
   fetchPlaylists: jest.fn(),
@@ -90,8 +91,11 @@ it ('fetchPlaylists is called on mounting of component', () => {
   expect(mockProps.fetchPlaylists).toBeCalled()
 })
 
-it ('redirects to the resource page upon submit', () => {
-
+it ('redirects to the resource page upon add playlist submit', () => {
+  let { getByTestId, history, rerender } = renderWithRouter(<PlaylistForm {...mockProps} />, {route: '/resources', state: {resourceId: 1}})
+  rerender(<PlaylistForm {...mockProps} location={history.location}/>)
+  fireEvent.click(getByTestId('add-playlist-submit'))
+  expect(history.location.pathname).toBe('/resources')
 })
 
 it ('triggers the addPlaylist function upon clicking add playlist', () => {

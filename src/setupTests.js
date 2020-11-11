@@ -21,7 +21,7 @@ function renderWithStoreAndRouter(
     initialState,
     store = mockStore(initialState),
     route = '/',
-    history = createMemoryHistory({ initialEntries: [route] })
+    history = createMemoryHistory({ initialEntries: [route] }),
   } = {}
 ) {
   return {
@@ -40,9 +40,11 @@ function renderWithRouter(
   ui,
   {
     route = '/',
-    history = createMemoryHistory({ initialEntries: [route] }),
+    history = createMemoryHistory(),
+    state = {}
   } = {}
 ) {
+  history.push(route, state)
   return {
     ...render(<Router history={history}>{ui}</Router>),
     history,
