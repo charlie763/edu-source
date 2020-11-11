@@ -91,23 +91,29 @@ it ('fetchPlaylists is called on mounting of component', () => {
   expect(mockProps.fetchPlaylists).toBeCalled()
 })
 
-it ('redirects to the resource page upon add playlist submit', () => {
-  let { getByTestId, history, rerender } = renderWithRouter(<PlaylistForm {...mockProps} />, {route: '/resources', state: {resourceId: 1}})
-  rerender(<PlaylistForm {...mockProps} location={history.location}/>)
-  fireEvent.click(getByTestId('add-playlist-submit'))
-  expect(history.location.pathname).toBe('/resources')
+describe('add playlist functionality', () => {
+  let getByTestId, history, rerender
+  beforeEach(() => {
+    ({ getByTestId, history, rerender } = renderWithRouter(
+      <PlaylistForm {...mockProps} />, 
+      {route: '/resources', state: {resourceId: 1}}
+    ))
+    rerender(<PlaylistForm {...mockProps} location={history.location}/>)
+    fireEvent.click(getByTestId('add-playlist-submit'))
+  })
+  it ('redirects to the resource page upon add playlist submit', () => {
+    expect(history.location.pathname).toBe('/resources')
+  })
+  
+  it ('triggers the addPlaylist function upon clicking add playlist', () => {
+    expect(mockProps.addPlaylist).toBeCalled()
+  })
+  
+  it ('passes in a correctly formatted playlist as an argument to addPlaylsit upon add submission', () => {
+  
+  })
 })
 
-it ('triggers the addPlaylist function upon clicking add playlist', () => {
-  let { getByTestId, history, rerender } = renderWithRouter(<PlaylistForm {...mockProps} />, {route: '/resources', state: {resourceId: 1}})
-  rerender(<PlaylistForm {...mockProps} location={history.location}/>)
-  fireEvent.click(getByTestId('add-playlist-submit'))
-  expect(mockProps.addPlaylist).toBeCalled()
-})
-
-it ('passes in a correctly formatted playlist as an argument to addPlaylsit upon add submission', () => {
-
-})
 
 it ('triggers the addResourceToPlaylist function upon submit', () => {
   //both when adding a new playlist
