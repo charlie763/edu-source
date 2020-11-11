@@ -99,7 +99,10 @@ it ('redirects to the resource page upon add playlist submit', () => {
 })
 
 it ('triggers the addPlaylist function upon clicking add playlist', () => {
-
+  let { getByTestId, history, rerender } = renderWithRouter(<PlaylistForm {...mockProps} />, {route: '/resources', state: {resourceId: 1}})
+  rerender(<PlaylistForm {...mockProps} location={history.location}/>)
+  fireEvent.click(getByTestId('add-playlist-submit'))
+  expect(mockProps.addPlaylist).toBeCalled()
 })
 
 it ('passes in a correctly formatted playlist as an argument to addPlaylsit upon add submission', () => {
