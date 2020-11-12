@@ -16,7 +16,8 @@ class PlaylistForm extends React.Component{
   componentDidUpdate(prevProps){
     //this code makes sure that a resource gets added to a playlist that has recently been added from the playlist form
     if (!prevProps.playlistAdded && this.props.playlistAdded){
-      this.props.addResourceToPlaylist(this.props.location.state.resourceId, this.props.playlistAdded.id)
+      const resource = {...findResource.call(this, this.props.location.state.resourceId)}
+      this.props.addResourceToPlaylist(resource, this.props.playlistAdded.id)
       this.setState({
         name: "",
         selectId: null,
@@ -43,7 +44,8 @@ class PlaylistForm extends React.Component{
   handleSelectSubmit = e => {
     e.preventDefault()
     const id = this.state.selectId ? this.state.selectId : this.props.playlists[0].id
-    this.props.addResourceToPlaylist(this.props.location.state.resourceId, id)
+    const resource = {...findResource.call(this, this.props.location.state.resourceId)}
+    this.props.addResourceToPlaylist(resource, id)
     this.setState({
       name: "",
       selectId: null,

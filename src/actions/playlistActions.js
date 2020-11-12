@@ -30,7 +30,7 @@ function fetchPlaylists(){
   }
 }
 
-function addResourceToPlaylist(resourceID, playlistId){
+function addResourceToPlaylist(resource, playlistId, playlistName){
   const configObj = {
     method: 'PATCH',
     headers: {
@@ -41,18 +41,17 @@ function addResourceToPlaylist(resourceID, playlistId){
     credentials: 'include',
     body: JSON.stringify({
       update: "add resource",
-      resource_id: resourceID,
+      resource_id: resource.id,
       id: playlistId
     })
   }
   return dispatch => {
-    dispatch({type: "START_ADD", tempPlaylist: {name: "temp", resources: [{id: resourceID}]}})
+    dispatch({type: "START_RESOURCE_ADD", playlistId, resource})
     fetch(BASE_URL + `/${playlistId}`, configObj)
       .then(resp => resp.json())
-      .then(updatedPlaylist => dispatch({
-        type: "ADD_RESOURCE_TO_PLAYLIST",
-        updatedPlaylist
-      }))
+      .then(() => {
+        dispatch({ type: "ADD_RESOURCE_TO_PLAYLIST", resource, playlistId})
+    })
   }
 }
 
