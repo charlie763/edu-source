@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import bookshelfIcon from '../../assets/bookshelf-icon.png'
-import addIcon from '../../assets/add-icon.png'
+import bookshelfIcon from '../../../assets/bookshelf-icon.png'
+import addIcon from '../../../assets/add-icon.png'
 
 const Playlists = props => (
   <>

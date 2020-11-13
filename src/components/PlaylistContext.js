@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { displayGrade, isResourceInPlaylist, findResource } from '../utilities'
 import Resources from './resources/Resources'
 import Resource from './resources/Resource'
-import Playlists from './playlists/Playlists'
+import Playlists from './playlists/playlists/Playlists'
 
 class PlaylistContext extends React.Component {
   render(){
