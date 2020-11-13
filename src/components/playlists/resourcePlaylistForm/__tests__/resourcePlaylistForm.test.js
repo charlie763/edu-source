@@ -8,7 +8,7 @@ import Adapter from 'enzyme-adapter-react-16'
 import { mount, shallow, configure } from 'enzyme'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
-import { addPlaylist } from '../../../../actions/playlistActions'
+import { addPlaylist, addResourceToPlaylist } from '../../../../actions/playlistActions'
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from '../../../../reducers/rootReducer'
@@ -154,26 +154,10 @@ describe('submit form functionality', () => {
     expect(history.location.pathname).toBe('/resources')
   })
 
-
-  it ('triggers the addResourceToPlaylist function upon addPlaylist submit', async () => {
-    const store = createStore(rootReducer, applyMiddleware(thunk))
-    const newMockProps = {
-      ...mockProps,
-      addPlaylist: addPlaylist
-    }
-    const { getByTestId } = renderWithStoreAndRouter(
-      <PlaylistForm {...newMockProps} location={{state: { resourceId: 1 } }} />, 
-      {store: store}
-    )
-    expect(mockProps.addResourceToPlaylist).not.toBeCalled()
-    fireEvent.click(getByTestId('add-playlist-submit')) 
-    await waitFor(() => expect(mockProps.addResourceToPlaylist).toBeCalled())
-  })
-  
-
   it ('triggers the addResourceToPlaylist function upon select playlist submit', () => {
-    //both when adding a new playlist
-    //and selecting a playlist
+    const { getByTestId } = renderWithRouter(<PlaylistForm {...mockProps} location={{state: { resourceId: 1 } }} />)
+    fireEvent.click(getByTestId('select-playlist-submit'))
+    expect(mockProps.addResourceToPlaylist).toBeCalled()
   })
   
   it ('passes in the correct resource id as an argument to addResourceToPlaylist upon submission', () => {
