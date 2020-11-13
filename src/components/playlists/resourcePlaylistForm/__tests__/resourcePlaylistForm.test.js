@@ -8,10 +8,6 @@ import Adapter from 'enzyme-adapter-react-16'
 import { mount, shallow, configure } from 'enzyme'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
-import { addPlaylist, addResourceToPlaylist } from '../../../../actions/playlistActions'
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from '../../../../reducers/rootReducer'
 
 configure({ adapter: new Adapter() });
 
@@ -160,12 +156,21 @@ describe('submit form functionality', () => {
     expect(mockProps.addResourceToPlaylist).toBeCalled()
   })
   
-  it ('passes in the correct resource id as an argument to addResourceToPlaylist upon submission', () => {
-  
-  })
-  
-  it ('passes in the correct playlist id as an argument to addResourceToPlaylist upon submission', () => {
-  
+  it ('passes in the correct arguments to addResourceToPlaylist upon submission', () => {
+    const resource = {
+      id: 1,
+      title: 'Algebra Introduction - Basic Overview - Online Crash Course Review Video Tutorial Lessons',
+      description: '1 hour video goving over basic algebra as you might learn it in high school',
+      lowerGradeBound: 9,
+      upperGradeBound: 12,
+      subject: 'Math',
+      url: 'https://www.youtube.com/watch?v=grnP3mduZkM',
+      videoUrl: 'https://www.youtube.com/watch?v=grnP3mduZkM',
+      rating: 3
+    }
+    const { getByTestId } = renderWithRouter(<PlaylistForm {...mockProps} location={{state: { resourceId: 1 } }} />)
+    fireEvent.click(getByTestId('select-playlist-submit'))
+    expect(mockProps.addResourceToPlaylist).toBeCalledWith(resource, 23)
   })
 })
 
